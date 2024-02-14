@@ -3,11 +3,16 @@ vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
 -- REMAPPINGS
-local map = vim.api.nvim_set_keymap
+local bind = vim.keymap.set
+
+function cmd (command)
+    return '<cmd>' .. command .. '<cr>'
+end
+
 
 -- return to file explorer on ctrl-e -> x
-map('i', '<C-e>x', '<esc><cmd>:Rex<cr>', {})
-map('n', '<C-e>x', '<cmd>:Rex<cr>', {})
+bind('i', '<C-e>x', '<esc>'.. cmd(':Rex'))
+bind('n', '<C-e>x', cmd(':Rex'))
 
-
-map('i', '<C-r>lua', '<cmd>:w<cr><cmd>:luafile %<cr>', {}) -- save and reload lua file
+-- save and reload lua file
+bind({'i', 'n'}, '<C-r>f', cmd(':w') .. cmd(':luafile %'))
