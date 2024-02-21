@@ -16,9 +16,10 @@ bind({'i', 'n'}, '<C-s>q', cmd(':xa')) -- save all and quit
 bind({'i', 'n'}, '<C-q>q', cmd(':qa')) -- quit without saving
 bind({'i', 'n'}, '<C-r>f', cmd(':w') .. cmd(':luafile %')) -- save and reload lua file
 
--- return to file explorer on ctrl-e -> x
-bind('i', '<C-e>x', '<esc>'.. cmd(':Rex'))
-bind('n', '<C-e>x', cmd(':Rex'))
+-- nvim-tree
+bind('i', '<C-e>x', '<esc>'.. cmd(':NvimTreeFocus')) -- focus file tree on ctrl+e->x
+bind('n', '<C-e>x', cmd(':NvimTreeFocus')) -- focus file tree on ctrl+e->x
+bind({'i', 'n'}, '<C-t>h', cmd(':NvimTreeClose')) -- hide tree
 
 -- new lines without leaving normal mode
 bind('n', '<leader>o', 'o<Esc>') -- below
