@@ -13,6 +13,7 @@ end
 bind({'i', 'n'}, '<C-s>f', cmd(':w')) -- save file
 bind({'i', 'n'}, '<C-s>a', cmd(':wa')) -- save all
 bind({'i', 'n'}, '<C-s>q', cmd(':xa')) -- save all and quit
+bind({'i', 'n'}, '<C-q>q', cmd(':qa')) -- quit without saving
 bind({'i', 'n'}, '<C-r>f', cmd(':w') .. cmd(':luafile %')) -- save and reload lua file
 
 -- return to file explorer on ctrl-e -> x
