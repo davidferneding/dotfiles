@@ -23,3 +23,6 @@ bind('n', '<C-e>x', cmd(':Rex'))
 -- new lines without leaving normal mode
 bind('n', '<leader>o', 'o<Esc>') -- below
 bind('n', '<leader>O', 'O<Esc>') -- above
+
+-- search
+bind({'i', 'n'}, '<leader>clears', cmd(':noh')) -- clear highlight
