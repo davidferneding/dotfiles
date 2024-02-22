@@ -56,3 +56,9 @@ bind({'i', 'n'}, '<leader>h6', cmd(':HarpoonSwitch 6'))
 bind({'i', 'n'}, '<leader>h7', cmd(':HarpoonSwitch 7'))
 bind({'i', 'n'}, '<leader>h8', cmd(':HarpoonSwitch 8'))
 bind({'i', 'n'}, '<leader>h9', cmd(':HarpoonSwitch 9'))
+
+-- resize windows
+bind('n', '<S-Up>', cmd(':res -1'))
+bind('n', '<S-Down>', cmd(':res +1'))
+bind('n', '<S-Left>', cmd(':vert res +1'))
+bind('n', '<S-Right>', cmd(':vert res -1'))
