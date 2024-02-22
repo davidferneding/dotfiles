@@ -10,20 +10,20 @@ function cmd (command)
 end
 
 -- saving / reloading
-bind({'i', 'n'}, '<C-s>f', cmd(':w')) -- save file
-bind({'i', 'n'}, '<C-s>a', cmd(':wa')) -- save all
-bind({'i', 'n'}, '<C-s>q', cmd(':xa')) -- save all and quit
-bind({'i', 'n'}, '<C-q>q', cmd(':qa')) -- quit without saving
-bind({'i', 'n'}, '<C-r>f', cmd(':w') .. cmd(':luafile %')) -- save and reload lua file
+bind({'i', 'n'}, '<leader>sf', cmd(':w')) -- save file
+bind({'i', 'n'}, '<leader>sa', cmd(':wa')) -- save all
+bind({'i', 'n'}, '<leader>sq', cmd(':xa')) -- save all and quit
+bind({'i', 'n'}, '<leader>qq', cmd(':qa')) -- quit without saving
+bind({'i', 'n'}, '<leader>rf', cmd(':w') .. cmd(':luafile %')) -- save and reload lua file
 
 -- nvim-tree
-bind('i', '<C-e>x', '<esc>'.. cmd(':NvimTreeFocus')) -- focus file tree on ctrl+e->x
-bind('n', '<C-e>x', cmd(':NvimTreeFocus')) -- focus file tree on ctrl+e->x
-bind({'i', 'n'}, '<C-t>h', cmd(':NvimTreeClose')) -- hide tree
+bind('i', '<leader>ts', '<esc>'.. cmd(':NvimTreeFocus')) -- focus file tree
+bind('n', '<leader>ts', cmd(':NvimTreeFocus')) -- focus file tree
+bind({'i', 'n'}, '<leader>th', cmd(':NvimTreeClose')) -- hide tree
 
 -- new lines without leaving normal mode
 bind('n', '<leader>o', 'o<Esc>') -- below
 bind('n', '<leader>O', 'O<Esc>') -- above
 
 -- search
-bind({'i', 'n'}, '<leader>clears', cmd(':noh')) -- clear highlight
+bind({'i', 'n'}, '<leader>clh', cmd(':noh')) -- clear highlight
