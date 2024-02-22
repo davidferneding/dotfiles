@@ -1,3 +1,5 @@
+vim.o.laststatus = 3
+
 -- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
