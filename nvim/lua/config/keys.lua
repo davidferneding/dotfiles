@@ -27,3 +27,6 @@ bind('n', '<leader>O', 'O<Esc>') -- above
 
 -- search
 bind({'i', 'n'}, '<leader>clh', cmd(':noh')) -- clear highlight
+
+-- telescope
+bind({'i', 'n'}, '<leader>tf', cmd(':Telescope find_files'))
