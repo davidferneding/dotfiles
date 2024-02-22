@@ -31,6 +31,24 @@ bind({'i', 'n'}, '<leader>clh', cmd(':noh')) -- clear highlight
 
 -- telescope
 bind({'i', 'n'}, '<leader>tf', cmd(':Telescope find_files'))
+bind({'i', 'n'}, '<leader>tg', cmd(':Telescope live_grep'))
 
 -- mason
 bind({'i', 'n'}, '<leader>lspu', cmd(':Mason'))
+
+-- harpoon
+bind({'i', 'n'}, '<leader>ha', cmd(':HarpoonAppend'))
+bind({'i', 'n'}, '<leader>hr', cmd(':HarpoonRemove'))
+bind({'i', 'n'}, '<leader>hs', cmd(':HarpoonShow'))
+bind({'i', 'n'}, '<leader>hn', cmd(':HarpoonNext'))
+bind({'i', 'n'}, '<leader>hp', cmd(':HarpoonPrev'))
+
+bind({'i', 'n'}, '<leader>h1', cmd(':HarpoonSwitch 1'))
+bind({'i', 'n'}, '<leader>h2', cmd(':HarpoonSwitch 2'))
+bind({'i', 'n'}, '<leader>h3', cmd(':HarpoonSwitch 3'))
+bind({'i', 'n'}, '<leader>h4', cmd(':HarpoonSwitch 4'))
+bind({'i', 'n'}, '<leader>h5', cmd(':HarpoonSwitch 5'))
+bind({'i', 'n'}, '<leader>h6', cmd(':HarpoonSwitch 6'))
+bind({'i', 'n'}, '<leader>h7', cmd(':HarpoonSwitch 7'))
+bind({'i', 'n'}, '<leader>h8', cmd(':HarpoonSwitch 8'))
+bind({'i', 'n'}, '<leader>h9', cmd(':HarpoonSwitch 9'))
