@@ -6,9 +6,15 @@
 !README.md
 
 # and relevant dotfiles
+# -> terminal config
 !kitty
 !kitty/**/*
 
+# -> editor config
 !nvim
 !nvim/**/*
 nvim/lazy-lock.json
+
+# -> firefox config
+!firefox
+!firefox/**/*
