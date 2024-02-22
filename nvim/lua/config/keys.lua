@@ -5,12 +5,13 @@ vim.g.maplocalleader = ","
 -- REMAPPINGS
 local bind = vim.keymap.set
 
-function cmd (command)
+local function cmd (command)
     return '<cmd>' .. command .. '<cr>'
 end
 
 -- saving / reloading
 bind({'i', 'n'}, '<leader>sf', cmd(':w')) -- save file
+bind({'i', 'n'}, '<leader>sc', cmd(':w') .. cmd(':bdelete') .. cmd(':bprevious')) -- save file and close buffer
 bind({'i', 'n'}, '<leader>sa', cmd(':wa')) -- save all
 bind({'i', 'n'}, '<leader>sq', cmd(':xa')) -- save all and quit
 bind({'i', 'n'}, '<leader>qq', cmd(':qa')) -- quit without saving
