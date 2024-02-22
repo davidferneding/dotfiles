@@ -30,3 +30,6 @@ bind({'i', 'n'}, '<leader>clh', cmd(':noh')) -- clear highlight
 
 -- telescope
 bind({'i', 'n'}, '<leader>tf', cmd(':Telescope find_files'))
+
+-- mason
+bind({'i', 'n'}, '<leader>lspu', cmd(':Mason'))
