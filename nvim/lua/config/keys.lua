@@ -17,6 +17,10 @@ bind({'i', 'n'}, '<leader>sq', cmd(':xa')) -- save all and quit
 bind({'i', 'n'}, '<leader>qq', cmd(':qa')) -- quit without saving
 bind({'i', 'n'}, '<leader>rf', cmd(':w') .. cmd(':luafile %')) -- save and reload lua file
 
+-- system clipboard
+bind({'n', 'v'}, '<leader>y', '"+y')
+bind('n', '<leader>Y', '"+yg_')
+
 -- nvim-tree
 bind('i', '<leader>ts', '<esc>'.. cmd(':NvimTreeFocus')) -- focus file tree
 bind('n', '<leader>ts', cmd(':NvimTreeFocus')) -- focus file tree
