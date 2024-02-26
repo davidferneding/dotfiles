@@ -21,7 +21,9 @@ bind({ 'i', 'n' }, '<leader>rf', cmd(':w') .. cmd(':luafile %'), { desc = 'save 
 local lspbuf = vim.lsp.buf
 bind('n', '<leader>jd', lspbuf.definition, { desc = 'go to definition' })
 bind('n', '<leader>ji', lspbuf.implementation, { desc = 'go to implementation' })
-bind('n', '<leader>rs', lspbuf.rename, { desc = 'rename' })
+bind({ 'i', 'n' }, '<leader>h', lspbuf.hover, { desc = 'show hover information' })
+bind({ 'i', 'n' }, '<leader>a?', lspbuf.code_action, { desc = 'show code actions' })
+bind({ 'i', 'n' }, '<leader>rs', lspbuf.rename, { desc = 'rename' })
 bind('n', '<leader>ff', lspbuf.format, { desc = 'format file' })
 bind('v', '<leader>ff', lspbuf.format, { desc = 'format range' })
 
