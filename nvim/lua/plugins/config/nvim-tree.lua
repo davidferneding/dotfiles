@@ -40,6 +40,11 @@ require("nvim-tree").setup({
     sort_by = function(nodes)
 		table.sort(nodes, natural_cmp)
 	end,
+    actions = {
+        open_file = {
+            quit_on_open = true
+        }
+    },
 })
 
 local api = require("nvim-tree.api")
