@@ -69,3 +69,6 @@ bind('n', '<leader>dp', '[c') -- prev diff
 bind('n', '<leader>dg', cmd(':diffget')) -- use other change (two way diff)
 bind('n', '<leader>dl', cmd(':diffget local')) -- use local change
 bind('n', '<leader>dr', cmd(':diffget remote')) -- use change from remote
+
+-- notes
+bind({'i', 'n'}, '<leader>gn', cmd(':GlobalNote'))
