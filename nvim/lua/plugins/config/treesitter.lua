@@ -38,18 +38,18 @@ require'nvim-treesitter.configs'.setup {
       enable = true,
       clear_on_cursor_move = true,
     },
-    smart_rename = {
-      enable = true,
-      keymaps = {
-        smart_rename = "<leader>rr",
-      },
-    },
+--     smart_rename = {
+--       enable = true,
+--       keymaps = {
+--         smart_rename = "<leader>rr",
+--       },
+--     },
     navigation = {
       enable = true,
       keymaps = {
-        goto_definition = "<leader>jd",
-        list_definitions = "<leader>ld",
-        list_definitions_toc = "<leader>lc",
+--         goto_definition = "<leader>jd",
+--         list_definitions = "<leader>ld",
+--         list_definitions_toc = "<leader>lc",
         goto_next_usage = "<leader>ju",
         goto_previous_usage = "<leader>ku",
       },
