@@ -32,7 +32,10 @@ end
 
 require("nvim-tree").setup({
     view = {
-        width = 40
+        width = {
+            min = 30,
+            max = 100,
+        },
     },
     sort_by = function(nodes)
 		table.sort(nodes, natural_cmp)
