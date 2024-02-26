@@ -18,11 +18,6 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
 
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- the name of the parser)
-    -- list of language that will be disabled
-    disable = { },
     -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
     disable = function(lang, buf)
       local max_filesize = 100 * 1024 -- 100 KB
@@ -40,7 +35,7 @@ require'nvim-treesitter.configs'.setup {
   },
   refactor = {
     highlight_definitions = {
-      enable = true, 
+      enable = true,
       clear_on_cursor_move = true,
     },
     smart_rename = {
