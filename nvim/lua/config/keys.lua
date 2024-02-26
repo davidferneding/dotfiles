@@ -62,3 +62,10 @@ bind('n', '<S-Up>', cmd(':res -1'))
 bind('n', '<S-Down>', cmd(':res +1'))
 bind('n', '<S-Left>', cmd(':vert res +1'))
 bind('n', '<S-Right>', cmd(':vert res -1'))
+
+-- diff / merge
+bind('n', '<leader>dn', ']c') -- next diff
+bind('n', '<leader>dp', '[c') -- prev diff
+bind('n', '<leader>dg', cmd(':diffget')) -- use other change (two way diff)
+bind('n', '<leader>dl', cmd(':diffget local')) -- use local change
+bind('n', '<leader>dr', cmd(':diffget remote')) -- use change from remote
