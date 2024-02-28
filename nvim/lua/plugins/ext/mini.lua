@@ -1,4 +1,10 @@
 return {
-    { 'echasnovski/mini.move', version = '*' },
-    { 'echasnovski/mini.pairs', version = '*' },
+    {
+        'echasnovski/mini.move',
+        version = '*'
+    },
+    {
+        'echasnovski/mini.pairs',
+        version = '*'
+    },
 }

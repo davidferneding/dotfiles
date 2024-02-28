@@ -1,1 +1,3 @@
-return { "backdround/global-note.nvim" }
+return {
+    "backdround/global-note.nvim"
+}

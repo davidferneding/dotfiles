@@ -1,5 +1,6 @@
 return {
     "gaoDean/autolist.nvim",
+    version = '*',
     ft = {
         "markdown",
         "text",

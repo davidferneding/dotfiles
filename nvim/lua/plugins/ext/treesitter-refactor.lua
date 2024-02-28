@@ -1,1 +1,3 @@
-return { 'nvim-treesitter/nvim-treesitter-refactor' }
+return {
+    'nvim-treesitter/nvim-treesitter-refactor'
+}
