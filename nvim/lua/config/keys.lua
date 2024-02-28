@@ -4,6 +4,7 @@ vim.g.maplocalleader = ","
 
 -- REMAPPINGS
 local bind = vim.keymap.set
+bind('i', '<leader><leader>', '<leader>', { desc = 'write <leader>' })
 
 local cmd = function(command)
     return '<cmd>' .. command .. '<cr>'
