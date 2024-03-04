@@ -20,11 +20,13 @@ bind({ 'i', 'n' }, '<leader>rf', cmd(':w') .. cmd(':luafile %'), { desc = 'save 
 
 -- lsp
 local lspbuf = vim.lsp.buf
-bind('n', '<leader>jd', lspbuf.definition, { desc = 'go to definition' })
-bind('n', '<leader>ji', lspbuf.implementation, { desc = 'go to implementation' })
-bind({ 'i', 'n' }, '<leader>h', lspbuf.hover, { desc = 'show hover information' })
-bind({ 'i', 'n' }, '<leader>a?', lspbuf.code_action, { desc = 'show code actions' })
-bind({ 'i', 'n' }, '<leader>rs', lspbuf.rename, { desc = 'rename' })
+bind('n', '<leader>jd', lspbuf.definition, { desc = 'jump to definition' })
+bind('n', '<leader>ji', lspbuf.implementation, { desc = 'jump to implementation' })
+bind('n', '<leader>jc', lspbuf.incoming_calls, { desc = 'jump to incoming calls' })
+bind('n', '<leader>jr', lspbuf.references, { desc = 'jump to references' })
+bind({ 'i', 'n' }, '<leader>si', lspbuf.hover, { desc = 'show hover information' })
+bind({ 'i', 'n' }, '<leader>sa', lspbuf.code_action, { desc = 'show code actions' })
+bind({ 'i', 'n' }, '<leader>rn', lspbuf.rename, { desc = 'rename' })
 bind('n', '<leader>ff', lspbuf.format, { desc = 'format file' })
 bind('v', '<leader>ff', lspbuf.format, { desc = 'format range' })
 
