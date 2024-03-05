@@ -1,0 +1,21 @@
+{
+  "ast-grep": "0.19.3",
+  "cbfmt": "v0.2.0",
+  "clj-kondo": "v2024.02.12",
+  "clojure-lsp": "2024.02.01-11.01.59",
+  "csharp-language-server": "0.11.0",
+  "css-lsp": "4.8.0",
+  "docker-compose-language-service": "0.2.0",
+  "dockerfile-language-server": "0.11.0",
+  "eslint-lsp": "4.8.0",
+  "eslint_d": "13.1.2",
+  "fennel-language-server": "59005549ca1191bf2aa364391e6bf2371889b4f8",
+  "html-lsp": "4.8.0",
+  "json-lsp": "4.8.0",
+  "lua-language-server": "3.7.4",
+  "marksman": "2023-12-09",
+  "mdformat": "0.7.17",
+  "prettier": "3.2.5",
+  "typescript-language-server": "4.3.3",
+  "yaml-language-server": "1.14.0"
+}
