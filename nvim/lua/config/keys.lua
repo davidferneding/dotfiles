@@ -4,7 +4,7 @@ vim.g.maplocalleader = ","
 
 -- REMAPPINGS
 local bind = vim.keymap.set
-bind('i', 'jk', '<Esc>', { desc = 'Exit insert mode'})
+bind({ 'i', 'v' }, 'jk', '<Esc>', { desc = 'Back to normal mode' })
 
 local cmd = function(command)
     return '<cmd>' .. command .. '<cr>'
