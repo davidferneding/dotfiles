@@ -16,3 +16,6 @@ nmap <leader>l <Action>(Forward)
 nmap <leader>ff <Action>(ReformatCode)
 
 nmap <leader>rt <Action>(RiderUnitTestRunContextSplitAction)
+
+nmap <leader>cr <Action>(CollapseRegion)
+nmap <leader>er <Action>(ExpandRegion)
