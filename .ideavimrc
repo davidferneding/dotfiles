@@ -8,3 +8,7 @@ set hlsearch
 let mapleader = " "
 
 inoremap jk <Esc>
+
+nmap gD <Action>(GotoImplementation)
+nmap <leader>h <Action>(Back)
+nmap <leader>l <Action>(Forward)
