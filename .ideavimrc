@@ -14,3 +14,5 @@ nmap <leader>h <Action>(Back)
 nmap <leader>l <Action>(Forward)
 
 nmap <leader>ff <Action>(ReformatCode)
+
+nmap <leader>rt <Action>(RiderUnitTestRunContextSplitAction)
