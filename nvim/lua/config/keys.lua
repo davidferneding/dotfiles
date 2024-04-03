@@ -1,6 +1,6 @@
 -- LEADER
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 -- REMAPPINGS
 local bind = vim.keymap.set
