@@ -11,11 +11,6 @@ local cmd = function(command)
 end
 
 -- saving / reloading
-bind('n', '<leader>sf', cmd(':w'), { desc = 'save file' })
-bind('n', '<leader>sc', cmd(':w') .. cmd(':bdelete') .. cmd(':bprevious'), { desc = 'save file and close' })
-bind('n', '<leader>sa', cmd(':wa'), { desc = 'save all' })
-bind('n', '<leader>sq', cmd(':xa'), { desc = 'save all and quit' })
-bind('n', '<leader>qq', cmd(':qa'), { desc = 'quit without saving' })
 bind('n', '<leader>rf', cmd(':w') .. cmd(':luafile %'), { desc = 'save and reload lua file' })
 
 -- lsp
