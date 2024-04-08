@@ -21,3 +21,6 @@ nvim/lazy-lock.json
 
 # -> ideavim config
 !.ideavimrc
+
+# -> tmux config
+!.tmux.conf
