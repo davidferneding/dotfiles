@@ -1,8 +1,8 @@
 {
-  "ast-grep": "0.19.3",
+  "ast-grep": "0.20.4",
   "cbfmt": "v0.2.0",
-  "clj-kondo": "v2024.03.05",
-  "clojure-lsp": "2024.02.01-11.01.59",
+  "clj-kondo": "v2024.03.13",
+  "clojure-lsp": "2024.03.31-19.10.13",
   "csharp-language-server": "0.11.0",
   "css-lsp": "4.8.0",
   "docker-compose-language-service": "0.2.0",
