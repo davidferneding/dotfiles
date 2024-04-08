@@ -7,8 +7,8 @@
 
 # and relevant dotfiles
 # -> terminal config
-!kitty
-!kitty/**/*
+!alacritty
+!alacritty/**/*
 
 # -> editor config
 !nvim

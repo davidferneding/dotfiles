@@ -2,13 +2,13 @@
 Managed in git to allow for easy sync between devices.
 
 ## Dependencies
-* Kitty
+* alacritty
 * neovim
 * Victor Mono Nerd Font
 
 ## Setup
 Note: these dotfiles contain submodules:
-* kitty-themes
+* alacritty-themes
 * ... (more might follow)
 
 Checkout using 
