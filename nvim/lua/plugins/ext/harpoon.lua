@@ -11,7 +11,7 @@ return {
 
         -- define functions to configure keybinds in keys.lua
         vim.api.nvim_create_user_command('HarpoonAppend', function()
-            harpoon:list():append()
+            harpoon:list():add()
         end, {})
 
         vim.api.nvim_create_user_command('HarpoonRemove', function()
