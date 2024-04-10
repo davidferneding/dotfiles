@@ -6,7 +6,11 @@
 !README.md
 
 # and relevant dotfiles
-# -> terminal config
+
+# -> zsh config
+!.zshrc
+
+# -> terminal emulator config
 !alacritty
 !alacritty/**/*
 

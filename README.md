@@ -2,6 +2,7 @@
 Managed in git to allow for easy sync between devices.
 
 ## Dependencies
+* zsh
 * alacritty
 * neovim
 * Victor Mono Nerd Font
