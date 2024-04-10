@@ -5,9 +5,6 @@ vim.api.nvim_set_hl(0, 'LineNr', { fg = '#7777aa' } )
 opt.signcolumn = "yes"
 vim.g.netrw_bufsettings = 'noma nomod nu relativenumber nowrap ro nobl'
 
-opt.encoding = 'utf8'
-opt.fileencoding = 'utf8'
-
 opt.syntax = 'ON'
 opt.termguicolors = true
 
