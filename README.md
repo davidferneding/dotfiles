@@ -6,6 +6,7 @@ Managed in git to allow for easy sync between devices.
 * alacritty
 * neovim
 * Victor Mono Nerd Font
+* fnlfmt (optional, for formatting fennel files in neovim config)
 
 ## Setup
 Note: these dotfiles contain submodules:
