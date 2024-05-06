@@ -1,24 +1,13 @@
-local opt = vim.opt
-opt.number = true
-opt.relativenumber = true
-vim.api.nvim_set_hl(0, 'LineNr', { fg = '#7777aa' } )
-opt.signcolumn = "yes"
-vim.g.netrw_bufsettings = 'noma nomod nu relativenumber nowrap ro nobl'
-
-opt.syntax = 'ON'
-opt.termguicolors = true
-
-opt.ignorecase = true
-opt.smartcase = true
-opt.incsearch = true
-opt.hlsearch = true
-
-opt.expandtab = true
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.tabstop = 4
-
-opt.splitright = true
-opt.splitbelow = true
-
-vim.g.t_co = 256
+-- [nfnl] Compiled from fnl/config/vars.fnl by https://github.com/Olical/nfnl, do not edit.
+local function set_opt(key, value)
+  vim.opt[key] = value
+  return nil
+end
+local options = {number = true, relativenumber = true, signcolumn = "yes", syntax = "ON", termguicolors = true, ignorecase = true, smartcase = true, incsearch = true, hlsearch = true, expandtab = true, shiftwidth = 4, softtabstop = 4, tabstop = 4, splitright = true, splitbelow = true}
+for key, value in pairs(options) do
+  set_opt(key, value)
+end
+vim.api.nvim_set_hl(0, "LineNr", {fg = "#7777aa"})
+do end (vim.g)["netrw_bufsettings"] = "noma nomod nu relativenumber nowrap ro nobl"
+vim.g["t_co"] = 256
+return nil
