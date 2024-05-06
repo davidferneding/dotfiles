@@ -10,7 +10,7 @@
   "fennel-language-server": "59005549ca1191bf2aa364391e6bf2371889b4f8",
   "html-lsp": "4.8.0",
   "json-lsp": "4.8.0",
-  "lua-language-server": "3.7.4",
+  "lua-language-server": "3.8.3",
   "marksman": "2023-12-09",
   "mdformat": "0.7.17",
   "prettier": "3.2.5",
