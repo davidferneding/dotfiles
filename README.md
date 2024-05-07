@@ -3,14 +3,14 @@ Managed in git to allow for easy sync between devices.
 
 ## Dependencies
 * zsh
-* alacritty
+* wezterm
 * neovim
 * Victor Mono Nerd Font
-* fnlfmt (optional, for formatting fennel files in neovim config)
+* fnlfmt (optional, used in neovim config)
 
 ## Setup
 Note: these dotfiles contain submodules:
-* alacritty-themes
+* alacritty-themes (might be removed soon)
 * ... (more might follow)
 
 Checkout using 

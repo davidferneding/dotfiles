@@ -13,6 +13,8 @@
 # -> terminal emulator config
 !alacritty
 !alacritty/**/*
+!wezterm
+!wezterm/**/*
 
 # -> editor config
 !nvim
