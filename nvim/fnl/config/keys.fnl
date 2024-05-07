@@ -43,15 +43,19 @@
 (map [:i :n] :<C-k> (cmd :HarpoonPrev) "jump to previous harpooned buffer")
 (map [:i :n] :<C-j> (cmd :HarpoonNext) "jump to next harpooned buffer")
 
-(map [:i :n] :<C-h>1 (cmd "HarpoonSwitch 1") "jump to harpoon buffer 1")
-(map [:i :n] :<C-h>2 (cmd "HarpoonSwitch 2") "jump to harpoon buffer 2")
-(map [:i :n] :<C-h>3 (cmd "HarpoonSwitch 3") "jump to harpoon buffer 3")
-(map [:i :n] :<C-h>4 (cmd "HarpoonSwitch 4") "jump to harpoon buffer 4")
-(map [:i :n] :<C-h>5 (cmd "HarpoonSwitch 5") "jump to harpoon buffer 5")
-(map [:i :n] :<C-h>6 (cmd "HarpoonSwitch 6") "jump to harpoon buffer 6")
-(map [:i :n] :<C-h>7 (cmd "HarpoonSwitch 7") "jump to harpoon buffer 7")
-(map [:i :n] :<C-h>8 (cmd "HarpoonSwitch 8") "jump to harpoon buffer 8")
-(map [:i :n] :<C-h>9 (cmd "HarpoonSwitch 9") "jump to harpoon buffer 9")
+(lmap :n :1 (cmd "HarpoonSwitch 1") "jump to harpoon buffer 1")
+(lmap :n :2 (cmd "HarpoonSwitch 2") "jump to harpoon buffer 2")
+(lmap :n :3 (cmd "HarpoonSwitch 3") "jump to harpoon buffer 3")
+(lmap :n :4 (cmd "HarpoonSwitch 4") "jump to harpoon buffer 4")
+(lmap :n :5 (cmd "HarpoonSwitch 5") "jump to harpoon buffer 5")
+(lmap :n :6 (cmd "HarpoonSwitch 6") "jump to harpoon buffer 6")
+(lmap :n :7 (cmd "HarpoonSwitch 7") "jump to harpoon buffer 7")
+(lmap :n :8 (cmd "HarpoonSwitch 8") "jump to harpoon buffer 8")
+(lmap :n :9 (cmd "HarpoonSwitch 9") "jump to harpoon buffer 9")
+
+;; other movement shortcuts
+(lmap :n :h (cmd :bprev) "go to previous buffer")
+(lmap :n :l (cmd :bnext) "go to next buffer")
 
 ;; -- resize windows
 (map :n :<S-Up> (cmd ":res -1") "resize window")
