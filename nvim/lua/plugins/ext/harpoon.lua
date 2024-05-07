@@ -1,7 +1,7 @@
 -- [nfnl] Compiled from fnl/plugins/ext/harpoon.fnl by https://github.com/Olical/nfnl, do not edit.
 local function _1_()
   local harpoon = require("harpoon")
-  harpoon:setup()
+  harpoon:setup({settings = {save_on_toggle = true}})
   local function _2_()
     local list = harpoon:list()
     return list:add()
