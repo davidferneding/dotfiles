@@ -128,6 +128,8 @@ alias vim='nvim'
 alias filetree='tree'
 alias dirtree='tree -d'
 
+alias git-cleanup-merged='git fetch --prune && git branch --merged | egrep -v "master|develop" | xargs git branch -d'
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
