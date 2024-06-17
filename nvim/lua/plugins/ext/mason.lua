@@ -1,34 +1,15 @@
-return {
-    {
-        "williamboman/mason.nvim",
-        version = "*",
-        config = function()
-            require("mason").setup()
-        end,
-        priority = 1000 -- load and init this before anything else
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        version = "*",
-        config = function()
-            require("mason-lspconfig").setup({
-                automatic_installation = true
-            })
-
-            require("mason-lspconfig").setup_handlers({
-                -- The first entry (without a key) will be the default handler
-                -- and will be called for each installed server that doesn't have
-                -- a dedicated handler.
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {}
-                end,
-                -- Next, you can provide a dedicated handler for specific servers.
-                -- For example, a handler override for the `rust_analyzer`:
-                -- ["rust_analyzer"] = function ()
-                --     require("rust-tools").setup {}
-                -- end
-            })
-        end,
-        priority = 999 -- and this after mason
-    }
-}
+-- [nfnl] Compiled from fnl/plugins/ext/mason.fnl by https://github.com/Olical/nfnl, do not edit.
+local function _1_()
+  local mason = require("mason")
+  return mason.setup()
+end
+local function _2_()
+  local mason_lspconfig = require("mason-lspconfig")
+  mason_lspconfig.setup({automatic_installation = true})
+  local function _3_(server_name)
+    local lspconfig = (require("lspconfig"))[server_name]
+    return lspconfig.setup({})
+  end
+  return mason_lspconfig.setup_handlers({_3_})
+end
+return {{"williamboman/mason.nvim", version = "*", config = _1_, priority = 1000}, {"williamboman/mason-lspconfig.nvim", version = "*", config = _2_, priority = 999}}
