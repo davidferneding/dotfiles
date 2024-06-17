@@ -66,27 +66,35 @@ local function _1_()
     local msg = "No Active Lsp"
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()
-    if (next(clients) == nil) then
-    else
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if (filetypes and (vim.fn.index(filetypes, buf_ft) ~= -1)) then
-        do local _ = client.name end
+    local function first_with_filetype(filetype, list, index)
+      local i, value = next(list, index)
+      if (i == nil) then
+        return nil
       else
+        local filetypes = value.config.filetypes
+        if (filetypes and (vim.fn.index(filetypes, filetype) ~= -1)) then
+          return value.name
+        else
+          return first_with_filetype(filetype, list, i)
+        end
       end
     end
-    return msg
+    local client = first_with_filetype(buf_ft, clients)
+    if (client == nil) then
+      return msg
+    else
+      return client
+    end
   end
   ins_left({_15_, icon = "\239\130\133 LSP:", color = {fg = "#ffffff", gui = "bold"}})
   ins_right({"o:encoding", fmt = string.upper, cond = conditions.hide_in_width, color = {fg = colors.green, gui = "bold"}})
   ins_right({"fileformat", fmt = string.upper, color = {fg = colors.green, gui = "bold"}, icons_enabled = false})
   ins_right({"branch", icon = "\239\145\191", color = {fg = colors.violet, gui = "bold"}})
   ins_right({"diff", symbols = {added = "\239\131\190 ", modified = "\243\176\157\164 ", removed = "\239\133\134 "}, diff_color = {added = {fg = colors.green}, modified = {fg = colors.orange}, removed = {fg = colors.red}}, cond = conditions.hide_in_width})
-  local function _18_()
+  local function _19_()
     return "\226\150\138"
   end
-  ins_right({_18_, color = {fg = colors.blue}, padding = {left = 1}})
+  ins_right({_19_, color = {fg = colors.blue}, padding = {left = 1}})
   return lualine.setup(config)
 end
 return {"nvim-lualine/lualine.nvim", dependencies = {"nvim-tree/nvim-web-devicons"}, config = _1_}

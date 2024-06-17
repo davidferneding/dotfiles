@@ -127,13 +127,20 @@
                           (local buf_ft
                                  (vim.api.nvim_buf_get_option 0 :filetype))
                           (local clients (vim.lsp.get_active_clients))
-                          (if (= (next clients) nil) msg)
-                          (each [_ client (ipairs clients)]
-                            (local filetypes client.config.filetypes)
-                            (if (and filetypes
-                                     (not= (vim.fn.index filetypes buf_ft) -1))
-                                client.name))
-                          msg)
+
+                          (fn first-with-filetype [filetype list index]
+                            (let [(i value) (next list index)]
+                              (if (= i nil) nil
+                                  (let [filetypes value.config.filetypes]
+                                    (if (and filetypes
+                                             (not= (vim.fn.index filetypes
+                                                                 filetype)
+                                                   -1))
+                                        value.name
+                                        (first-with-filetype filetype list i))))))
+
+                          (local client (first-with-filetype buf_ft clients))
+                          (if (= client nil) msg client))
                       :icon " LSP:"
                       :color {:fg "#ffffff" :gui :bold}})
            ;; Add components to right sections
