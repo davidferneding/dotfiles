@@ -21,7 +21,9 @@
                 :tabstop 4
                 ;; splitting
                 :splitright true
-                :splitbelow true})
+                :splitbelow true
+                ;; misc
+                :scrolloff 7})
 
 (each [key value (pairs options)]
   (set-opt key value))

@@ -3,7 +3,7 @@ local function set_opt(key, value)
   vim.opt[key] = value
   return nil
 end
-local options = {number = true, relativenumber = true, signcolumn = "yes", syntax = "ON", termguicolors = true, ignorecase = true, smartcase = true, incsearch = true, hlsearch = true, expandtab = true, shiftwidth = 4, softtabstop = 4, tabstop = 4, splitright = true, splitbelow = true}
+local options = {number = true, relativenumber = true, signcolumn = "yes", syntax = "ON", termguicolors = true, ignorecase = true, smartcase = true, incsearch = true, hlsearch = true, expandtab = true, shiftwidth = 4, softtabstop = 4, tabstop = 4, splitright = true, splitbelow = true, scrolloff = 7}
 for key, value in pairs(options) do
   set_opt(key, value)
 end
