@@ -73,3 +73,6 @@
 ;; -- notes
 (map [:i :n] :<C-g><C-n> (cmd :GlobalNote) "open/close global notes")
 
+;; -- undo tree
+(lmap :n :ut (cmd :UndotreeToggle) "toggle undo tree")
+
