@@ -66,9 +66,9 @@
 ;; -- diff / merge
 (lmap :n :dn "]c" "next diff")
 (lmap :n :dp "[c" "prev diff")
-(lmap :n :<leader>dg (cmd ":diffget") "use other change (two way diff)")
-(lmap :n :<leader>dl (cmd ":diffget local") "use local change")
-(lmap :n :<leader>dr (cmd ":diffget remote") "use change from remote")
+(lmap :n :dg (cmd ":diffget") "use other change (two way diff)")
+(lmap :n :dl (cmd ":diffget local") "use local change")
+(lmap :n :dr (cmd ":diffget remote") "use change from remote")
 
 ;; -- notes
 (map [:i :n] :<C-g><C-n> (cmd :GlobalNote) "open/close global notes")
