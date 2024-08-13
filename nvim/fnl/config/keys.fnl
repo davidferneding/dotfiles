@@ -37,8 +37,11 @@
 (lmap :n :tg (cmd ":Telescope live_grep") "telescope live_grep")
 
 ;; -- harpoon
+(map [:i :n] :<C-h>a (cmd :HarpoonAppend) "add buffer to harpoon")
 (map [:i :n] :<C-h><C-a> (cmd :HarpoonAppend) "add buffer to harpoon")
+(map [:i :n] :<C-h>r (cmd :HarpoonRemove) "remove buffer from harpoon")
 (map [:i :n] :<C-h><C-r> (cmd :HarpoonRemove) "remove buffer from harpoon")
+(map [:i :n] :<C-h>s (cmd :HarpoonShow) "show harpoon list")
 (map [:i :n] :<C-h><C-s> (cmd :HarpoonShow) "show harpoon list")
 (map [:i :n] :<C-k> (cmd :HarpoonPrev) "jump to previous harpooned buffer")
 (map [:i :n] :<C-j> (cmd :HarpoonNext) "jump to next harpooned buffer")
