@@ -12,6 +12,8 @@
 
 (map [:i :v] :jk :<Esc> "Back to normal mode")
 
+(lmap :v :y "\"*y" "yank to system clipboard")
+
 ;; lsp
 (local lspbuf vim.lsp.buf)
 (lmap :n :jd lspbuf.definition "jump to definition")

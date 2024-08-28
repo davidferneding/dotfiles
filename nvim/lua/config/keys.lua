@@ -11,6 +11,7 @@ local function cmd(command)
   return ("<cmd>" .. command .. "<cr>")
 end
 map({"i", "v"}, "jk", "<Esc>", "Back to normal mode")
+lmap("v", "y", "\"*y", "yank to system clipboard")
 local lspbuf = vim.lsp.buf
 lmap("n", "jd", lspbuf.definition, "jump to definition")
 lmap("n", "ji", lspbuf.implementation, "jump to implementation")
