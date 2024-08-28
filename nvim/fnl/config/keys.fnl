@@ -24,19 +24,19 @@
 (lmap :n :ff lspbuf.format "format file")
 (lmap :v :ff lspbuf.format "format range")
 
-;; -- nvim-tree
+;; nvim-tree
 (lmap :n :ts (cmd :NvimTreeFocus) "focus file tree")
 (lmap :n :th (cmd :NvimTreeClose) "hide tree")
 
-;; -- new lines without leaving normal mode
+;; new lines without leaving normal mode
 (lmap :n :o :o<Esc> :below)
 (lmap :n :O :O<Esc> :above)
 
-;; -- telescope
+;; telescope
 (lmap :n :tf (cmd ":Telescope find_files") "telescope find_files")
 (lmap :n :tg (cmd ":Telescope live_grep") "telescope live_grep")
 
-;; -- harpoon
+;; harpoon
 (map [:i :n] :<C-h>a (cmd :HarpoonAppend) "add buffer to harpoon")
 (map [:i :n] :<C-h><C-a> (cmd :HarpoonAppend) "add buffer to harpoon")
 (map [:i :n] :<C-h>r (cmd :HarpoonRemove) "remove buffer from harpoon")
@@ -60,22 +60,22 @@
 (lmap :n :h (cmd :bprev) "go to previous buffer")
 (lmap :n :l (cmd :bnext) "go to next buffer")
 
-;; -- resize windows
+;; resize windows
 (map :n :<S-Up> (cmd ":res -1") "resize window")
 (map :n :<S-Down> (cmd ":res +1") "resize window")
 (map :n :<S-Left> (cmd ":vert res +1") "resize window")
 (map :n :<S-Right> (cmd ":vert res -1") "resize window")
 
-;; -- diff / merge
+;; diff / merge
 (lmap :n :dn "]c" "next diff")
 (lmap :n :dp "[c" "prev diff")
 (lmap :n :dg (cmd ":diffget") "use other change (two way diff)")
 (lmap :n :dl (cmd ":diffget local") "use local change")
 (lmap :n :dr (cmd ":diffget remote") "use change from remote")
 
-;; -- notes
+;; notes
 (map [:i :n] :<C-g><C-n> (cmd :GlobalNote) "open/close global notes")
 
-;; -- undo tree
+;; undo tree
 (lmap :n :ut (cmd :UndotreeToggle) "toggle undo tree")
 
