@@ -17,7 +17,7 @@ local function _1_()
       return fallback()
     end
   end
-  cmp.setup({snippet = {expand = _2_}, window = {}, mapping = cmp.mapping.preset.insert({[{"<C-b>"}] = cmp.mapping.scroll_docs(-4), [{"<C-f>"}] = cmp.mapping.scroll_docs(4), [{"<C-BS>"}] = cmp.mapping.abort(), [{"<Tab>"}] = cmp.mapping(_3_, {"i", "s", "c"})}), sources = cmp.config.sources({{name = "nvim_lsp", keyword_length = 1}, {name = "vsnip", keyword_length = 2}, {name = "buffer", keyword_length = 3}})})
+  cmp.setup({snippet = {expand = _2_}, window = {}, mapping = cmp.mapping.preset.insert({["<C-b>"] = cmp.mapping.scroll_docs(-4), ["<C-f>"] = cmp.mapping.scroll_docs(4), ["<C-BS>"] = cmp.mapping.abort(), ["<Tab>"] = cmp.mapping(_3_, {"i", "s", "c"})}), sources = cmp.config.sources({{name = "nvim_lsp", keyword_length = 1}, {name = "luasnip", keyword_length = 2}, {name = "buffer", keyword_length = 3}})})
   cmp.setup.filetype("gitcommit", {sources = cmp.config.sources({{name = "git"}}, {{name = "buffer"}})})
   cmp.setup.cmdline({"/", "?"}, {mapping = cmp.mapping.preset.cmdline(), sources = {{name = "buffer"}}})
   cmp.setup.cmdline(":", {mapping = cmp.mapping.preset.cmdline(), sources = cmp.config.sources({{name = "path"}}, {{name = "cmdline"}})})
