@@ -57,20 +57,27 @@ local function _1_()
       end
     end
   end
+  local function hidden_3f(file)
+    return ("." == string.sub(file.name, 1, 1))
+  end
   local function natural_sort(left, right)
     if (directory_3f(left) ~= directory_3f(right)) then
       return directory_3f(left)
     else
-      if ((left.name):lower() == (right.name):lower()) then
-        return false
+      if (hidden_3f(left) ~= hidden_3f(right)) then
+        return hidden_3f(right)
       else
-        return ("use-left" == compare((left.name):lower(), (right.name):lower(), 1))
+        if ((left.name):lower() == (right.name):lower()) then
+          return false
+        else
+          return ("use-left" == compare((left.name):lower(), (right.name):lower(), 1))
+        end
       end
     end
   end
-  local function _13_(nodes)
+  local function _14_(nodes)
     return table.sort(nodes, natural_sort)
   end
-  return (require("nvim-tree")).setup({view = {width = {min = 30, max = 100}}, sort_by = _13_, actions = {open_file = {quit_on_open = true}}})
+  return (require("nvim-tree")).setup({view = {width = {min = 30, max = 100}, number = true, relativenumber = true}, sort = {sorter = _14_}, renderer = {group_empty = true}, actions = {open_file = {quit_on_open = true}}, filters = {custom = {"^.git.*"}, git_ignored = false}})
 end
 return {"nvim-tree/nvim-tree.lua", version = "*", dependencies = {"nvim-tree/nvim-web-devicons"}, config = _1_, lazy = false}

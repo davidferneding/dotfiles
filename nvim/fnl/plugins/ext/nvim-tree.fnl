@@ -43,17 +43,27 @@
                                  (compare left right (+ 1 index))
                                  compare-char-result)))))))
 
+           (fn hidden? [file]
+             (= "." (string.sub file.name 1 1)))
+
            (fn natural-sort [left right]
              (if (not= (directory? left) (directory? right))
                  (directory? left)
-                 (if (= (left.name:lower) (right.name:lower))
-                     false
-                     (= :use-left (compare (left.name:lower) (right.name:lower)
-                                           1)))))
+                 (if (not= (hidden? left) (hidden? right))
+                     (hidden? right)
+                     (if (= (left.name:lower) (right.name:lower))
+                         false
+                         (= :use-left
+                            (compare (left.name:lower) (right.name:lower) 1))))))
 
-           ((. (require :nvim-tree) :setup) {:view {:width {:min 30 :max 100}}
-                                             :sort_by (fn [nodes]
-                                                        (table.sort nodes
-                                                                    natural-sort))
-                                             :actions {:open_file {:quit_on_open true}}}))}
+           ((. (require :nvim-tree) :setup) {:view {:width {:min 30 :max 100}
+                                                    :number true
+                                                    :relativenumber true}
+                                             :sort {:sorter (fn [nodes]
+                                                              (table.sort nodes
+                                                                          natural-sort))}
+                                             :renderer {:group_empty true}
+                                             :actions {:open_file {:quit_on_open true}}
+                                             :filters {:git_ignored false
+                                                       :custom [:^.git.*]}}))}
 
