@@ -1,58 +1,76 @@
-return {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-        "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-        -- natural sorting (1, 3, 20)
-        local function natural_cmp(left, right)
-            if left.type ~= "directory" and right.type == "directory" then
-                return false
-            elseif left.type == "directory" and right.type ~= "directory" then
-                return true
-            end
-
-            left = left.name:lower()
-            right = right.name:lower()
-
-            if left == right then
-                return false
-            end
-
-            for i = 1, math.max(string.len(left), string.len(right)), 1 do
-                local l = string.sub(left, i, -1)
-                local r = string.sub(right, i, -1)
-
-                if type(tonumber(string.sub(l, 1, 1))) == "number" and type(tonumber(string.sub(r, 1, 1))) == "number" then
-                    local l_number = tonumber(string.match(l, "^[0-9]+"))
-                    local r_number = tonumber(string.match(r, "^[0-9]+"))
-
-                    if l_number ~= r_number then
-                        return l_number < r_number
-                    end
-                elseif string.sub(l, 1, 1) ~= string.sub(r, 1, 1) then
-                    return l < r
-                end
-            end
-        end
-
-        require("nvim-tree").setup({
-            view = {
-                width = {
-                    min = 30,
-                    max = 100,
-                },
-            },
-            sort_by = function(nodes)
-                table.sort(nodes, natural_cmp)
-            end,
-            actions = {
-                open_file = {
-                    quit_on_open = true
-                }
-            },
-        })
+-- [nfnl] Compiled from fnl/plugins/ext/nvim-tree.fnl by https://github.com/Olical/nfnl, do not edit.
+local function _1_()
+  local function directory_3f(file)
+    return (file.type == "directory")
+  end
+  local function compare_number(left, right, start_index)
+    local left_num = tonumber(string.match(string.sub(left, start_index, -1), "^[0-9]+"))
+    local right_num = tonumber(string.match(string.sub(right, start_index, -1), "^[0-9]+"))
+    if (left_num == right_num) then
+      return "same"
+    else
+      if (left_num < right_num) then
+        return "use-left"
+      else
+        return "use-right"
+      end
     end
-}
+  end
+  local function number_3f(text)
+    return (type(tonumber(text)) == "number")
+  end
+  local function compare_char(left_char, right_char)
+    if (left_char == right_char) then
+      return "same"
+    else
+      if (left_char < right_char) then
+        return "use-left"
+      else
+        return "use-right"
+      end
+    end
+  end
+  local function compare(left, right, index)
+    if (index > string.len(left)) then
+      return "use-left"
+    else
+      if (index > string.len(right)) then
+        return "use-right"
+      else
+        local left_char = string.sub(left, index, index)
+        local right_char = string.sub(right, index, index)
+        if (number_3f(left_char) and number_3f(right_char)) then
+          local compare_number_result = compare_number(left, right, index)
+          if ("same" == compare_number_result) then
+            return compare(left, right, (1 + index))
+          else
+            return compare_number_result
+          end
+        else
+          local compare_char_result = compare_char(left_char, right_char)
+          if ("same" == compare_char_result) then
+            return compare(left, right, (1 + index))
+          else
+            return compare_char_result
+          end
+        end
+      end
+    end
+  end
+  local function natural_sort(left, right)
+    if (directory_3f(left) ~= directory_3f(right)) then
+      return directory_3f(left)
+    else
+      if ((left.name):lower() == (right.name):lower()) then
+        return false
+      else
+        return ("use-left" == compare((left.name):lower(), (right.name):lower(), 1))
+      end
+    end
+  end
+  local function _13_(nodes)
+    return table.sort(nodes, natural_sort)
+  end
+  return (require("nvim-tree")).setup({view = {width = {min = 30, max = 100}}, sort_by = _13_, actions = {open_file = {quit_on_open = true}}})
+end
+return {"nvim-tree/nvim-tree.lua", version = "*", dependencies = {"nvim-tree/nvim-web-devicons"}, config = _1_, lazy = false}
