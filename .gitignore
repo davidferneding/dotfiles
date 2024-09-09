@@ -30,3 +30,7 @@ nvim/lazy-lock.json
 
 # -> tmux config
 !.tmux.conf
+
+# -> aerospace config
+!aerospace
+!aerospace/**/*
