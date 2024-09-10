@@ -38,3 +38,7 @@ nvim/lazy-lock.json
 # -> borders config
 !borders
 !borders/bordersrc
+
+# -> sketchybar config
+!sketchybar
+!sketchybar/**/*
