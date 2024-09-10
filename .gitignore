@@ -34,3 +34,7 @@ nvim/lazy-lock.json
 # -> aerospace config
 !aerospace
 !aerospace/**/*
+
+# -> borders config
+!borders
+!borders/bordersrc
