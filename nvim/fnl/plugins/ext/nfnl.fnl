@@ -1,2 +1,1 @@
-{1 :olical/nfnl :ft :fennel :version "*"}
-
+{1 :olical/nfnl :ft :fennel}
