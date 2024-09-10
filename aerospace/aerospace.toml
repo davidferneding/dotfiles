@@ -113,8 +113,8 @@ shift-n = ['move up', 'mode main']
 shift-s = ['move right', 'mode main']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-minus = ['resize smart -50', 'mode main']
-backtick = ['resize smart +50', 'mode main']
+minus = 'resize smart -50'
+backtick = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 1 = ['workspace 1', 'mode main']
