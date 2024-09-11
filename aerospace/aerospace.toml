@@ -70,8 +70,8 @@ outer.right =      8
 # 'main' binding mode must be always presented
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-m = 'mode movement'
-alt-shift-s = 'mode service'
+ctrl-m = 'mode movement'
+ctrl-shift-s = 'mode service'
 
 [mode.movement.binding]
 # All possible keys:
