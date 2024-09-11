@@ -80,6 +80,8 @@ source "$ITEM_DIR/front_app.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
+source "$ITEM_DIR/slack.sh"
+source "$ITEM_DIR/outlook.sh"
 
 sketchybar --hotload on
 
