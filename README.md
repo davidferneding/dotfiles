@@ -1,19 +1,22 @@
-# My relevant dotfiles
+# My dotfiles
 Managed in git to allow for easy sync between devices.
 
 ## Dependencies
-* zsh
+### Font
+* Victor Mono Nerd Font
+
+### Apps
 * wezterm
 * neovim
-* Victor Mono Nerd Font
-* fnlfmt (optional, used in neovim config)
+* aerospace
+* sketchybar
+* JankyBorders
+* Firefox
 
-## Setup
-Note: these dotfiles contain submodules:
-* alacritty-themes (might be removed soon)
-* ... (more might follow)
+### Other
+* babashka (sketchybar config)
 
-Checkout using 
-```
-git clone --recurse-submodules -j8 https://github.com/fernedingd/dotfiles.git
-```
+### Optional
+* zsh
+* oh-my-zsh
+* fnlfmt (neovim config)
