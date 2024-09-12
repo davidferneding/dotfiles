@@ -5,6 +5,9 @@
 !.gitignore
 !README.md
 
+# and setup scripts
+!install_mac.sh
+
 # and relevant dotfiles
 
 # -> zsh config
