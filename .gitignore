@@ -11,8 +11,6 @@
 !.zshrc
 
 # -> terminal emulator config
-!alacritty
-!alacritty/**/*
 !wezterm
 !wezterm/**/*
 
