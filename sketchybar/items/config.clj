@@ -11,6 +11,11 @@
            :blur_radius 20
 
            :padding_left 8
-           :padding_right 8})
+           :padding_right 8
+
+           :label.padding_left 8
+           :label.padding_right 8
+
+           :icon.padding_left 8})
 
 (def plugin-dir "~/.config/sketchybar/plugins")
