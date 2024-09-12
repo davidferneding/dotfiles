@@ -1,5 +1,4 @@
 #!/bin/bash
-
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 source "$CONFIG_DIR/icons.sh" # Loads all defined icons
 
@@ -21,6 +20,9 @@ $CONFIG_DIR/helper/helper $HELPER > /dev/null 2>&1 &
 
 # Unload the macOS on screen indicator overlay for volume change
 launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+
+# Init clojure config
+bb "$ITEM_DIR/config.clj"
 
 # Setting up the general bar appearance of the bar
 bar=(
@@ -73,15 +75,14 @@ defaults=(
 
 sketchybar --default "${defaults[@]}"
 
-
 # Left
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # Right
-source "$ITEM_DIR/calendar.sh"
-source "$ITEM_DIR/slack.sh"
-source "$ITEM_DIR/outlook.sh"
+bb "$ITEM_DIR/calendar.clj"
+bb "$ITEM_DIR/slack.clj"
+bb "$ITEM_DIR/outlook.clj"
 
 sketchybar --hotload on
 
