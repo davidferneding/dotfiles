@@ -1,7 +1,7 @@
 {
   "angular-language-server": "18.2.0",
   "cbfmt": "v0.2.0",
-  "clj-kondo": "v2024.08.01",
+  "clj-kondo": "v2024.08.29",
   "cljfmt": "0.12.0",
   "clojure-lsp": "2024.08.05-18.16.00",
   "csharp-language-server": "0.15.0",
@@ -12,7 +12,7 @@
   "fennel-ls": "0.1.2-2",
   "html-lsp": "4.10.0",
   "json-lsp": "4.10.0",
-  "lua-language-server": "3.10.5",
+  "lua-language-server": "3.10.6",
   "marksman": "2023-12-09",
   "mdformat": "0.7.17",
   "openscad-lsp": "1.2.5",
