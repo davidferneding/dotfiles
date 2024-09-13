@@ -6,11 +6,14 @@
          '[sketchybar.core :as sketchybar]
          '[clojure.string])
 
+(defn number-string? [string]
+  (every? #(Character/isDigit %) string))
+
 (defn get-message-count []
   (let [plain (:out (sh "lsappinfo info -only StatusLabel" (:out (sh "lsappinfo find LSDisplayName='Slack'"))))]
     (if (or (nil? plain) (= "" plain)) 0
         (let [status (json/parse-string (clojure.string/replace (re-find #"\{.*" plain) "=" ":") true)]
-          (if (= (:label status) "") 0 (if (number? (:label status)) (read-string (:label status)) 1))))))
+          (if (= (:label status) "") 0 (if (number-string? (:label status)) (read-string (:label status)) 1))))))
 
 (defn refresh []
   (let [count (get-message-count)]
