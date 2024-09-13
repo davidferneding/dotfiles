@@ -99,55 +99,55 @@ ctrl-shift-s = 'mode service'
 esc = 'mode main'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-slash = ['layout tiles horizontal vertical', 'mode main']
-comma = ['layout accordion horizontal vertical', 'mode main']
+slash = 'layout tiles horizontal vertical'
+comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-h = ['focus left', 'mode main']
-t = ['focus down', 'mode main']
-n = ['focus up', 'mode main']
-s = ['focus right', 'mode main']
+h = 'focus left'
+t = 'focus down'
+n = 'focus up'
+s = 'focus right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-shift-h = ['move left', 'mode main']
-shift-t = ['move down', 'mode main']
-shift-n = ['move up', 'mode main']
-shift-s = ['move right', 'mode main']
+shift-h = 'move left'
+shift-t = 'move down'
+shift-n = 'move up'
+shift-s = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 minus = 'resize smart -50'
 backtick = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-1 = ['workspace 1', 'mode main']
-2 = ['workspace 2', 'mode main']
-3 = ['workspace 3', 'mode main']
-y = ['workspace Y', 'mode main']
-i = ['workspace I', 'mode main']
-x = ['workspace X', 'mode main']
-f = ['workspace F', 'mode main']
-d = ['workspace D', 'mode main']
-b = ['workspace B', 'mode main']
+1 = 'workspace 1'
+2 = 'workspace 2'
+3 = 'workspace 3'
+y = 'workspace Y'
+i = 'workspace I'
+x = 'workspace X'
+f = 'workspace F'
+d = 'workspace D'
+b = 'workspace B'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-shift-1 = ['move-node-to-workspace 1', 'mode main']
-shift-2 = ['move-node-to-workspace 2', 'mode main']
-shift-3 = ['move-node-to-workspace 3', 'mode main']
-shift-y = ['move-node-to-workspace Y', 'mode main']
-shift-i = ['move-node-to-workspace I', 'mode main']
-shift-x = ['move-node-to-workspace X', 'mode main']
-shift-f = ['move-node-to-workspace F', 'mode main']
-shift-d = ['move-node-to-workspace D', 'mode main']
-shift-b = ['move-node-to-workspace B', 'mode main']
+shift-1 = 'move-node-to-workspace 1'
+shift-2 = 'move-node-to-workspace 2'
+shift-3 = 'move-node-to-workspace 3'
+shift-y = 'move-node-to-workspace Y'
+shift-i = 'move-node-to-workspace I'
+shift-x = 'move-node-to-workspace X'
+shift-f = 'move-node-to-workspace F'
+shift-d = 'move-node-to-workspace D'
+shift-b = 'move-node-to-workspace B'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-tab = ['workspace-back-and-forth', 'mode main']
+tab = 'workspace-back-and-forth'
 
-alt-h = ['workspace --wrap-around prev', 'mode main']
-alt-s = ['workspace --wrap-around next', 'mode main']
+alt-h = 'workspace --wrap-around prev'
+alt-s = 'workspace --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-shift-tab = ['move-workspace-to-monitor --wrap-around next', 'mode main']
+shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
