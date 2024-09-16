@@ -16,6 +16,7 @@
            :label.padding_left 8
            :label.padding_right 8
 
-           :icon.padding_left 8})
+           :icon.padding_left 8
+           :icon.font "sketchybar-app-font:Regular:16.0"})
 
 (def plugin-dir "~/.config/sketchybar/plugins")
