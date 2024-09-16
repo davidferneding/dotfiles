@@ -61,14 +61,10 @@ if [ "$SENDER" = "aerospace_workspace_change" ]; then
   #sketchybar --animate sin 10 --set space.$space label="$icon_strip"
 
   # current workspace space border color
-  sketchybar --set space.$AEROSPACE_FOCUSED_WORKSPACE icon.highlight=true \
-                         label.highlight=true \
-                         background.border_color=$GREY
+  sketchybar --set space.$AEROSPACE_FOCUSED_WORKSPACE icon.highlight=true
 
   # prev workspace space border color
-  sketchybar --set space.$AEROSPACE_PREV_WORKSPACE icon.highlight=false \
-                         label.highlight=false \
-                         background.border_color=$BACKGROUND_2
+  sketchybar --set space.$AEROSPACE_PREV_WORKSPACE icon.highlight=false
 
   # if [ "$AEROSPACE_FOCUSED_WORKSPACE" -gt 3 ]; then
   #   sketchybar --animate sin 10 --set space.$AEROSPACE_FOCUSED_WORKSPACE display=1

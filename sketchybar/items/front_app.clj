@@ -8,6 +8,7 @@
   (sketchybar/exec
    (sketchybar/add-item :front_app :left)
    (sketchybar/set :front_app (conj config/item {:display "active"
+                                                 :label.padding_left 4
                                                  :script (str config/plugin-dir "/front_app.clj")}))
    (sketchybar/subscribe :front_app :front_app_switched)))
 

@@ -14,14 +14,18 @@
       (let [name-dirty (re-find #"\| .*? \|" process)]
         (subs name-dirty 2 (- (count name-dirty) 2)))))
 
-(def app-icons (edn/read-string (slurp (str (System/getProperty "user.home") "/.config/sketchybar/plugins/icon_map.edn"))))
+(def app-icons (edn/read-string (slurp (str (System/getProperty "user.home") "/.config/sketchybar/icon_map.edn"))))
+
+(defn get-app-icon [app-name]
+  (let [icon (get app-icons app-name)]
+    (if (nil? icon) ":default:" icon)))
 
 (defn refresh []
   (let [app (app-name (focused-process))]
     (sketchybar/exec (sketchybar/set :front_app (if (= app "")
                                                   {:drawing "off"}
                                                   {:label app
-                                                   :icon (get app-icons app)
+                                                   :icon (get-app-icon app)
                                                    :drawing "on"})))))
 
 (refresh)

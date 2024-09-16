@@ -76,7 +76,7 @@ defaults=(
 sketchybar --default "${defaults[@]}"
 
 # Left
-source "$ITEM_DIR/spaces.sh"
+bb "$ITEM_DIR/spaces.clj"
 bb "$ITEM_DIR/front_app.clj"
 
 # Right
