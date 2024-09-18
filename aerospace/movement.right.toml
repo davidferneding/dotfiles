@@ -1,0 +1,9 @@
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+f = 'workspace F'
+d = 'workspace D'
+b = 'workspace B'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+shift-f = 'move-node-to-workspace F'
+shift-d = 'move-node-to-workspace D'
+shift-b = 'move-node-to-workspace B'

@@ -13,6 +13,7 @@ brew install --cask wezterm
 brew install neovim
 
 brew install --cask nikitabobko/tap/aerospace
+cp ~/aerospace/aerospace.toml.default ~/aerospace/aerospace.toml
 
 brew tap FelixKratz/formulae
 brew install sketchybar

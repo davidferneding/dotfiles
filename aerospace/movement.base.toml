@@ -1,0 +1,55 @@
+[mode.movement.binding]
+# All possible keys:
+# - Letters.        a, b, c, ..., z
+# - Numbers.        0, 1, 2, ..., 9
+# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+# - F-keys.         f1, f2, ..., f20
+# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
+#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
+# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+#                   keypadMinus, keypadMultiply, keypadPlus
+# - Arrows.         left, down, up, right
+
+# All possible modifiers: cmd, alt, ctrl, shift
+
+# All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
+# You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
+# alt-enter = '''exec-and-forget osascript -e '
+# tell application "Terminal"
+#     do script
+#     activate
+# end tell'
+# '''
+
+esc = 'mode main'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#layout
+slash = 'layout tiles horizontal vertical'
+comma = 'layout accordion horizontal vertical'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#focus
+h = 'focus left'
+t = 'focus down'
+n = 'focus up'
+s = 'focus right'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#move
+shift-h = 'move left'
+shift-t = 'move down'
+shift-n = 'move up'
+shift-s = 'move right'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#resize
+minus = 'resize smart -50'
+backtick = 'resize smart +50'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+tab = 'workspace-back-and-forth'
+
+alt-h = 'workspace --wrap-around prev'
+alt-s = 'workspace --wrap-around next'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+shift-tab = 'move-workspace-to-monitor --wrap-around next'
