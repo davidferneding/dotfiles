@@ -39,12 +39,14 @@
   (sketchybar/exec (sketchybar/set space-key {:label icons
                                               :icon.highlight highlight?})))
 
-(defn refresh []
-  (when (= (System/getenv "SENDER") "mouse.clicked")
-    (shell {:continue true} "aerospace workspace" (string/replace (System/getenv "NAME") "space." "")))
-  (doseq [monitor (get-monitors)]
-    (let [focused-workspace (get-focused-workspace monitor)]
-      (doseq [workspace (get-workspaces monitor)]
-        (update-space (space-key workspace) (build-icon-strip (get-apps workspace)) (= focused-workspace workspace))))))
+(def click-future (future (when (= (System/getenv "SENDER") "mouse.clicked")
+                            (shell {:continue true} "aerospace workspace" (string/replace (System/getenv "NAME") "space." "")))))
 
-(refresh)
+(def update-futures (for [monitor (get-monitors)]
+                      (let [focused-workspace (get-focused-workspace monitor)]
+                        (for [workspace (get-workspaces monitor)]
+                          (future (update-space (space-key workspace) (build-icon-strip (get-apps workspace)) (= focused-workspace workspace)))))))
+
+@click-future
+(mapv deref (flatten update-futures))
+
