@@ -1,9 +1,11 @@
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-1 = 'workspace 1'
-2 = 'workspace 2'
-3 = 'workspace 3'
+a = 'workspace a'
+o = 'workspace o'
+e = 'workspace e'
+u = 'workspace u'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-shift-1 = 'move-node-to-workspace 1'
-shift-2 = 'move-node-to-workspace 2'
-shift-3 = 'move-node-to-workspace 3'
+shift-a = 'move-node-to-workspace a'
+shift-o = 'move-node-to-workspace o'
+shift-e = 'move-node-to-workspace e'
+shift-u = 'move-node-to-workspace u'
