@@ -7,7 +7,7 @@
                               :flavour :frappe
                               :background {;; :h background
                                            :light :latte
-                                           :dark :mocha}
+                                           :dark :frappe}
                               ;; disables setting the background color.
                               :transparent_background true
                               ;; shows the '~' characters after the end of buffers
@@ -53,4 +53,3 @@
            ;; setup must be called before loading
            (vim.cmd.colorscheme :catppuccin))
  :priority 1000}
-

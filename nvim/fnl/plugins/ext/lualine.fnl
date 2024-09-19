@@ -8,16 +8,17 @@
            (local lualine (require :lualine))
            ;; Color table for highlights
            ;; stylua: ignore
-           (local colors {:bg "#202328"
-                          :fg "#bbc2cf"
-                          :yellow "#ECBE7B"
-                          :cyan "#008080"
+           (local colors {:bg "#303446"
+                          :itembg "#626880"
+                          :fg "#c6d0f5"
+                          :yellow "#e5c890"
+                          :cyan "#99d1db"
                           :darkblue "#081633"
-                          :green "#98be65"
-                          :orange "#FF8800"
+                          :green "#a6d189"
+                          :orange "#ef9f76"
                           :violet "#a9a1e1"
-                          :magenta "#c678dd"
-                          :blue "#51afef"
+                          :magenta "#f4b8e4"
+                          :blue "#8caaee"
                           :red "#ec5f67"})
            (local conditions
                   {:buffer_not_empty (fn []
@@ -70,12 +71,7 @@
            (fn ins_right [component]
              (table.insert config.sections.lualine_x component))
 
-           (ins_left {1 (fn [] "▊")
-                      :color {:fg colors.blue}
-                      ;; Sets highlighting of component
-                      :padding {:left 0 :right 1}
-                      ;; We don't need space before this
-                      })
+           ;; (ins_left {1 "this is a test █  ..."})
            (ins_left {;; mode component
                       1 (fn []
                           (.. " (" (vim.fn.mode) ")"))
@@ -167,9 +163,5 @@
                                     :modified {:fg colors.orange}
                                     :removed {:fg colors.red}}
                        :cond conditions.hide_in_width})
-           (ins_right {1 (fn [] "▊")
-                       :color {:fg colors.blue}
-                       :padding {:left 1}})
            ;; Now don't forget to initialize lualine
            (lualine.setup config))}
-

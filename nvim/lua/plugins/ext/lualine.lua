@@ -2,7 +2,7 @@
 local function _1_()
   vim.o["laststatus"] = 3
   local lualine = require("lualine")
-  local colors = {bg = "#202328", fg = "#bbc2cf", yellow = "#ECBE7B", cyan = "#008080", darkblue = "#081633", green = "#98be65", orange = "#FF8800", violet = "#a9a1e1", magenta = "#c678dd", blue = "#51afef", red = "#ec5f67"}
+  local colors = {bg = "#303446", itembg = "#626880", fg = "#c6d0f5", yellow = "#e5c890", cyan = "#99d1db", darkblue = "#081633", green = "#a6d189", orange = "#ef9f76", violet = "#a9a1e1", magenta = "#f4b8e4", blue = "#8caaee", red = "#ec5f67"}
   local conditions
   local function _2_()
     return (vim.fn.empty(vim.fn.expand("%:t")) ~= 1)
@@ -13,16 +13,23 @@ local function _1_()
   local function _4_()
     local filepath = vim.fn.expand("%:p:h")
     local gitdir = vim.fn.finddir(".git", (filepath .. ";"))
-    local function _5_()
-      return gitdir
+    local and_5_ = gitdir()
+    if and_5_ then
+      local function _6_()
+        return gitdir
+      end
+      and_5_ = (_6_ > 0)
     end
-    local function _6_()
-      return gitdir
+    if and_5_ then
+      local function _7_()
+        return gitdir
+      end
+      local function _8_()
+        return filepath
+      end
+      and_5_ = (_7_ < _8_)
     end
-    local function _7_()
-      return filepath
-    end
-    return (gitdir() and (_5_ > 0) and (_6_ < _7_))
+    return and_5_
   end
   conditions = {buffer_not_empty = _2_, hide_in_width = _3_, check_git_workspace = _4_}
   local config = {options = {component_separators = "", section_separators = "", theme = {normal = {c = {fg = colors.fg, bg = colors.bg}}, inactive = {c = {fg = colors.fg, bg = colors.bg}}}}, sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}, inactive_sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}}
@@ -32,10 +39,6 @@ local function _1_()
   local function ins_right(component)
     return table.insert(config.sections.lualine_x, component)
   end
-  local function _8_()
-    return "\226\150\138"
-  end
-  ins_left({_8_, color = {fg = colors.blue}, padding = {left = 0, right = 1}})
   local function _9_()
     return ("\239\140\140 (" .. vim.fn.mode() .. ")")
   end
@@ -45,7 +48,7 @@ local function _1_()
     do
       local t_11_ = mode_color
       if (nil ~= t_11_) then
-        t_11_ = (t_11_)[vim.fn.mode()]
+        t_11_ = t_11_[vim.fn.mode()]
       else
       end
       _12_ = t_11_
@@ -91,10 +94,6 @@ local function _1_()
   ins_right({"fileformat", fmt = string.upper, color = {fg = colors.green, gui = "bold"}, icons_enabled = false})
   ins_right({"branch", icon = "\239\145\191", color = {fg = colors.violet, gui = "bold"}})
   ins_right({"diff", symbols = {added = "\239\131\190 ", modified = "\243\176\157\164 ", removed = "\239\133\134 "}, diff_color = {added = {fg = colors.green}, modified = {fg = colors.orange}, removed = {fg = colors.red}}, cond = conditions.hide_in_width})
-  local function _19_()
-    return "\226\150\138"
-  end
-  ins_right({_19_, color = {fg = colors.blue}, padding = {left = 1}})
   return lualine.setup(config)
 end
 return {"nvim-lualine/lualine.nvim", dependencies = {"nvim-tree/nvim-web-devicons"}, config = _1_}
