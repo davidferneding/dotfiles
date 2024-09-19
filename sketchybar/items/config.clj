@@ -1,6 +1,12 @@
 (ns config)
 
-(def icon-font "sketchybar-app-font:Regular:16.0")
+(defn icon-font [& {:keys [weight size]
+                    :or {weight "Regular" size 16.0}}]
+  (str "sketchybar-app-font:" weight ":" size))
+
+(defn label-font [& {:keys [weight size]
+                     :or {weight "Semibold" size 14.0}}]
+  (str "SF Pro:" weight ":" size))
 
 (def colors {:bg 0xff414559
              :text-light 0xffc6d0f5
@@ -16,10 +22,11 @@
            :padding_right 8
 
            :label "loading"
+           :label.font (label-font)
            :label.padding_left 8
            :label.padding_right 8
 
            :icon.padding_left 8
-           :icon.font icon-font})
+           :icon.font (icon-font)})
 
 (def plugin-dir (str (System/getProperty "user.home") "/.config/sketchybar/plugins"))

@@ -9,10 +9,6 @@
   (sketchybar/exec
    (sketchybar/add-item :outlook :right)
    (sketchybar/set :outlook (conj config/item {:icon ":microsoft_outlook:"
-                                               :icon.font "sketchybar-app-font:Regular:16.0"
-
-                                               :label "loading"
-
                                                :script (str config/plugin-dir "/outlook.clj")
                                                :update_freq 3}))))
 
