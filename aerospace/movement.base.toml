@@ -24,6 +24,8 @@
 # '''
 
 esc = 'mode main'
+ctrl-m = 'mode movement'
+ctrl-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 slash = 'layout tiles horizontal vertical'

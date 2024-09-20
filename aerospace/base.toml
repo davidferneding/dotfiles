@@ -40,7 +40,7 @@ default-root-container-orientation = 'auto'
 key-mapping.preset = 'qwerty'
 
 # Mouse follows focus when focused monitor changes
-# Drop it from your config, if you don't like this behavior
+
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -67,6 +67,7 @@ outer.right =      10
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 ctrl-m = 'mode movement'
 ctrl-shift-s = 'mode service'
+ctrl-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 
 [mode.service.binding]
 esc = 'mode main'
