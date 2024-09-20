@@ -12,6 +12,7 @@ Managed in git to allow for easy sync between devices.
 * sketchybar
 * JankyBorders
 * Firefox
+* lf
 
 ### Other
 * babashka (sketchybar config)

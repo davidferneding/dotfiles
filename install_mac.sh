@@ -18,3 +18,5 @@ cp ~/aerospace/aerospace.toml.default ~/aerospace/aerospace.toml
 brew tap FelixKratz/formulae
 brew install sketchybar
 brew install borders
+
+brew install lf

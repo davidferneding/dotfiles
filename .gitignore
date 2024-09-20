@@ -46,3 +46,7 @@ aerospace/aerospace.toml
 # -> sketchybar config
 !sketchybar
 !sketchybar/**/*
+
+# -> lf config
+!lf
+!lf/**/*
