@@ -1,6 +1,3 @@
-# Install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
 # Tools/Shell/Misc
 brew install tmux
 brew install borkdude/brew/babashka
