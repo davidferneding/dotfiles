@@ -69,6 +69,7 @@ bb "$ITEM_DIR/front_app.clj"
 bb "$ITEM_DIR/calendar.clj"
 bb "$ITEM_DIR/slack.clj"
 bb "$ITEM_DIR/outlook.clj"
+bb "$ITEM_DIR/mail.clj"
 
 sketchybar --hotload on
 
