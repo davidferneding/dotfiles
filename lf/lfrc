@@ -9,6 +9,14 @@ set previewer ~/.config/lf/previewer
 
 set shell zsh
 
+# commands
+## preview using finder previewer
 cmd full-preview &qlmanage -p "$f" &| osascript -e 'tell application "System Events" to tell process "qlmanage"' -e 'set frontmost to true' -e 'end tell'
 map v full-preview
 
+## create files and folders
+cmd add-item %bb ~/.config/lf/add-item.clj
+map a add-item
+
+## delete
+map x delete
