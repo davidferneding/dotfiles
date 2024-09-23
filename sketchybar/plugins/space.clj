@@ -36,8 +36,10 @@
   (if (or (nil? apps) (empty? apps) (every? empty? apps)) "—" (string/join " " (map get-icon apps))))
 
 (defn update-space [space-key icons highlight?]
-  (sketchybar/exec (sketchybar/set space-key {:label icons
-                                              :icon.highlight highlight?})))
+  (try
+    (sketchybar/exec (sketchybar/set space-key {:label icons
+                                                :icon.highlight highlight?}))
+    (catch Exception _ (println "error while updating spaces"))))
 
 (def click-future (future (when (= (System/getenv "SENDER") "mouse.clicked")
                             (shell {:continue true} "aerospace workspace" (string/replace (System/getenv "NAME") "space." "")))))

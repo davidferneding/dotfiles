@@ -4,6 +4,8 @@
 (require '[sketchybar.core :as sketchybar])
 
 (defn refresh []
-  (sketchybar/exec (sketchybar/set :calendar {:label (.format (java.text.SimpleDateFormat. "yyyy-MM-dd HH:mm") (java.util.Date.))})))
+  (try
+    (sketchybar/exec (sketchybar/set :calendar {:label (.format (java.text.SimpleDateFormat. "yyyy-MM-dd HH:mm") (java.util.Date.))}))
+    (catch Exception _ (println "error while updating calendar"))))
 
 (refresh)

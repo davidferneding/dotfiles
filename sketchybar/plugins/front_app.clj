@@ -21,11 +21,13 @@
     (if (nil? icon) ":default:" icon)))
 
 (defn refresh []
-  (let [app (app-name (focused-process))]
-    (sketchybar/exec (sketchybar/set :front_app (if (= app "")
-                                                  {:drawing "off"}
-                                                  {:label app
-                                                   :icon (get-app-icon app)
-                                                   :drawing "on"})))))
+  (try
+    (let [app (app-name (focused-process))]
+      (sketchybar/exec (sketchybar/set :front_app (if (= app "")
+                                                    {:drawing "off"}
+                                                    {:label app
+                                                     :icon (get-app-icon app)
+                                                     :drawing "on"}))))
+    (catch Exception _ (println "error while updating front app"))))
 
 (refresh)

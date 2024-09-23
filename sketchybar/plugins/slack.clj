@@ -16,9 +16,11 @@
           (if (= (:label status) "") 0 (if (number-string? (:label status)) (read-string (:label status)) 1))))))
 
 (defn refresh []
-  (let [count (get-message-count)]
-    (sketchybar/exec (sketchybar/set :slack (if (> count 0)
-                                              {:label count :drawing "on"}
-                                              {:drawing "off"})))))
+  (try
+    (let [count (get-message-count)]
+      (sketchybar/exec (sketchybar/set :slack (if (> count 0)
+                                                {:label count :drawing "on"}
+                                                {:drawing "off"}))))
+    (catch Exception _ (println "error while updating slack notification count"))))
 
 (refresh)
