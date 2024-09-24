@@ -8,6 +8,7 @@
   (sketchybar/exec
    (sketchybar/add-item :calendar :right)
    (sketchybar/set :calendar (conj config/item {:label "loading"
+                                                :label.padding_left 8
                                                 :icon.drawing "off"
 
                                                 :script (str config/plugin-dir "/calendar.clj")

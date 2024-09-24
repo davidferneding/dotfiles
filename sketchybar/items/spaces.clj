@@ -33,7 +33,6 @@
                                                         :icon (string/upper-case space)
                                                         :icon.font (config/label-font :weight "Bold" :size 16.0)
                                                         :icon.highlight_color (:red config/colors)
-                                                        :icon.y_offset 1
                                                         :display monitor
                                                         :label.font (config/icon-font)
                                                         :label.padding_left 4

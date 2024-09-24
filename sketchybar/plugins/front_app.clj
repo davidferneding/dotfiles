@@ -3,7 +3,6 @@
 (deps/add-deps '{:deps {io.github.rinx/sbar-bb {:git/sha "97aa02b85fa00dea557f135ad44e61551f43e8cf"}}})
 (require '[babashka.process :refer [shell]]
          '[sketchybar.core :as sketchybar]
-         '[clojure.string]
          '[clojure.edn :as edn])
 
 (defn focused-process []
