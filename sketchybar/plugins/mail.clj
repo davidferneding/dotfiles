@@ -1,10 +1,13 @@
 #!/usr/bin/env bb
 (require '[babashka.deps :as deps])
 (deps/add-deps '{:deps {io.github.rinx/sbar-bb {:git/sha "97aa02b85fa00dea557f135ad44e61551f43e8cf"}}})
-(require '[babashka.process :refer [sh]]
-         '[cheshire.core :as json]
-         '[sketchybar.core :as sketchybar]
-         '[clojure.string])
+
+(ns plugins.mail
+  (:require [babashka.process :refer [sh]]
+            [cheshire.core :as json]
+            [sketchybar.core :as sketchybar]
+            [clojure.string]
+            [taoensso.timbre :as log]))
 
 (defn number-string? [string]
   (every? #(Character/isDigit %) string))
@@ -18,9 +21,10 @@
 (defn refresh []
   (try
     (let [count (get-message-count)]
+      (log/debug (str "updating mail. Message count: " count))
       (sketchybar/exec (sketchybar/set :mail (if (> count 0)
                                                {:label count :drawing "on"}
                                                {:drawing "off"}))))
-    (catch Exception _ (println "error while updating mail notification count"))))
+    (catch Exception ex (log/error ex "error while updating mail notification count"))))
 
 (refresh)

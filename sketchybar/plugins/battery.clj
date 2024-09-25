@@ -1,10 +1,13 @@
 #!/usr/bin/env bb
 (require '[babashka.deps :as deps])
 (deps/add-deps '{:deps {io.github.rinx/sbar-bb {:git/sha "97aa02b85fa00dea557f135ad44e61551f43e8cf"}}})
-(require '[babashka.process :refer [sh]]
-         '[sketchybar.core :as sketchybar]
-         '[clojure.edn :as edn]
-         '[clojure.string :as str])
+
+(ns plugins.battery
+  (:require [babashka.process :refer [sh]]
+            [sketchybar.core :as sketchybar]
+            [clojure.edn :as edn]
+            [clojure.string :as str]
+            [taoensso.timbre :as log]))
 
 (defn get-power-stats []
   (let [stat-list (map str/trim (str/split (str/replace (:out (sh "pmset -g batt")) #" present.*" "") #"[\n\t;]"))]
@@ -50,6 +53,6 @@
     (let [stats (get-power-stats)]
       (sketchybar/exec (sketchybar/set :battery {:label (build-label stats)
                                                  :icon (get-icon stats)})))
-    (catch Exception _ (println "error while updating mail notification count"))))
+    (catch Exception ex (log/error ex "error while updating mail notification count"))))
 
 (refresh)

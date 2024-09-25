@@ -1,11 +1,15 @@
 #!/usr/bin/env bb
 (require '[babashka.deps :as deps])
 (deps/add-deps '{:deps {io.github.rinx/sbar-bb {:git/sha "97aa02b85fa00dea557f135ad44e61551f43e8cf"}}})
-(require '[sketchybar.core :as sketchybar]
-         '[clojure.string]
-         '[config])
+
+(ns items.battery
+  (:require [sketchybar.core :as sketchybar]
+            [clojure.string]
+            [config]
+            [taoensso.timbre :as log]))
 
 (defn setup []
+  (log/debug "setting up item battery")
   (sketchybar/exec
    (sketchybar/add-item :battery :right)
    (sketchybar/set :battery (conj config/item {:label "loading"

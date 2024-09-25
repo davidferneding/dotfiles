@@ -1,11 +1,13 @@
 #!/usr/bin/env bb
 (require '[babashka.deps :as deps])
 (deps/add-deps '{:deps {io.github.rinx/sbar-bb {:git/sha "97aa02b85fa00dea557f135ad44e61551f43e8cf"}}})
-(require '[babashka.process :refer [shell]]
-         '[clojure.string :as string]
-         '[sketchybar.core :as sketchybar]
-         '[config]
-         '[clojure.edn :as edn])
+(ns item.spaces
+  (:require [babashka.process :refer [shell]]
+            [clojure.string :as string]
+            [sketchybar.core :as sketchybar]
+            [config]
+            [clojure.edn :as edn]
+            [taoensso.timbre :as log]))
 
 (defn extract-key [text]
   (string/replace text #" \|.*" ""))
@@ -50,11 +52,11 @@
 (defn update-icons [space-key icons]
   (sketchybar/exec (sketchybar/set space-key {:label icons})))
 
-(defn refresh []
+(defn setup []
   (doseq [monitor (get-monitors)]
     (doseq [workspace (get-workspaces monitor)]
-      (println (str "setting up " workspace "/" monitor))
+      (log/debug (str "setting up " workspace "/" monitor))
       (add-space workspace monitor)
       (update-icons (space-key workspace) (build-icon-strip (get-apps workspace))))))
 
-(refresh)
+(setup)
