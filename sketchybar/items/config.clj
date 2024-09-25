@@ -28,7 +28,9 @@
            :label.padding_right 8
 
            :icon.padding_left 8
-           :icon.font (icon-font)})
+           :icon.font (icon-font)
+
+           :updates "on"})
 
 (def plugin-dir (str (System/getProperty "user.home") "/.config/sketchybar/plugins"))
 
