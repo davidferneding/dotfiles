@@ -4,10 +4,10 @@
  :config (fn []
            (local catppuccin (require :catppuccin))
            (catppuccin.setup {;; latte, frappe, macchiato, mocha
-                              :flavour :frappe
+                              :flavour :macchiato
                               :background {;; :h background
                                            :light :latte
-                                           :dark :frappe}
+                                           :dark :macchiato}
                               ;; disables setting the background color.
                               :transparent_background true
                               ;; shows the '~' characters after the end of buffers

@@ -8,7 +8,7 @@
            (local lualine (require :lualine))
            ;; Color table for highlights
            ;; stylua: ignore
-           (local colors {:bg "#303446"
+           (local colors {:bg "#24273a"
                           :itembg "#626880"
                           :fg "#c6d0f5"
                           :yellow "#e5c890"

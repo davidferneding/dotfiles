@@ -2,7 +2,7 @@
 local function _1_()
   vim.o["laststatus"] = 3
   local lualine = require("lualine")
-  local colors = {bg = "#303446", itembg = "#626880", fg = "#c6d0f5", yellow = "#e5c890", cyan = "#99d1db", darkblue = "#081633", green = "#a6d189", orange = "#ef9f76", violet = "#a9a1e1", magenta = "#f4b8e4", blue = "#8caaee", red = "#ec5f67"}
+  local colors = {bg = "#24273a", itembg = "#626880", fg = "#c6d0f5", yellow = "#e5c890", cyan = "#99d1db", darkblue = "#081633", green = "#a6d189", orange = "#ef9f76", violet = "#a9a1e1", magenta = "#f4b8e4", blue = "#8caaee", red = "#ec5f67"}
   local conditions
   local function _2_()
     return (vim.fn.empty(vim.fn.expand("%:t")) ~= 1)

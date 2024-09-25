@@ -9,7 +9,7 @@
                      :or {weight "Semibold" size 15.0}}]
   (str "Victor Mono Nerd Font" ":" weight ":" size))
 
-(def colors {:bg 0xff414559
+(def colors {:bg 0xff363a4f
              :text-light 0xffc6d0f5
              :text-dark 0xff4c4f69
 

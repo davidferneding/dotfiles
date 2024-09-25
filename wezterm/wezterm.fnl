@@ -4,7 +4,7 @@
 
 (local config-values
        {;; appearance
-        :color_scheme "Catppuccin Frappe"
+        :color_scheme "Catppuccin Macchiato"
         :font (wezterm.font "VictorMono Nerd Font" {:weight :Regular})
         :font_size 15
         :enable_tab_bar false
@@ -18,4 +18,3 @@
 (fn get [val] val)
 
 (get config)
-
