@@ -38,11 +38,16 @@
 (defn build-icon-strip [apps]
   (if (or (nil? apps) (empty? apps) (every? empty? apps)) "—" (string/join " " (map get-icon apps))))
 
+(def colors {:bg 0xff363a4f ;; todo: use a single config file
+             :rosewater 0xfff4dbd6})
+
 (defn update-space [space-key icons highlight?]
   (try
     (log/debug (str "updating space " space-key " with icons " icons ". " (if highlight? "Space is active" "Space is inactive")))
     (sketchybar/exec (sketchybar/set space-key {:label icons
-                                                :icon.highlight highlight?}))
+                                                :label.highlight highlight?
+                                                :icon.highlight highlight?
+                                                :background.color (if highlight? (:rosewater colors) (:bg colors))}))
     (catch Exception ex (log/error ex "error while updating spaces"))))
 
 (def click-future (future (when (= (System/getenv "SENDER") "mouse.clicked")

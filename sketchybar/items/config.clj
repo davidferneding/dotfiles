@@ -13,7 +13,8 @@
              :text-light 0xffc6d0f5
              :text-dark 0xff4c4f69
 
-             :red 0xffe78284})
+             :red 0xffed8796
+             :rosewater 0xfff4dbd6})
 
 (def item {:background.drawing "on"
            :background.color (:bg colors)
@@ -26,6 +27,7 @@
            :label.font (label-font)
            :label.padding_left 4
            :label.padding_right 8
+           :label.shadow.drawing "off"
 
            :icon.padding_left 8
            :icon.font (icon-font)

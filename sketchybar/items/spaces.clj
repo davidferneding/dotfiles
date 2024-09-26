@@ -34,9 +34,12 @@
    (sketchybar/set (space-key space) (conj config/item {:space space
                                                         :icon (string/upper-case space)
                                                         :icon.font (config/label-font :weight "Bold" :size 16.0)
-                                                        :icon.highlight_color (:red config/colors)
                                                         :display monitor
                                                         :label.font (config/icon-font)
+
+                                                        :icon.highlight_color (:text-dark config/colors)
+                                                        :label.highlight_color (:text-dark config/colors)
+
                                                         :label.padding_left 4
                                                         :script (str config/plugin-dir "/space.clj")}))
    (sketchybar/subscribe (space-key space) "mouse.clicked")
