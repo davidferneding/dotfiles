@@ -8,6 +8,9 @@
                 ;;   If not available, we use `mini` as the fallback
                 :rcarriga/nvim-notify]
  :config (fn []
+           (local notify (require :notify))
+           (notify.setup {:background_colour "#6e738d"})
+           ;;
            (local noice (require :noice))
            (noice.setup {:cmdline {:view :cmdline}
                          :lsp {;; override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -27,7 +30,4 @@
                                    ;; enables an input dialog for inc-rename.nvim
                                    :lsp_doc_border true
                                    ;; add a border to hover docs and signature help
-                                   }})
-           (local notify (require :notify))
-           (notify.setup {:background_colour "#000000"}))}
-
+                                   }}))}
