@@ -356,3 +356,7 @@
         display: none !important;
     }
 }
+
+#newtab-button-container {
+    display: none !important;
+}
