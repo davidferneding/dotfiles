@@ -9,24 +9,25 @@
             [clojure.edn :as edn]
             [taoensso.timbre :as log]))
 
-(defn extract-key [text]
-  (string/replace text #" \|.*" ""))
+(defn get-apps
+  "Returns a map of all running apps with their respective workspace."
+  []
+  (edn/read-string (str "[" (:out (shell {:out :string :continue true} "aerospace list-windows --all --format \"{ :workspace \\\"%{workspace}\\\" :app \\\"%{app-name}\\\" }\"")) "]")))
 
-(defn get-monitors [] (map extract-key (string/split (:out (shell {:out :string :err :string :continue true} "aerospace list-monitors")) #"\n")))
+(defn get-visible-workspaces
+  "Returns a list of all visible workspaces."
+  []
+  (string/split (:out (shell {:out :string :continue true} "aerospace list-workspaces --visible --monitor all")) #"\n"))
 
-(defn get-focused-workspace [monitor]
-  (first (string/split (:out (shell {:out :string :err :string :continue true} "aerospace list-workspaces --monitor" monitor "--visible")) #"\n")))
+(defn get-hidden-workspaces
+  "Returns a list of all non-visible workspaces."
+  []
+  (string/split (:out (shell {:out :string :continue true} "aerospace list-workspaces --visible no --monitor all")) #"\n"))
 
-(defn get-workspaces [monitor]
-  (string/split (:out (shell {:out :string :err :string :continue true} "aerospace list-workspaces --monitor" monitor)) #"\n"))
-
-(defn extract-app-name [process]
-  (if (or (nil? process) (= 0 (count process))) ""
-      (let [name-dirty (re-find #"\| .*? \|" process)]
-        (re-find #"\w[\w\s]*\w" name-dirty))))
-
-(defn get-apps [space]
-  (map extract-app-name (string/split (:out (shell {:out :string :err :string :continue true} "aerospace list-windows --workspace" space)) #"\n")))
+(defn get-empty-workspaces
+  "Returns a list of all workspaces that don't contain any windows."
+  []
+  (string/split (:out (shell {:out :string :continue true} "aerospace list-workspaces --empty --monitor all")) #"\n"))
 
 (defn space-key [space]
   (str "space." space))
@@ -36,28 +37,53 @@
 (defn get-icon [app] (let [icon (get app-icons app)] (if (nil? icon) ":default:" icon)))
 
 (defn build-icon-strip [apps]
-  (if (or (nil? apps) (empty? apps) (every? empty? apps)) "—" (string/join " " (map get-icon apps))))
+  (string/join " " (map get-icon apps)))
 
 (def colors {:bg 0xff363a4f ;; todo: use a single config file
              :rosewater 0xfff4dbd6})
 
-(defn update-space [space-key icons highlight?]
-  (try
-    (log/debug (str "updating space " space-key " with icons " icons ". " (if highlight? "Space is active" "Space is inactive")))
-    (sketchybar/exec (sketchybar/set space-key {:label icons
-                                                :label.highlight highlight?
-                                                :icon.highlight highlight?
-                                                :background.color (if highlight? (:rosewater colors) (:bg colors))}))
-    (catch Exception ex (log/error ex "error while updating spaces"))))
+(defn all-by-key [key coll]
+  (into [] (map #(key %) coll)))
 
-(def click-future (future (when (= (System/getenv "SENDER") "mouse.clicked")
+(def update-apps
+  (future (doseq [workspaces-with-apps (->> (get-apps)
+                                            (group-by #(:workspace %))
+                                            (map #(assoc {} (first %) (all-by-key :app (last %))))
+                                            (into {}))]
+            (try
+              (log/debug (str "updating space " workspaces-with-apps))
+              (let [workspace (first workspaces-with-apps)
+                    apps (last workspaces-with-apps)]
+                (sketchybar/exec (sketchybar/set (space-key workspace) {:label (build-icon-strip apps)})))
+              (catch Exception ex (log/error ex "error while updating apps for space" workspaces-with-apps))))))
+
+(def update-empty-workspaces
+  (future
+    (try
+      (doseq [workspace (get-empty-workspaces)]
+        (log/debug (str "updating label for empty space " workspace))
+        (sketchybar/exec (sketchybar/set (space-key workspace) {:label "/"})))
+      (catch Exception ex (log/error ex "error while updating highlights")))))
+
+(def update-highlight
+  (future
+    (try
+      (doseq [workspace (get-hidden-workspaces)]
+        (log/debug (str "updating space " workspace ". Space is inactive"))
+        (sketchybar/exec (sketchybar/set (space-key workspace) {:label.highlight false
+                                                                :icon.highlight false
+                                                                :background.color (:bg colors)})))
+      (doseq [workspace (get-visible-workspaces)]
+        (log/debug (str "updating space " workspace ". Space is active"))
+        (sketchybar/exec (sketchybar/set (space-key workspace) {:label.highlight true
+                                                                :icon.highlight true
+                                                                :background.color (:rosewater colors)})))
+      (catch Exception ex (log/error ex "error while updating highlights")))))
+
+(def handle-click (future (when (= (System/getenv "SENDER") "mouse.clicked")
                             (shell {:continue true} "aerospace workspace" (string/replace (System/getenv "NAME") "space." "")))))
 
-(def update-futures (for [monitor (get-monitors)]
-                      (let [focused-workspace (get-focused-workspace monitor)]
-                        (for [workspace (get-workspaces monitor)]
-                          (future (update-space (space-key workspace) (build-icon-strip (get-apps workspace)) (= focused-workspace workspace)))))))
-
-@click-future
-(mapv deref (flatten update-futures))
-
+@handle-click
+@update-highlight
+@update-apps
+@update-empty-workspaces
