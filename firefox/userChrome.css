@@ -9,3 +9,9 @@
 #titlebar {
     display: none !important;
 }
+
+#tabbrowser-tabbox {
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0px 6px 6px 0px !important;
+}
