@@ -30,9 +30,8 @@
 
 (defn add-space [space monitor]
   (sketchybar/exec
-   (sketchybar/add-space (space-key space) :left)
-   (sketchybar/set (space-key space) (conj config/item {:space space
-                                                        :icon (string/upper-case space)
+   (sketchybar/add-item (space-key space) :left)
+   (sketchybar/set (space-key space) (conj config/item {:icon (string/upper-case space)
                                                         :icon.font (config/label-font :weight "Bold" :size 16.0)
                                                         :display monitor
                                                         :label.font (config/icon-font)
