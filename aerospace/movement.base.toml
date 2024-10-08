@@ -33,10 +33,10 @@ comma = 'layout accordion horizontal vertical'
 space = 'layout tiling floating'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-h = 'focus left'
-t = 'focus down'
-n = 'focus up'
-s = 'focus right'
+h = 'focus left --boundaries workspace --boundaries-action wrap-around-the-workspace'
+t = 'focus down --boundaries workspace --boundaries-action wrap-around-the-workspace'
+n = 'focus up --boundaries workspace --boundaries-action wrap-around-the-workspace'
+s = 'focus right --boundaries workspace --boundaries-action wrap-around-the-workspace'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 shift-h = 'move left'
