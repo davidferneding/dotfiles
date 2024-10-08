@@ -11,8 +11,8 @@ after-login-command = [
 after-startup-command = []
 
 exec-on-workspace-change = [
-    # todo: fix
-    # 'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
+    '/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change &'
 ]
 
 # Start AeroSpace at login

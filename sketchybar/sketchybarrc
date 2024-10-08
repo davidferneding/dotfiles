@@ -76,5 +76,7 @@ sketchybar --hotload on
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update
+# Trigger custom events to init plugins
+sketchybar --trigger aerospace_workspace_change
 
 echo "sketchybar configuation loaded.."

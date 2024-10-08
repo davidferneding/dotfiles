@@ -46,42 +46,45 @@
   (into [] (map #(key %) coll)))
 
 (def update-apps
-  (future (doseq [workspaces-with-apps (->> (get-apps)
-                                            (group-by #(:workspace %))
-                                            (map #(assoc {} (first %) (all-by-key :app (last %))))
-                                            (into {}))]
-            (try
-              (log/debug (str "updating space " workspaces-with-apps))
-              (let [workspace (first workspaces-with-apps)
-                    apps (last workspaces-with-apps)]
-                (sketchybar/exec (sketchybar/set (space-key workspace) {:label (build-icon-strip apps)})))
-              (catch Exception ex (log/error ex "error while updating apps for space" workspaces-with-apps))))))
+  (future (when (= (System/getenv "SENDER") "space_windows_change")
+            (doseq [workspaces-with-apps (->> (get-apps)
+                                              (group-by #(:workspace %))
+                                              (map #(assoc {} (first %) (all-by-key :app (last %))))
+                                              (into {}))]
+              (try
+                (log/debug (str "updating space " workspaces-with-apps))
+                (let [workspace (first workspaces-with-apps)
+                      apps (last workspaces-with-apps)]
+                  (sketchybar/exec (sketchybar/set (space-key workspace) {:label (build-icon-strip apps)})))
+                (catch Exception ex (log/error ex "error while updating apps for space" workspaces-with-apps)))))))
 
 (def update-empty-workspaces
-  (future
-    (try
-      (doseq [workspace (get-empty-workspaces)]
-        (log/debug (str "updating label for empty space " workspace))
-        (sketchybar/exec (sketchybar/set (space-key workspace) {:label "/"})))
-      (catch Exception ex (log/error ex "error while updating highlights")))))
+  (future (when (= (System/getenv "SENDER") "space_windows_change")
+            (try
+              (doseq [workspace (get-empty-workspaces)]
+                (log/debug (str "updating label for empty space " workspace))
+                (sketchybar/exec (sketchybar/set (space-key workspace) {:label "/"})))
+              (catch Exception ex (log/error ex "error while updating highlights"))))))
 
 (def update-highlight
-  (future
-    (try
-      (doseq [workspace (get-hidden-workspaces)]
-        (log/debug (str "updating space " workspace ". Space is inactive"))
-        (sketchybar/exec (sketchybar/set (space-key workspace) {:label.highlight false
-                                                                :icon.highlight false
-                                                                :background.color (:bg colors)})))
-      (doseq [workspace (get-visible-workspaces)]
-        (log/debug (str "updating space " workspace ". Space is active"))
-        (sketchybar/exec (sketchybar/set (space-key workspace) {:label.highlight true
-                                                                :icon.highlight true
-                                                                :background.color (:rosewater colors)})))
-      (catch Exception ex (log/error ex "error while updating highlights")))))
+  (future (when (= (System/getenv "SENDER") "aerospace_workspace_change")
+            (try
+              (doseq [workspace (get-hidden-workspaces)]
+                (log/debug (str "updating space " workspace ". Space is inactive"))
+                (sketchybar/exec (sketchybar/set (space-key workspace) {:label.highlight false
+                                                                        :icon.highlight false
+                                                                        :background.color (:bg colors)})))
+              (doseq [workspace (get-visible-workspaces)]
+                (log/debug (str "updating space " workspace ". Space is active"))
+                (sketchybar/exec (sketchybar/set (space-key workspace) {:label.highlight true
+                                                                        :icon.highlight true
+                                                                        :background.color (:rosewater colors)})))
+              (catch Exception ex (log/error ex "error while updating highlights"))))))
 
 (def handle-click (future (when (= (System/getenv "SENDER") "mouse.clicked")
                             (shell {:continue true} "aerospace workspace" (string/replace (System/getenv "NAME") "space." "")))))
+
+(log/debug (str "Updating spaces. Sender " (System/getenv "SENDER")))
 
 @handle-click
 @update-highlight

@@ -43,7 +43,12 @@
                                                         :label.padding_left 4
                                                         :script (str config/plugin-dir "/space.clj")}))
    (sketchybar/subscribe (space-key space) "mouse.clicked")
-   (sketchybar/subscribe (space-key space) :front_app_switched)))
+   (sketchybar/subscribe (space-key space) "space_windows_change")
+   (sketchybar/subscribe (space-key space) "aerospace_workspace_change")))
+
+(defn add-custom-events []
+  (sketchybar/exec
+   (sketchybar/add-event "aerospace_workspace_change")))
 
 (def app-icons (edn/read-string (slurp (str (System/getProperty "user.home") "/.config/sketchybar/icon_map.edn"))))
 
@@ -59,6 +64,7 @@
   (doseq [monitor (get-monitors)]
     (doseq [workspace (get-workspaces monitor)]
       (log/debug (str "setting up " workspace "/" monitor))
+      (add-custom-events)
       (add-space workspace monitor)
       (update-icons (space-key workspace) (build-icon-strip (get-apps workspace))))))
 
