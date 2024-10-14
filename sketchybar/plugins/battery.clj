@@ -23,7 +23,7 @@
   (if (seq (:errors stats))
     "error"
     (str (:percent stats)
-         (when (> (extract-number (:remaining stats)) 0)
+         (when (or (= "not charging" (:remaining stats)) (> (extract-number (:remaining stats)) 0))
            (str " | " (:remaining stats))))))
 
 (build-label (get-power-stats))
