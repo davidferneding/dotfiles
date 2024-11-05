@@ -31,7 +31,7 @@
                                                (< #gitdir #filepath)))})
            ;; Config
            (local config
-                  {:options {:component_separators ""
+                  {:options {:component_separators "·"
                              :section_separators ""
                              :theme {:normal {:c {:fg colors.fg :bg colors.bg}}
                                      :inactive {:c {:fg colors.fg
@@ -84,21 +84,12 @@
                                        :! colors.red
                                        :t colors.red})
                                {:fg (?. mode_color (vim.fn.mode))})
-                      :padding {:left 1}})
-           (ins_left {;; filesize
-                      1 :filesize
-                      :icon "󰖡"
-                      :cond conditions.buffer_not_empty})
+                      :padding {:left 1 :right 1}})
            (ins_left {;; filename
                       1 :filename
                       :icon "󰈙"
                       :cond conditions.buffer_not_empty
                       :color {:fg colors.magenta :gui :bold}})
-           (ins_left {;; cursor location
-                      1 :location})
-           (ins_left {;; file progress (%)
-                      1 :progress
-                      :color {:fg colors.fg :gui :bold}})
            (ins_left {;; diagnostics
                       1 :diagnostics
                       :sources [:nvim_diagnostic]
@@ -106,37 +97,39 @@
                       :diagnostics_color {:color_error {:fg colors.red}
                                           :color_warn {:fg colors.yellow}
                                           :color_info {:fg colors.cyan}}})
-           ;; middle section
-           (ins_left {1 (fn [] "%=")})
-           (ins_left {;; Lsp name
-                      1 (fn []
-                          (local msg "No Active Lsp")
-                          (local buf_ft
-                                 (vim.api.nvim_buf_get_option 0 :filetype))
-                          (local clients (vim.lsp.get_active_clients))
-
-                          (fn first-with-filetype [filetype list index]
-                            (let [(i value) (next list index)]
-                              (if (= i nil) nil
-                                  (let [filetypes value.config.filetypes]
-                                    (if (and filetypes
-                                             (not= (vim.fn.index filetypes
-                                                                 filetype)
-                                                   -1))
-                                        value.name
-                                        (first-with-filetype filetype list i))))))
-
-                          (local client (first-with-filetype buf_ft clients))
-                          (if (= client nil) msg client))
-                      :icon ""
-                      :color {:fg "#ffffff" :gui :bold}})
            ;; right section
+           (ins_right {;; Lsp name
+                       1 (fn []
+                           (local msg "No Active Lsp")
+                           (local buf_ft
+                                  (vim.api.nvim_buf_get_option 0 :filetype))
+                           (local clients (vim.lsp.get_active_clients))
+
+                           (fn first-with-filetype [filetype list index]
+                             (let [(i value) (next list index)]
+                               (if (= i nil) nil
+                                   (let [filetypes value.config.filetypes]
+                                     (if (and filetypes
+                                              (not= (vim.fn.index filetypes
+                                                                  filetype)
+                                                    -1))
+                                         value.name
+                                         (first-with-filetype filetype list i))))))
+
+                           (local client (first-with-filetype buf_ft clients))
+                           (if (= client nil) msg client))
+                       :icon ""
+                       :color {:fg "#ffffff" :gui :bold}})
            (ins_right {;; encoding
                        1 "o:encoding"
                        :fmt string.lower
                        :icon ""
                        :cond conditions.hide_in_width
                        :color {:fg colors.green :gui :bold}})
+           (ins_right {;; filesize
+                       1 :filesize
+                       :icon "󰖡"
+                       :cond conditions.buffer_not_empty})
            (ins_right {;; line endings
                        1 :fileformat
                        :fmt string.lower

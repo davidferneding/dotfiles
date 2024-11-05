@@ -33,7 +33,7 @@ local function _1_()
     return and_5_
   end
   conditions = {buffer_not_empty = _2_, hide_in_width = _3_, check_git_workspace = _4_}
-  local config = {options = {component_separators = "", section_separators = "", theme = {normal = {c = {fg = colors.fg, bg = colors.bg}}, inactive = {c = {fg = colors.fg, bg = colors.bg}}}}, sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}, inactive_sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}}
+  local config = {options = {component_separators = "\194\183", section_separators = "", theme = {normal = {c = {fg = colors.fg, bg = colors.bg}}, inactive = {c = {fg = colors.fg, bg = colors.bg}}}}, sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}, inactive_sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}}
   local function ins_left(component)
     return table.insert(config.sections.lualine_c, component)
   end
@@ -56,17 +56,10 @@ local function _1_()
     end
     return {fg = _12_}
   end
-  ins_left({_9_, color = _10_, padding = {left = 1}})
-  ins_left({"filesize", icon = "\243\176\150\161", cond = conditions.buffer_not_empty})
+  ins_left({_9_, color = _10_, padding = {left = 1, right = 1}})
   ins_left({"filename", icon = "\243\176\136\153", cond = conditions.buffer_not_empty, color = {fg = colors.magenta, gui = "bold"}})
-  ins_left({"location"})
-  ins_left({"progress", color = {fg = colors.fg, gui = "bold"}})
   ins_left({"diagnostics", sources = {"nvim_diagnostic"}, symbols = {error = "\239\129\151 ", warn = "\239\129\177 ", info = "\239\129\170 "}, diagnostics_color = {color_error = {fg = colors.red}, color_warn = {fg = colors.yellow}, color_info = {fg = colors.cyan}}})
   local function _14_()
-    return "%="
-  end
-  ins_left({_14_})
-  local function _15_()
     local msg = "No Active Lsp"
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()
@@ -90,8 +83,9 @@ local function _1_()
       return client
     end
   end
-  ins_left({_15_, icon = "\238\173\190", color = {fg = "#ffffff", gui = "bold"}})
+  ins_right({_14_, icon = "\238\173\190", color = {fg = "#ffffff", gui = "bold"}})
   ins_right({"o:encoding", fmt = string.lower, icon = "\239\132\161", cond = conditions.hide_in_width, color = {fg = colors.green, gui = "bold"}})
+  ins_right({"filesize", icon = "\243\176\150\161", cond = conditions.buffer_not_empty})
   ins_right({"fileformat", fmt = string.lower, icons_enabled = true, color = {fg = colors.violet, gui = "bold"}})
   ins_right({"branch", icon = "\238\156\165", color = {fg = colors.cyan, gui = "bold"}})
   ins_right({"diff", symbols = {added = "\239\131\190 ", modified = "\239\133\139 ", removed = "\239\133\134 "}, diff_color = {added = {fg = colors.green}, modified = {fg = colors.orange}, removed = {fg = colors.red}}, cond = conditions.hide_in_width})
