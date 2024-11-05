@@ -1,21 +1,26 @@
-#newtab-button-container {
-    display: none !important;
-}
-
-.actions-list {
-    display: none !important;
-}
-
-#titlebar {
-    display: none !important;
-}
-
 #tabbrowser-tabbox {
     border-radius: 8px;
     overflow: hidden;
-    margin: 0px 6px 6px 0px !important;
+    margin: 4px 6px 6px 0px !important;
 }
 
 #vertical-pinned-tabs-container {
     max-height: none !important;
+}
+
+.titlebar-spacer {
+    width: 0px !important;
+}
+
+#urlbar {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+#tabs-newtab-button {
+    display: none !important;
+}
+
+.tools-and-extensions {
+    display: none !important;
 }
