@@ -10,7 +10,7 @@ local function merge_tables(tables)
 end
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
-local config_style = {color_scheme = "Catppuccin Macchiato", font = wezterm.font("VictorMono Nerd Font", {weight = "Regular"}), font_size = 15, window_padding = {left = 0, right = 0, top = 0, bottom = 0}, enable_tab_bar = false}
+local config_style = {color_scheme = "Catppuccin Frappe", font = wezterm.font("VictorMono Nerd Font", {weight = "Regular"}), font_size = 15, window_padding = {left = 0, right = 0, top = 0, bottom = 0}, enable_tab_bar = false}
 local config_functional = {send_composed_key_when_left_alt_is_pressed = true}
 local config_values = merge_tables({config_style, config_functional})
 for key, value in pairs(config_values) do

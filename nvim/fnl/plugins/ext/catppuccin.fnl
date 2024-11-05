@@ -4,10 +4,10 @@
  :config (fn []
            (local catppuccin (require :catppuccin))
            (catppuccin.setup {;; latte, frappe, macchiato, mocha
-                              :flavour :macchiato
+                              :flavour :frappe
                               :background {;; :h background
                                            :light :latte
-                                           :dark :macchiato}
+                                           :dark :frappe}
                               ;; disables setting the background color.
                               :transparent_background true
                               ;; shows the '~' characters after the end of buffers
@@ -45,7 +45,7 @@
                                              :gitsigns true
                                              :nvimtree true
                                              :treesitter true
-                                             :notify false
+                                             :notify true
                                              :mini {:enabled true
                                                     :indentscope_color ""}
                                              ;; For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)

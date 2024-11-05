@@ -10,7 +10,7 @@
 (local config (wezterm.config_builder))
 
 (local config-style
-       {:color_scheme "Catppuccin Macchiato"
+       {:color_scheme "Catppuccin Frappe"
         :font (wezterm.font "VictorMono Nerd Font" {:weight :Regular})
         :font_size 15
         :enable_tab_bar false
