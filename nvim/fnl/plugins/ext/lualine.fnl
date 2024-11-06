@@ -4,14 +4,14 @@
            (tset vim.o :laststatus 3)
            (local lualine (require :lualine))
            (local palette (require :catppuccin.frappe))
-           (local colors {:fg palette.text.hex
+           (local colors {:text palette.text.hex
                           :yellow palette.yellow.hex
-                          :cyan palette.teal.hex
-                          :darkblue palette.lavender.hex
+                          :teal palette.teal.hex
+                          :lavender palette.lavender.hex
                           :green palette.green.hex
-                          :orange palette.peach.hex
-                          :violet palette.mauve.hex
-                          :magenta palette.pink.hex
+                          :peach palette.peach.hex
+                          :mauve palette.mauve.hex
+                          :pink palette.pink.hex
                           :blue palette.blue.hex
                           :red palette.red.hex})
            (local conditions
@@ -33,9 +33,8 @@
            (local config
                   {:options {:component_separators "·"
                              :section_separators ""
-                             :theme {:normal {:c {:fg colors.fg :bg colors.bg}}
-                                     :inactive {:c {:fg colors.fg
-                                                    :bg colors.bg}}}}
+                             :theme {:normal {:c {:fg colors.text}}
+                                     :inactive {:c {:fg colors.text}}}}
                    :sections {:lualine_a {}
                               :lualine_b {}
                               :lualine_y {}
@@ -68,19 +67,19 @@
                                        :v colors.blue
                                        "␖" colors.blue
                                        :V colors.blue
-                                       :c colors.magenta
+                                       :c colors.pink
                                        :no colors.red
-                                       :s colors.orange
-                                       :S colors.orange
-                                       "␓" colors.orange
+                                       :s colors.peach
+                                       :S colors.peach
+                                       "␓" colors.peach
                                        :ic colors.yellow
-                                       :R colors.violet
-                                       :Rv colors.violet
+                                       :R colors.lavender
+                                       :Rv colors.lavender
                                        :cv colors.red
                                        :ce colors.red
-                                       :r colors.cyan
-                                       :rm colors.cyan
-                                       :r? colors.cyan
+                                       :r colors.teal
+                                       :rm colors.teal
+                                       :r? colors.teal
                                        :! colors.red
                                        :t colors.red})
                                {:fg (?. mode_color (vim.fn.mode))})
@@ -89,14 +88,14 @@
                       1 :filename
                       :icon "󰈙"
                       :cond conditions.buffer_not_empty
-                      :color {:fg colors.magenta :gui :bold}})
+                      :color {:fg colors.pink :gui :bold}})
            (ins_left {;; diagnostics
                       1 :diagnostics
                       :sources [:nvim_diagnostic]
                       :symbols {:error " " :warn " " :info " "}
                       :diagnostics_color {:color_error {:fg colors.red}
                                           :color_warn {:fg colors.yellow}
-                                          :color_info {:fg colors.cyan}}})
+                                          :color_info {:fg colors.teal}}})
            ;; right section
            (ins_right {;; Lsp name
                        1 (fn []
@@ -129,16 +128,17 @@
            (ins_right {;; filesize
                        1 :filesize
                        :icon "󰖡"
-                       :cond conditions.buffer_not_empty})
+                       :cond conditions.buffer_not_empty
+                       :color {:fg colors.peach}})
            (ins_right {;; line endings
                        1 :fileformat
                        :fmt string.lower
                        :icons_enabled true
-                       :color {:fg colors.violet :gui :bold}})
+                       :color {:fg colors.mauve :gui :bold}})
            (ins_right {;; git branch
                        1 :branch
                        :icon ""
-                       :color {:fg colors.cyan :gui :bold}})
+                       :color {:fg colors.teal :gui :bold}})
            (ins_right {1 :diff
                        :symbols {:added " "
                                  :modified " "

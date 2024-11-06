@@ -3,7 +3,7 @@ local function _1_()
   vim.o["laststatus"] = 3
   local lualine = require("lualine")
   local palette = require("catppuccin.frappe")
-  local colors = {fg = palette.text.hex, yellow = palette.yellow.hex, cyan = palette.teal.hex, darkblue = palette.lavender.hex, green = palette.green.hex, orange = palette.peach.hex, violet = palette.mauve.hex, magenta = palette.pink.hex, blue = palette.blue.hex, red = palette.red.hex}
+  local colors = {text = palette.text.hex, yellow = palette.yellow.hex, teal = palette.teal.hex, lavender = palette.lavender.hex, green = palette.green.hex, peach = palette.peach.hex, mauve = palette.mauve.hex, pink = palette.pink.hex, blue = palette.blue.hex, red = palette.red.hex}
   local conditions
   local function _2_()
     return (vim.fn.empty(vim.fn.expand("%:t")) ~= 1)
@@ -33,7 +33,7 @@ local function _1_()
     return and_5_
   end
   conditions = {buffer_not_empty = _2_, hide_in_width = _3_, check_git_workspace = _4_}
-  local config = {options = {component_separators = "\194\183", section_separators = "", theme = {normal = {c = {fg = colors.fg, bg = colors.bg}}, inactive = {c = {fg = colors.fg, bg = colors.bg}}}}, sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}, inactive_sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}}
+  local config = {options = {component_separators = "\194\183", section_separators = "", theme = {normal = {c = {fg = colors.text}}, inactive = {c = {fg = colors.text}}}}, sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}, inactive_sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}}
   local function ins_left(component)
     return table.insert(config.sections.lualine_c, component)
   end
@@ -44,7 +44,7 @@ local function _1_()
     return ("\238\158\128 (" .. vim.fn.mode() .. ")")
   end
   local function _10_()
-    local mode_color = {n = colors.red, i = colors.green, v = colors.blue, ["\226\144\150"] = colors.blue, V = colors.blue, c = colors.magenta, no = colors.red, s = colors.orange, S = colors.orange, ["\226\144\147"] = colors.orange, ic = colors.yellow, R = colors.violet, Rv = colors.violet, cv = colors.red, ce = colors.red, r = colors.cyan, rm = colors.cyan, ["r?"] = colors.cyan, ["!"] = colors.red, t = colors.red}
+    local mode_color = {n = colors.red, i = colors.green, v = colors.blue, ["\226\144\150"] = colors.blue, V = colors.blue, c = colors.pink, no = colors.red, s = colors.peach, S = colors.peach, ["\226\144\147"] = colors.peach, ic = colors.yellow, R = colors.lavender, Rv = colors.lavender, cv = colors.red, ce = colors.red, r = colors.teal, rm = colors.teal, ["r?"] = colors.teal, ["!"] = colors.red, t = colors.red}
     local _12_
     do
       local t_11_ = mode_color
@@ -57,8 +57,8 @@ local function _1_()
     return {fg = _12_}
   end
   ins_left({_9_, color = _10_, padding = {left = 1, right = 1}})
-  ins_left({"filename", icon = "\243\176\136\153", cond = conditions.buffer_not_empty, color = {fg = colors.magenta, gui = "bold"}})
-  ins_left({"diagnostics", sources = {"nvim_diagnostic"}, symbols = {error = "\239\129\151 ", warn = "\239\129\177 ", info = "\239\129\170 "}, diagnostics_color = {color_error = {fg = colors.red}, color_warn = {fg = colors.yellow}, color_info = {fg = colors.cyan}}})
+  ins_left({"filename", icon = "\243\176\136\153", cond = conditions.buffer_not_empty, color = {fg = colors.pink, gui = "bold"}})
+  ins_left({"diagnostics", sources = {"nvim_diagnostic"}, symbols = {error = "\239\129\151 ", warn = "\239\129\177 ", info = "\239\129\170 "}, diagnostics_color = {color_error = {fg = colors.red}, color_warn = {fg = colors.yellow}, color_info = {fg = colors.teal}}})
   local function _14_()
     local msg = "No Active Lsp"
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
@@ -85,9 +85,9 @@ local function _1_()
   end
   ins_right({_14_, icon = "\238\173\190", color = {fg = "#ffffff", gui = "bold"}})
   ins_right({"o:encoding", fmt = string.lower, icon = "\239\132\161", cond = conditions.hide_in_width, color = {fg = colors.green, gui = "bold"}})
-  ins_right({"filesize", icon = "\243\176\150\161", cond = conditions.buffer_not_empty})
-  ins_right({"fileformat", fmt = string.lower, icons_enabled = true, color = {fg = colors.violet, gui = "bold"}})
-  ins_right({"branch", icon = "\238\156\165", color = {fg = colors.cyan, gui = "bold"}})
+  ins_right({"filesize", icon = "\243\176\150\161", cond = conditions.buffer_not_empty, color = {fg = colors.peach}})
+  ins_right({"fileformat", fmt = string.lower, icons_enabled = true, color = {fg = colors.mauve, gui = "bold"}})
+  ins_right({"branch", icon = "\238\156\165", color = {fg = colors.teal, gui = "bold"}})
   ins_right({"diff", symbols = {added = "\239\131\190 ", modified = "\239\133\139 ", removed = "\239\133\134 "}, diff_color = {added = {fg = colors.green}, modified = {fg = colors.orange}, removed = {fg = colors.red}}, cond = conditions.hide_in_width})
   return lualine.setup(config)
 end
