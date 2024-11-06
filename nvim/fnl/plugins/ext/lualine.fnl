@@ -3,17 +3,8 @@
  :config (fn []
            (tset vim.o :laststatus 3)
            (local lualine (require :lualine))
-           (local palette (require :catppuccin.frappe))
-           (local colors {:text palette.text.hex
-                          :yellow palette.yellow.hex
-                          :teal palette.teal.hex
-                          :lavender palette.lavender.hex
-                          :green palette.green.hex
-                          :peach palette.peach.hex
-                          :mauve palette.mauve.hex
-                          :pink palette.pink.hex
-                          :blue palette.blue.hex
-                          :red palette.red.hex})
+           (local catppuccin (require :catppuccin.palettes))
+           (local colors (catppuccin.get_palette :frappe))
            (local conditions
                   {:buffer_not_empty (fn []
                                        (not= (vim.fn.empty (vim.fn.expand "%:t"))
@@ -48,103 +39,103 @@
                                        :lualine_c {}
                                        :lualine_x {}}})
 
-           (fn ins_left [component]
-             "Inserts a component to the left section of the line"
+           (fn insert-left [component]
              (table.insert config.sections.lualine_c component))
 
-           (fn ins_right [component]
-             "Inserts a ccomponent to the right section of the line"
+           (fn insert-right [component]
              (table.insert config.sections.lualine_x component))
 
            ;; left section
-           (ins_left {;; mode
-                      1 (fn []
-                          (.. " (" (vim.fn.mode) ")"))
-                      :color (fn []
-                               (local mode_color
-                                      {:n colors.red
-                                       :i colors.green
-                                       :v colors.blue
-                                       "␖" colors.blue
-                                       :V colors.blue
-                                       :c colors.pink
-                                       :no colors.red
-                                       :s colors.peach
-                                       :S colors.peach
-                                       "␓" colors.peach
-                                       :ic colors.yellow
-                                       :R colors.lavender
-                                       :Rv colors.lavender
-                                       :cv colors.red
-                                       :ce colors.red
-                                       :r colors.teal
-                                       :rm colors.teal
-                                       :r? colors.teal
-                                       :! colors.red
-                                       :t colors.red})
-                               {:fg (?. mode_color (vim.fn.mode))})
-                      :padding {:left 1 :right 1}})
-           (ins_left {;; filename
-                      1 :filename
-                      :icon "󰈙"
-                      :cond conditions.buffer_not_empty
-                      :color {:fg colors.pink :gui :bold}})
-           (ins_left {;; diagnostics
-                      1 :diagnostics
-                      :sources [:nvim_diagnostic]
-                      :symbols {:error " " :warn " " :info " "}
-                      :diagnostics_color {:color_error {:fg colors.red}
-                                          :color_warn {:fg colors.yellow}
-                                          :color_info {:fg colors.teal}}})
+           (insert-left {;; mode
+                         1 (fn []
+                             (.. " (" (vim.fn.mode) ")"))
+                         :color (fn []
+                                  (local mode_color
+                                         {:n colors.red
+                                          :i colors.green
+                                          :v colors.blue
+                                          "␖" colors.blue
+                                          :V colors.blue
+                                          :c colors.pink
+                                          :no colors.red
+                                          :s colors.peach
+                                          :S colors.peach
+                                          "␓" colors.peach
+                                          :ic colors.yellow
+                                          :R colors.lavender
+                                          :Rv colors.lavender
+                                          :cv colors.red
+                                          :ce colors.red
+                                          :r colors.teal
+                                          :rm colors.teal
+                                          :r? colors.teal
+                                          :! colors.red
+                                          :t colors.red})
+                                  {:fg (?. mode_color (vim.fn.mode))})
+                         :padding {:left 1 :right 1}})
+           (insert-left {;; filename
+                         1 :filename
+                         :icon "󰈙"
+                         :cond conditions.buffer_not_empty
+                         :color {:fg colors.maroon :gui :bold}})
+           (insert-left {;; diagnostics
+                         1 :diagnostics
+                         :sources [:nvim_diagnostic]
+                         :symbols {:error " " :warn " " :info " "}
+                         :diagnostics_color {:color_error {:fg colors.red}
+                                             :color_warn {:fg colors.yellow}
+                                             :color_info {:fg colors.sky}}})
            ;; right section
-           (ins_right {;; Lsp name
-                       1 (fn []
-                           (local msg "No Active Lsp")
-                           (local buf_ft
-                                  (vim.api.nvim_buf_get_option 0 :filetype))
-                           (local clients (vim.lsp.get_active_clients))
+           (insert-right {;; Lsp name
+                          1 (fn []
+                              (local msg "No Active Lsp")
+                              (local buf_ft
+                                     (vim.api.nvim_buf_get_option 0 :filetype))
+                              (local clients (vim.lsp.get_active_clients))
 
-                           (fn first-with-filetype [filetype list index]
-                             (let [(i value) (next list index)]
-                               (if (= i nil) nil
-                                   (let [filetypes value.config.filetypes]
-                                     (if (and filetypes
-                                              (not= (vim.fn.index filetypes
-                                                                  filetype)
-                                                    -1))
-                                         value.name
-                                         (first-with-filetype filetype list i))))))
+                              (fn first-with-filetype [filetype list index]
+                                (let [(i value) (next list index)]
+                                  (if (= i nil) nil
+                                      (let [filetypes value.config.filetypes]
+                                        (if (and filetypes
+                                                 (not= (vim.fn.index filetypes
+                                                                     filetype)
+                                                       -1))
+                                            value.name
+                                            (first-with-filetype filetype list
+                                                                 i))))))
 
-                           (local client (first-with-filetype buf_ft clients))
-                           (if (= client nil) msg client))
-                       :icon ""
-                       :color {:fg "#ffffff" :gui :bold}})
-           (ins_right {;; encoding
-                       1 "o:encoding"
-                       :fmt string.lower
-                       :icon ""
-                       :cond conditions.hide_in_width
-                       :color {:fg colors.green :gui :bold}})
-           (ins_right {;; filesize
-                       1 :filesize
-                       :icon "󰖡"
-                       :cond conditions.buffer_not_empty
-                       :color {:fg colors.peach}})
-           (ins_right {;; line endings
-                       1 :fileformat
-                       :fmt string.lower
-                       :icons_enabled true
-                       :color {:fg colors.mauve :gui :bold}})
-           (ins_right {;; git branch
-                       1 :branch
-                       :icon ""
-                       :color {:fg colors.teal :gui :bold}})
-           (ins_right {1 :diff
-                       :symbols {:added " "
-                                 :modified " "
-                                 :removed " "}
-                       :diff_color {:added {:fg colors.green}
-                                    :modified {:fg colors.orange}
-                                    :removed {:fg colors.red}}
-                       :cond conditions.hide_in_width})
+                              (local client
+                                     (first-with-filetype buf_ft clients))
+                              (if (= client nil) msg client))
+                          :icon ""
+                          :color {:fg "#ffffff" :gui :bold}})
+           (insert-right {;; encoding
+                          1 "o:encoding"
+                          :fmt string.lower
+                          :icon ""
+                          :cond conditions.hide_in_width
+                          :color {:fg colors.sapphire :gui :bold}})
+           (insert-right {;; filesize
+                          1 :filesize
+                          :icon "󰖡"
+                          :cond conditions.buffer_not_empty
+                          :color {:fg colors.peach}})
+           (insert-right {;; line endings
+                          1 :fileformat
+                          :fmt string.lower
+                          :icons_enabled true
+                          :color {:fg colors.mauve :gui :bold}})
+           (insert-right {;; git branch
+                          1 :branch
+                          :icon ""
+                          :color {:fg colors.teal :gui :bold}})
+           (insert-right {1 :diff
+                          :symbols {:added " "
+                                    :modified " "
+                                    :removed " "}
+                          :diff_color {:added {:fg colors.green}
+                                       :modified {:fg colors.orange}
+                                       :removed {:fg colors.red}}
+                          :cond conditions.hide_in_width})
            (lualine.setup config))}

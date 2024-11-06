@@ -2,8 +2,8 @@
 local function _1_()
   vim.o["laststatus"] = 3
   local lualine = require("lualine")
-  local palette = require("catppuccin.frappe")
-  local colors = {text = palette.text.hex, yellow = palette.yellow.hex, teal = palette.teal.hex, lavender = palette.lavender.hex, green = palette.green.hex, peach = palette.peach.hex, mauve = palette.mauve.hex, pink = palette.pink.hex, blue = palette.blue.hex, red = palette.red.hex}
+  local catppuccin = require("catppuccin.palettes")
+  local colors = catppuccin.get_palette("frappe")
   local conditions
   local function _2_()
     return (vim.fn.empty(vim.fn.expand("%:t")) ~= 1)
@@ -34,10 +34,10 @@ local function _1_()
   end
   conditions = {buffer_not_empty = _2_, hide_in_width = _3_, check_git_workspace = _4_}
   local config = {options = {component_separators = "\194\183", section_separators = "", theme = {normal = {c = {fg = colors.text}}, inactive = {c = {fg = colors.text}}}}, sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}, inactive_sections = {lualine_a = {}, lualine_b = {}, lualine_y = {}, lualine_z = {}, lualine_c = {}, lualine_x = {}}}
-  local function ins_left(component)
+  local function insert_left(component)
     return table.insert(config.sections.lualine_c, component)
   end
-  local function ins_right(component)
+  local function insert_right(component)
     return table.insert(config.sections.lualine_x, component)
   end
   local function _9_()
@@ -56,9 +56,9 @@ local function _1_()
     end
     return {fg = _12_}
   end
-  ins_left({_9_, color = _10_, padding = {left = 1, right = 1}})
-  ins_left({"filename", icon = "\243\176\136\153", cond = conditions.buffer_not_empty, color = {fg = colors.pink, gui = "bold"}})
-  ins_left({"diagnostics", sources = {"nvim_diagnostic"}, symbols = {error = "\239\129\151 ", warn = "\239\129\177 ", info = "\239\129\170 "}, diagnostics_color = {color_error = {fg = colors.red}, color_warn = {fg = colors.yellow}, color_info = {fg = colors.teal}}})
+  insert_left({_9_, color = _10_, padding = {left = 1, right = 1}})
+  insert_left({"filename", icon = "\243\176\136\153", cond = conditions.buffer_not_empty, color = {fg = colors.maroon, gui = "bold"}})
+  insert_left({"diagnostics", sources = {"nvim_diagnostic"}, symbols = {error = "\239\129\151 ", warn = "\239\129\177 ", info = "\239\129\170 "}, diagnostics_color = {color_error = {fg = colors.red}, color_warn = {fg = colors.yellow}, color_info = {fg = colors.sky}}})
   local function _14_()
     local msg = "No Active Lsp"
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
@@ -83,12 +83,12 @@ local function _1_()
       return client
     end
   end
-  ins_right({_14_, icon = "\238\173\190", color = {fg = "#ffffff", gui = "bold"}})
-  ins_right({"o:encoding", fmt = string.lower, icon = "\239\132\161", cond = conditions.hide_in_width, color = {fg = colors.green, gui = "bold"}})
-  ins_right({"filesize", icon = "\243\176\150\161", cond = conditions.buffer_not_empty, color = {fg = colors.peach}})
-  ins_right({"fileformat", fmt = string.lower, icons_enabled = true, color = {fg = colors.mauve, gui = "bold"}})
-  ins_right({"branch", icon = "\238\156\165", color = {fg = colors.teal, gui = "bold"}})
-  ins_right({"diff", symbols = {added = "\239\131\190 ", modified = "\239\133\139 ", removed = "\239\133\134 "}, diff_color = {added = {fg = colors.green}, modified = {fg = colors.orange}, removed = {fg = colors.red}}, cond = conditions.hide_in_width})
+  insert_right({_14_, icon = "\238\173\190", color = {fg = "#ffffff", gui = "bold"}})
+  insert_right({"o:encoding", fmt = string.lower, icon = "\239\132\161", cond = conditions.hide_in_width, color = {fg = colors.sapphire, gui = "bold"}})
+  insert_right({"filesize", icon = "\243\176\150\161", cond = conditions.buffer_not_empty, color = {fg = colors.peach}})
+  insert_right({"fileformat", fmt = string.lower, icons_enabled = true, color = {fg = colors.mauve, gui = "bold"}})
+  insert_right({"branch", icon = "\238\156\165", color = {fg = colors.teal, gui = "bold"}})
+  insert_right({"diff", symbols = {added = "\239\131\190 ", modified = "\239\133\139 ", removed = "\239\133\134 "}, diff_color = {added = {fg = colors.green}, modified = {fg = colors.orange}, removed = {fg = colors.red}}, cond = conditions.hide_in_width})
   return lualine.setup(config)
 end
 return {"nvim-lualine/lualine.nvim", dependencies = {"nvim-tree/nvim-web-devicons"}, config = _1_}
