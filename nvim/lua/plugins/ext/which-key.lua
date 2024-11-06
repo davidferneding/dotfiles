@@ -1,14 +1,7 @@
-return {
-    "folke/which-key.nvim",
-    version = "*",
-    event = "VeryLazy",
-    init = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 300
-    end,
-    opts = {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-    }
-}
+-- [nfnl] Compiled from fnl/plugins/ext/which-key.fnl by https://github.com/Olical/nfnl, do not edit.
+local function _1_()
+  vim.o["timeout"] = true
+  vim.o["timeoutlen"] = 300
+  return nil
+end
+return {"folke/which-key.nvim", version = "*", event = "VeryLazy", init = _1_, opts = {}}
