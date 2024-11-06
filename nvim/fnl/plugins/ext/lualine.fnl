@@ -120,7 +120,7 @@
            (insert-right {;; line endings
                           1 :fileformat
                           :fmt string.lower
-                          :icons_enabled false
+                          :icons_enabled true
                           :color {:fg colors.mauve :gui :bold}})
            (insert-right {;; git branch
                           1 :branch
