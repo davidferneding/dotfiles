@@ -48,7 +48,7 @@
            ;; left section
            (insert-left {;; mode
                          1 (fn []
-                             (.. " (" (vim.fn.mode) ")"))
+                             (.. "(" (vim.fn.mode) ")"))
                          :color (fn []
                                   (local mode_color
                                          {:n colors.red
@@ -75,7 +75,6 @@
                          :padding {:left 1 :right 1}})
            (insert-left {;; filename
                          1 :filename
-                         :icon "󰈙"
                          :cond conditions.buffer_not_empty
                          :color {:fg colors.maroon :gui :bold}})
            (insert-left {;; diagnostics
@@ -108,27 +107,23 @@
                               (local client
                                      (first-with-filetype buf_ft clients))
                               (if (= client nil) msg client))
-                          :icon ""
                           :color {:fg "#ffffff" :gui :bold}})
            (insert-right {;; encoding
                           1 "o:encoding"
                           :fmt string.lower
-                          :icon ""
                           :cond conditions.hide_in_width
                           :color {:fg colors.sapphire :gui :bold}})
            (insert-right {;; filesize
                           1 :filesize
-                          :icon "󰖡"
                           :cond conditions.buffer_not_empty
                           :color {:fg colors.peach}})
            (insert-right {;; line endings
                           1 :fileformat
                           :fmt string.lower
-                          :icons_enabled true
+                          :icons_enabled false
                           :color {:fg colors.mauve :gui :bold}})
            (insert-right {;; git branch
                           1 :branch
-                          :icon ""
                           :color {:fg colors.teal :gui :bold}})
            (insert-right {1 :diff
                           :symbols {:added " "

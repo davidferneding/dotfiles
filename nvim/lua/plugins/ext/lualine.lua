@@ -41,7 +41,7 @@ local function _1_()
     return table.insert(config.sections.lualine_x, component)
   end
   local function _9_()
-    return ("\238\158\128 (" .. vim.fn.mode() .. ")")
+    return ("(" .. vim.fn.mode() .. ")")
   end
   local function _10_()
     local mode_color = {n = colors.red, i = colors.green, v = colors.blue, ["\226\144\150"] = colors.blue, V = colors.blue, c = colors.pink, no = colors.red, s = colors.peach, S = colors.peach, ["\226\144\147"] = colors.peach, ic = colors.yellow, R = colors.lavender, Rv = colors.lavender, cv = colors.red, ce = colors.red, r = colors.teal, rm = colors.teal, ["r?"] = colors.teal, ["!"] = colors.red, t = colors.red}
@@ -57,7 +57,7 @@ local function _1_()
     return {fg = _12_}
   end
   insert_left({_9_, color = _10_, padding = {left = 1, right = 1}})
-  insert_left({"filename", icon = "\243\176\136\153", cond = conditions.buffer_not_empty, color = {fg = colors.maroon, gui = "bold"}})
+  insert_left({"filename", cond = conditions.buffer_not_empty, color = {fg = colors.maroon, gui = "bold"}})
   insert_left({"diagnostics", sources = {"nvim_diagnostic"}, symbols = {error = "\239\129\151 ", warn = "\239\129\177 ", info = "\239\129\170 "}, diagnostics_color = {color_error = {fg = colors.red}, color_warn = {fg = colors.yellow}, color_info = {fg = colors.sky}}})
   local function _14_()
     local msg = "No Active Lsp"
@@ -83,11 +83,11 @@ local function _1_()
       return client
     end
   end
-  insert_right({_14_, icon = "\238\173\190", color = {fg = "#ffffff", gui = "bold"}})
-  insert_right({"o:encoding", fmt = string.lower, icon = "\239\132\161", cond = conditions.hide_in_width, color = {fg = colors.sapphire, gui = "bold"}})
-  insert_right({"filesize", icon = "\243\176\150\161", cond = conditions.buffer_not_empty, color = {fg = colors.peach}})
-  insert_right({"fileformat", fmt = string.lower, icons_enabled = true, color = {fg = colors.mauve, gui = "bold"}})
-  insert_right({"branch", icon = "\238\156\165", color = {fg = colors.teal, gui = "bold"}})
+  insert_right({_14_, color = {fg = "#ffffff", gui = "bold"}})
+  insert_right({"o:encoding", fmt = string.lower, cond = conditions.hide_in_width, color = {fg = colors.sapphire, gui = "bold"}})
+  insert_right({"filesize", cond = conditions.buffer_not_empty, color = {fg = colors.peach}})
+  insert_right({"fileformat", fmt = string.lower, color = {fg = colors.mauve, gui = "bold"}, icons_enabled = false})
+  insert_right({"branch", color = {fg = colors.teal, gui = "bold"}})
   insert_right({"diff", symbols = {added = "\239\131\190 ", modified = "\239\133\139 ", removed = "\239\133\134 "}, diff_color = {added = {fg = colors.green}, modified = {fg = colors.orange}, removed = {fg = colors.red}}, cond = conditions.hide_in_width})
   return lualine.setup(config)
 end
