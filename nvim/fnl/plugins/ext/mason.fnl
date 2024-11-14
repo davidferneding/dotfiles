@@ -10,7 +10,15 @@
   :version "*"
   :config (fn []
             (local mason-lspconfig (require :mason-lspconfig))
-            (mason-lspconfig.setup {:automatic_installation true})
+            (mason-lspconfig.setup {:ensure_installed [:clojure_lsp
+                                                       :fennel_ls
+                                                       :lua_ls
+                                                       :marksman
+                                                       :omnisharp
+                                                       :prettier
+                                                       :tailwindcss
+                                                       :ts_ls]
+                                    :automatic_installation true})
             (mason-lspconfig.setup_handlers {1 (fn [server_name]
                                                  (local lspconfig
                                                         (. (require :lspconfig)
@@ -22,4 +30,3 @@
   :priority 999
   ;; and this after mason
   }]
-
