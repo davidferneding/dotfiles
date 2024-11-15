@@ -5,7 +5,7 @@ local function _1_()
 end
 local function _2_()
   local mason_lspconfig = require("mason-lspconfig")
-  mason_lspconfig.setup({ensure_installed = {"clojure_lsp", "fennel_ls", "lua_ls", "marksman", "omnisharp", "prettier", "tailwindcss", "ts_ls"}, automatic_installation = true})
+  mason_lspconfig.setup({ensure_installed = {"clojure_lsp", "fennel_ls", "lua_ls", "marksman", "omnisharp", "tailwindcss", "ts_ls"}, automatic_installation = true})
   local function _3_(server_name)
     local lspconfig = require("lspconfig")[server_name]
     return lspconfig.setup({})

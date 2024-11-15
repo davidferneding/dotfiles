@@ -15,7 +15,6 @@
                                                        :lua_ls
                                                        :marksman
                                                        :omnisharp
-                                                       :prettier
                                                        :tailwindcss
                                                        :ts_ls]
                                     :automatic_installation true})
