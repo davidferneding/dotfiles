@@ -7,7 +7,7 @@
 
 (defn label-font [& {:keys [weight size]
                      :or {weight "Medium" size 15.0}}]
-  (str "Monaspace Neon Var" ":" weight ":" size))
+  (str "Monaspace Neon" ":" weight ":" size))
 
 (def colors {:bg 0xff363a4f
              :text-light 0xffc6d0f5

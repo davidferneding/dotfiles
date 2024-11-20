@@ -10,14 +10,13 @@
 (local config-style
        {:color_scheme "Catppuccin Frappe"
         :colors {:visual_bell "#e78284"}
-        :font (wezterm.font_with_fallback [{:family "Monaspace Neon Var"
-                                            :weight :Medium}
+        :font (wezterm.font_with_fallback [{:family "Monaspace Neon"
+                                            :weight :Regular}
                                            "Symbols Nerd Font Mono"])
         ; comment style
         :font_rules [{:intensity :Normal
                       :italic true
-                      :font (wezterm.font "Monaspace Radon Var"
-                                          {:weight :Medium})}]
+                      :font (wezterm.font "Monaspace Radon" {:weight :Medium})}]
         :font_size 14
         :freetype_load_target :HorizontalLcd
         :harfbuzz_features [:calt
@@ -30,7 +29,8 @@
                             :ss05
                             :ss06
                             :ss07
-                            :ss08]
+                            :ss08
+                            :ss09]
         :enable_tab_bar false
         :window_padding {:left 0 :right 0 :top 0 :bottom 0}})
 
