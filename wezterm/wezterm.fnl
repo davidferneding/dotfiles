@@ -10,9 +10,7 @@
 (local config-style
        {:color_scheme "Catppuccin Frappe"
         :colors {:visual_bell "#e78284"}
-        :font (wezterm.font_with_fallback [{:family "Monaspace Neon"
-                                            :weight :Regular}
-                                           "Symbols Nerd Font Mono"])
+        :font (wezterm.font "Monaspace Neon")
         ; comment style
         :font_rules [{:intensity :Normal
                       :italic true
