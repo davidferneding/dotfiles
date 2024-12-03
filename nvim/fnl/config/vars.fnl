@@ -32,3 +32,4 @@
 (tset vim.g :netrw_bufsettings "noma nomod nu relativenumber nowrap ro nobl")
 (tset vim.g :t_co 256)
 
+(vim.filetype.add {:extension {:mjml :html}})

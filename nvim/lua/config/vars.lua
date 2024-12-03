@@ -8,6 +8,6 @@ for key, value in pairs(options) do
   set_opt(key, value)
 end
 vim.api.nvim_set_hl(0, "LineNr", {fg = "#7777aa"})
-do end (vim.g)["netrw_bufsettings"] = "noma nomod nu relativenumber nowrap ro nobl"
+vim.g["netrw_bufsettings"] = "noma nomod nu relativenumber nowrap ro nobl"
 vim.g["t_co"] = 256
-return nil
+return vim.filetype.add({extension = {mjml = "html"}})
