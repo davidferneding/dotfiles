@@ -4,3 +4,6 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "firefox/ultima"]
+	path = firefox/ultima
+	url = https://github.com/soulhotel/FF-ULTIMA.git
