@@ -1,0 +1,27 @@
+a = 'workspace a'
+o = 'workspace o'
+e = 'workspace e'
+u = 'workspace u'
+
+shift-a = 'move-node-to-workspace a'
+shift-o = 'move-node-to-workspace o'
+shift-e = 'move-node-to-workspace e'
+shift-u = 'move-node-to-workspace u'
+
+
+y = 'workspace y'
+i = 'workspace i'
+x = 'workspace x'
+
+shift-y = 'move-node-to-workspace y'
+shift-i = 'move-node-to-workspace i'
+shift-x = 'move-node-to-workspace x'
+
+
+f = 'workspace f'
+d = 'workspace d'
+b = 'workspace b'
+
+shift-f = 'move-node-to-workspace f'
+shift-d = 'move-node-to-workspace d'
+shift-b = 'move-node-to-workspace b'

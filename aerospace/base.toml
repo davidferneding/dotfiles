@@ -65,6 +65,11 @@ ctrl-m = 'mode movement'
 ctrl-shift-s = 'mode service'
 ctrl-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 
+cmd-shift-h = 'focus left --boundaries workspace --boundaries-action wrap-around-the-workspace'
+cmd-shift-t = 'focus down --boundaries workspace --boundaries-action wrap-around-the-workspace'
+cmd-shift-n = 'focus up --boundaries workspace --boundaries-action wrap-around-the-workspace'
+cmd-shift-s = 'focus right --boundaries workspace --boundaries-action wrap-around-the-workspace'
+
 [mode.service.binding]
 esc = 'mode main'
 r = ['reload-config', 'mode main']

@@ -1,9 +1,0 @@
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-y = 'workspace y'
-i = 'workspace i'
-x = 'workspace x'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-shift-y = 'move-node-to-workspace y'
-shift-i = 'move-node-to-workspace i'
-shift-x = 'move-node-to-workspace x'
