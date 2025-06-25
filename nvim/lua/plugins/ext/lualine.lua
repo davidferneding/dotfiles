@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/ext/lualine.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/ext/lualine.fnl
 local function _1_()
   vim.o["laststatus"] = 3
   local lualine = require("lualine")
@@ -62,7 +62,7 @@ local function _1_()
   local function _14_()
     local msg = "No Active Lsp"
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-    local clients = vim.lsp.get_active_clients()
+    local clients = vim.lsp.get_clients()
     local function first_with_filetype(filetype, list, index)
       local i, value = next(list, index)
       if (i == nil) then
