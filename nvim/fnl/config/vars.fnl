@@ -22,6 +22,8 @@
                 ;; splitting
                 :splitright true
                 :splitbelow true
+                ;; encoding
+                :bomb false
                 ;; misc
                 :scrolloff 7})
 
