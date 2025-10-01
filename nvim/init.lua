@@ -70,7 +70,6 @@ local key = vim.keymap
 key.set("n", "<leader>ff", vim.lsp.buf.format, { desc = "Format document" })
 
 
-
 --  ___ _           _
 -- | _ \ |_  _ __ _(_)_ _  ___
 -- |  _/ | || / _` | | ' \(_-<
