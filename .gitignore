@@ -51,3 +51,6 @@ aerospace/aerospace.toml
 # -> lf config
 !lf
 !lf/**/*
+
+# ignore .DS_Store in tracked dirs
+**/.DS_Store

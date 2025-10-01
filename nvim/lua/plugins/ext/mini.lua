@@ -1,2 +1,0 @@
--- [nfnl] Compiled from fnl/plugins/ext/mini.fnl by https://github.com/Olical/nfnl, do not edit.
-return {{"echasnovski/mini.move", version = "*", opts = {mappings = {left = "<left>", right = "<right>", down = "<down>", up = "<up>", line_left = "", line_right = "", line_down = "<C-S-down>", line_up = "<C-S-up>"}, options = {reindent_linewise = true}}}, {"echasnovski/mini.pairs", version = "*", opts = {}}}

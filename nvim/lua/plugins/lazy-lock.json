@@ -1,7 +1,0 @@
-{
-  "conjure": { "branch": "master", "commit": "f50d4db821489f66ff93afe58155eef42c273a5d" },
-  "lazy.nvim": { "branch": "main", "commit": "aedcd79811d491b60d0a6577a9c1701063c2a609" },
-  "vim-dispatch": { "branch": "master", "commit": "6cc2691576f97d43f8751664d1a1a908b99927e5" },
-  "vim-dispatch-neovim": { "branch": "master", "commit": "c8c4e21a95c25032a041002f9bf6e45a75a73021" },
-  "vim-jack-in": { "branch": "master", "commit": "4cefab20f02c44249499f43200442a3176315acd" }
-}
