@@ -60,14 +60,27 @@ vim.filetype.add({ extension = { mjml = 'html' } })
 -- | ' </ -_) || | '  \/ _` | '_ \
 -- |_|\_\___|\_, |_|_|_\__,_| .__/
 --           |__/           |_|
--- options
+local key = vim.keymap
+local function cmd(command)
+    return "<cmd>" .. command .. "<cr>"
+end
+
+
+-- general
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
-local key = vim.keymap
+key.set("v", "<leader>y", "\"*y", { desc = "Yank to system clipboard" })
 
 -- lsp
 key.set("n", "<leader>ff", vim.lsp.buf.format, { desc = "Format document" })
+key.set("v", "<leader>ff", vim.lsp.buf.format, { desc = "Format selection" })
+
+-- resize
+key.set("n", "<S-Up>", cmd("res -1"))
+key.set("n", "<S-Down>", cmd("res +1"))
+key.set("n", "<S-Left>", cmd("vert res +1"))
+key.set("n", "<S-Right>", cmd("vert res -1"))
+
 
 
 --  ___ _           _
