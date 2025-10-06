@@ -5,7 +5,7 @@ local function _1_()
   vim.o["laststatus"] = 3
   local lualine = require("lualine")
   local catppuccin = require("catppuccin.palettes")
-  local colors = catppuccin.get_palette("latte")
+  local colors = catppuccin.get_palette("frappe")
   local conditions
   local function _2_()
     return (vim.fn.empty(vim.fn.expand("%:t")) ~= 1)

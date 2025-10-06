@@ -8,7 +8,7 @@
 
            (local lualine (require :lualine))
            (local catppuccin (require :catppuccin.palettes))
-           (local colors (catppuccin.get_palette :latte))
+           (local colors (catppuccin.get_palette :frappe))
 
            (local conditions
                   {:buffer_not_empty (fn []
