@@ -12,14 +12,17 @@ return {
             nerd_font_variant = 'mono'
         },
         completion = {
-            documentation = { auto_show = true, auto_show_delay_ms = 100 },
-            ghost_text = { enabled = true }
+            documentation = {
+                auto_show = true,
+                auto_show_delay_ms = 100,
+            },
+            ghost_text = { enabled = true },
         },
         sources = {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
         },
         fuzzy = { implementation = "prefer_rust" },
-        signature = { enabled = true }
+        signature = { enabled = true },
     },
     opts_extend = { "sources.default" }
 }

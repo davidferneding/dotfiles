@@ -15,6 +15,14 @@ return {
             inc_rename = false,
             lsp_doc_border = true,
         },
+        views = {
+            cmdline = {
+                position = {
+                    row = -1,
+                    col = 0
+                }
+            }
+        },
         cmdline = {
             view = 'cmdline'
         }

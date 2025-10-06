@@ -16,6 +16,9 @@ vim.g.t_co = 256
 vim.api.nvim_set_hl(0, 'LineNr', { fg = '#7777aa' })
 vim.opt.cursorline = true
 
+-- ui
+vim.o.winborder = 'rounded'
+
 -- search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
