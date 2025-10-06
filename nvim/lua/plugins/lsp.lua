@@ -1,7 +1,12 @@
 return {
-    { 'mason-org/mason.nvim', opts = {} },
+    {
+        'mason-org/mason.nvim',
+        version = "*",
+        opts = {},
+    },
     {
         'mason-org/mason-lspconfig.nvim',
+        version = "*",
         dependencies = { 'neovim/nvim-lspconfig' },
         opts = {
             ensure_installed = {
