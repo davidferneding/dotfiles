@@ -12,8 +12,8 @@ return {
         }
     },
     {
-        "benomahony/oil-git.nvim",
+        "JezerM/oil-lsp-diagnostics.nvim",
         dependencies = { "stevearc/oil.nvim" },
-        opts ={highlights={OilGitModified={fg="#df8e1d"}}}
+        opts = {}
     }
 }
