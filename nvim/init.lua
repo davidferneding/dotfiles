@@ -18,6 +18,7 @@ vim.opt.cursorline = true
 
 -- ui
 vim.o.winborder = 'rounded'
+vim.o.cmdheight = 0
 
 -- search
 vim.opt.ignorecase = true
