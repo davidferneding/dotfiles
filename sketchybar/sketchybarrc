@@ -12,7 +12,7 @@ bb "$ITEM_DIR/config.clj"
 
 # Setting up the general bar appearance of the bar
 bar=(
-  height=28
+  height=25
   color=$BAR_COLOR
   border_width=2
   border_color=$BAR_BORDER_COLOR
@@ -21,7 +21,7 @@ bar=(
   sticky=on
   padding_right=10
   padding_left=10
-  y_offset=3
+  y_offset=4
   notch_offset=0
   topmost=window
   color=0x00000000
