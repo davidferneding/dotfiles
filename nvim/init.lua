@@ -76,8 +76,16 @@ vim.g.maplocalleader = ' '
 key.set("v", "<leader>y", "\"*y", { desc = "Yank to system clipboard" })
 
 -- lsp
-key.set("n", "<leader>ff", vim.lsp.buf.format, { desc = "Format document" })
-key.set("v", "<leader>ff", vim.lsp.buf.format, { desc = "Format selection" })
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        key.set("n", "<leader>ff", vim.lsp.buf.format, { desc = "Format document" })
+        key.set("v", "<leader>ff", vim.lsp.buf.format, { desc = "Format selection" })
+        key.set("n", "gd", cmd("lua vim.lsp.buf.definition()"), { desc = "Go to definition" })
+        key.set("n", "gD", cmd("lua vim.lsp.buf.declaration()"), { desc = "Go to declaration" })
+        key.set("n", "<leader>i", cmd("lua vim.lsp.buf.hover()"), { desc = "Lsp hover" })
+        key.set("n", "<leader>d", cmd("lua vim.diagnostic.open_float()"), { desc = "Show diagnostics" })
+    end
+})
 
 -- resize
 key.set("n", "<S-Up>", cmd("res -1"))
