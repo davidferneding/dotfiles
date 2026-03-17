@@ -71,6 +71,7 @@ bb "$ITEM_DIR/battery.clj"
 bb "$ITEM_DIR/slack.clj"
 bb "$ITEM_DIR/outlook.clj"
 bb "$ITEM_DIR/mail.clj"
+bb "$ITEM_DIR/teams.clj"
 
 sketchybar --hotload on
 
