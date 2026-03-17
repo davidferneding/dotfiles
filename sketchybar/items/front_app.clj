@@ -2,7 +2,7 @@
 (require '[babashka.deps :as deps])
 (deps/add-deps '{:deps {io.github.rinx/sbar-bb {:git/sha "97aa02b85fa00dea557f135ad44e61551f43e8cf"}}})
 
-(ns items.front_app
+(ns items.front-app
   (:require [sketchybar.core :as sketchybar]
             [config]
             [taoensso.timbre :as log]))

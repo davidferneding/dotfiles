@@ -19,7 +19,7 @@
                                                :icon.y_offset 1
                                                :icon.padding_right 8
                                                :script (str config/plugin-dir "/battery.clj")
-                                               :click_script (str config/plugin-dir "/battery-click.clj")
+                                               :click_script (str config/plugin-dir "/battery_click.clj")
                                                :update_freq 60}))
    (sketchybar/subscribe :battery :power_source_change)))
 
