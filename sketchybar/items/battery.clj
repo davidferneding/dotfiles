@@ -13,9 +13,11 @@
   (sketchybar/exec
    (sketchybar/add-item :battery :right)
    (sketchybar/set :battery (conj config/item {:label "loading"
+                                               :label.padding_left -2
                                                :icon (:sync (:battery config/custom-icons))
                                                :icon.font (config/label-font :weight "Bold" :size 18.0)
                                                :icon.y_offset 1
+                                               :icon.padding_right 8
                                                :script (str config/plugin-dir "/battery.clj")
                                                :click_script (str config/plugin-dir "/battery-click.clj")
                                                :update_freq 60}))

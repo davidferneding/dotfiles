@@ -24,7 +24,7 @@
     "error"
     (str (:percent stats)
          (when (or (= "not charging" (:remaining stats)) (> (extract-number (:remaining stats)) 0))
-           (str " | " (:remaining stats))))))
+           (str " " (:remaining stats))))))
 
 (build-label (get-power-stats))
 
