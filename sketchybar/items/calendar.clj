@@ -14,8 +14,8 @@
    (sketchybar/set :calendar (conj config/item {:label "loading"
                                                 :label.padding_left 8
                                                 :icon.drawing "off"
-
                                                 :script (str config/plugin-dir "/calendar.clj")
+                                                :click_script (str config/plugin-dir "/calendar_click.clj")
                                                 :update_freq 3
                                                 :updates "on"}))))
 
