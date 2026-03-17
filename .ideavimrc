@@ -5,6 +5,9 @@ set smartcase
 set incsearch
 set hlsearch
 
+set scrolloff=5
+set sidescrolloff=5
+
 let mapleader = " "
 
 nmap gD <Action>(GotoImplementation)
@@ -19,3 +22,7 @@ nmap <leader>dt <Action>(RiderUnitTestDebugContextAction)
 
 nmap <leader>cr <Action>(CollapseRegion)
 nmap <leader>er <Action>(ExpandRegion)
+
+""" PLUGINS
+Plug 'tpope/vim-commentary' " -> gcc
+Plug 'tpope/vim-surround' " -> ds/ys/cs
