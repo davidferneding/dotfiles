@@ -2,6 +2,7 @@ return {
     'saghen/blink.cmp',
     dependencies = {
         'rafamadriz/friendly-snippets',
+        "fang2hou/blink-copilot",
         "joelazar/blink-calc"
     },
     version = '*',
@@ -22,13 +23,18 @@ return {
             ghost_text = { enabled = true },
         },
         sources = {
-            default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'calc' },
+            default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'copilot', 'calc' },
             providers = {
                 lazydev = {
                     name = "LazyDev",
                     module = "lazydev.integrations.blink",
                     -- make lazydev completions top priority (see `:h blink.cmp`)
                     score_offset = 100,
+                },
+                copilot = {
+                    name = "copilot",
+                    module = "blink-copilot",
+                    async = true
                 },
                 calc = {
                     name = 'Calc',
