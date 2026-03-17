@@ -2,7 +2,12 @@ return {
     {
         'mason-org/mason.nvim',
         version = "*",
-        opts = {},
+        opts = {
+            registries = {
+                "github:mason-org/mason-registry",
+                "github:Crashdummyy/mason-registry",
+            },
+        },
     },
     {
         'mason-org/mason-lspconfig.nvim',
