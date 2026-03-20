@@ -1,5 +1,4 @@
 return {
-    'nvim-mini/mini.surround',
-    version = '*',
-    opts = {}
+    'tpope/vim-surround',
+    version = '*'
 }
