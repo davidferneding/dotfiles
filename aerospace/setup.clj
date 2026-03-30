@@ -4,6 +4,9 @@
 
 (def config-folder (str (System/getProperty "user.home") "/.config/aerospace/"))
 
+(defn config-file [filename]
+  (str config-folder filename))
+
 (def keyboard-layout (string/replace
                       (string/replace
                        (:out (sh (str "defaults read "  (System/getProperty "user.home") "/Library/Preferences/com.apple.HIToolbox.plist" " AppleSelectedInputSources")))
@@ -13,21 +16,30 @@
 (def monitors (string/split (:out (shell {:out :string :err :string :continue true} "aerospace list-monitors")) #"\n"))
 
 (def keymap (case keyboard-layout
-              "Dvorak" (slurp (str config-folder "keymap.dvorak.toml"))
-              (slurp (str config-folder "keymap.qwerty.toml"))))
+              "Dvorak" (slurp (config-file "keymap.dvorak.toml"))
+              (slurp (config-file "keymap.qwerty.toml"))))
 
-(def base (slurp (str config-folder "base.toml")))
+(def base (slurp (config-file "base.toml")))
 
-(def movement (str (slurp (str config-folder "movement.base.toml"))
-                   (if (= (count monitors) 1) (slurp (str config-folder "movement.one.toml")) "")
-                   (if (= (count monitors) 2) (slurp (str config-folder "movement.two.toml")) "")
-                   (if (= (count monitors) 3) (slurp (str config-folder "movement.three.toml")) "")))
+(def movement-base (str (slurp (config-file "movement.base.toml"))
+                        (if (= (count monitors) 1) (slurp (config-file "movement.one.toml")) "")
+                        (if (= (count monitors) 2) (slurp (config-file "movement.two.toml")) "")
+                        (if (= (count monitors) 3) (slurp (config-file "movement.three.toml")) "")))
 
-(def workspaces (str (slurp (str config-folder "workspaces.base.toml"))
-                     (if (= (count monitors) 1) (slurp (str config-folder "workspaces.one.toml")) "")
-                     (if (= (count monitors) 2) (slurp (str config-folder "workspaces.two.toml")) "")
-                     (if (= (count monitors) 3) (slurp (str config-folder "workspaces.three.toml")) "")))
+(defn make-once [s]
+  (string/replace s #"(?m)^(\S+ = )('(?!mode ).*')$" "$1[$2, 'mode main']"))
 
-(spit (str config-folder "aerospace.toml") (str keymap base movement workspaces))
+(def movement (str
+               (slurp (config-file "movement.once.toml"))
+               (make-once movement-base)
+               (slurp (config-file "movement.sticky.toml"))
+               movement-base))
+
+(def workspaces (str (slurp (config-file "workspaces.base.toml"))
+                     (if (= (count monitors) 1) (slurp (config-file "workspaces.one.toml")) "")
+                     (if (= (count monitors) 2) (slurp (config-file "workspaces.two.toml")) "")
+                     (if (= (count monitors) 3) (slurp (config-file "workspaces.three.toml")) "")))
+
+(spit (config-file "aerospace.toml") (str keymap base movement workspaces))
 
 (shell {:continue true} "aerospace reload-config")

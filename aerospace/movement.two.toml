@@ -14,3 +14,4 @@ b = 'workspace b'
 shift-f = 'move-node-to-workspace f'
 shift-d = 'move-node-to-workspace d'
 shift-b = 'move-node-to-workspace b'
+

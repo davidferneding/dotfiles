@@ -62,7 +62,7 @@ outer.right =      10
 # 'main' binding mode must be always presented
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-ctrl-m = 'mode movement'
+ctrl-m = 'mode movement-once'
 ctrl-shift-s = 'mode service'
 ctrl-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 

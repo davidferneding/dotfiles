@@ -9,3 +9,4 @@ shift-a = 'move-node-to-workspace a'
 shift-o = 'move-node-to-workspace o'
 shift-e = 'move-node-to-workspace e'
 shift-u = 'move-node-to-workspace u'
+
