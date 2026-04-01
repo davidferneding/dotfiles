@@ -15,7 +15,7 @@
   [display-name]
   (let [plain (:out (sh "lsappinfo info -only StatusLabel"
                         (:out (sh (str "lsappinfo find LSDisplayName='" display-name "'")))))]
-    (if (or (nil? plain) (= "" plain) (str/includes? plain "kCFNULL"))
+    (if (or (nil? plain) (= "" plain) (str/includes? plain "NULL"))
       0
       (let [status (json/parse-string (str/replace (re-find #"\{.*" plain) "=" ":") true)]
         (cond
