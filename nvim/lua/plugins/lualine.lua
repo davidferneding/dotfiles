@@ -4,8 +4,7 @@ local function _1_()
   icons.mock_nvim_web_devicons()
   vim.o["laststatus"] = 3
   local lualine = require("lualine")
-  local catppuccin = require("catppuccin.palettes")
-  local colors = catppuccin.get_palette("mocha")
+  local colors = require("current-theme").colors
   local conditions
   local function _2_()
     return (vim.fn.empty(vim.fn.expand("%:t")) ~= 1)

@@ -1,5 +1,6 @@
 (ns config
-  (:require [clojure.edn :as edn]))
+  (:require [clojure.edn :as edn]
+            [clojure.java.io :as io]))
 
 (defn icon-font [& {:keys [weight size]
                     :or {weight "Regular" size 16.0}}]
@@ -9,12 +10,8 @@
                      :or {weight "Medium" size 15.0}}]
   (str "Monaspace Neon" ":" weight ":" size))
 
-(def colors {:bg 0xff363a4f
-             :text-light 0xffc6d0f5
-             :text-dark 0xff4c4f69
-
-             :red 0xffed8796
-             :rosewater 0xfff4dbd6})
+(def colors
+  (edn/read-string (slurp (io/resource "theme_colors.edn"))))
 
 (def item {:background.drawing "on"
            :background.color (:bg colors)

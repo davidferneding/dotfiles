@@ -7,8 +7,8 @@
            (tset vim.o :laststatus 3)
 
            (local lualine (require :lualine))
-           (local catppuccin (require :catppuccin.palettes))
-           (local colors (catppuccin.get_palette :mocha))
+           (local colors (. (require :current-theme) :colors))
+
 
            (local conditions
                   {:buffer_not_empty (fn []

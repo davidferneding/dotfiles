@@ -8,6 +8,10 @@
 # and setup script
 !setup.sh
 
+# and theme utility
+!catppuccin
+!catppuccin/**/*
+
 # and relevant dotfiles
 
 # -> zsh config
@@ -53,3 +57,12 @@ aerospace/aerospace.toml
 
 # ignore .DS_Store in tracked dirs
 **/.DS_Store
+
+# ignore generated theme files
+theme.edn
+tmux/theme.conf
+wezterm/theme.lua
+nvim/lua/current-theme.lua
+sketchybar/theme_colors.sh
+sketchybar/theme_colors.edn
+borders/theme_colors.sh

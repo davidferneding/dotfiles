@@ -4,6 +4,7 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
-        vim.cmd([[colorscheme catppuccin-mocha]])
+        local theme = require("current-theme")
+        vim.cmd("colorscheme " .. theme.colorscheme)
     end
 }

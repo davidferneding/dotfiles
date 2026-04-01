@@ -1,0 +1,19 @@
+export BLACK=0xff11111b
+export WHITE=0xffcdd6f4
+export RED=0xfff38ba8
+export GREEN=0xffa6e3a1
+export BLUE=0xff89b4fa
+export YELLOW=0xfff9e2af
+export ORANGE=0xfffab387
+export MAGENTA=0xffcba6f7
+export GREY=0xff7f849c
+export TRANSPARENT=0x00000000
+export BG0=0xff1e1e2e
+export BG1=0xff313244
+export BG2=0xff45475a
+
+export BATTERY_1=0xffa6e3a1
+export BATTERY_2=0xfff9e2af
+export BATTERY_3=0xfffab387
+export BATTERY_4=0xffeba0ac
+export BATTERY_5=0xfff38ba8

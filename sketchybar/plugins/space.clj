@@ -9,6 +9,9 @@
             [clojure.edn :as edn]
             [taoensso.timbre :as log]))
 
+(def colors
+  (edn/read-string (slurp (str (System/getProperty "user.home") "/.config/sketchybar/theme_colors.edn"))))
+
 (defn get-apps
   "Returns a map of all running apps with their respective workspace."
   []
@@ -38,9 +41,6 @@
 
 (defn build-icon-strip [apps]
   (string/join " " (map get-icon apps)))
-
-(def colors {:bg 0xff363a4f ;; todo: use a single config file
-             :rosewater 0xfff4dbd6})
 
 (defn all-by-key [key coll]
   (into [] (map #(key %) coll)))

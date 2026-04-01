@@ -31,9 +31,8 @@ brew install sketchybar
 brew install borders
 
 ## Fonts
-echo "Installing fonts..."
-
-### monaspace
+### monaspace (static, variable and nerdfonts from GitHub releases)
+echo "Installing Monaspace fonts..."
 MONASPACE_API=$(curl -fsSL "https://api.github.com/repos/githubnext/monaspace/releases/latest")
 MONASPACE_TMP=$(mktemp -d)
 
@@ -60,6 +59,10 @@ echo "Creating links..."
 ln -f "$DOTFILES/.zshrc"     "$HOME/.zshrc"
 ln -f "$DOTFILES/.tmux.conf" "$HOME/.tmux.conf"
 ln -f "$DOTFILES/.ideavimrc" "$HOME/.ideavimrc"
+
+# Seed theme
+echo "Copying default theme files..."
+cp -r "$DOTFILES/catppuccin/examples/." "$DOTFILES/"
 
 gum style \
   'Setup complete!' \

@@ -1,11 +1,13 @@
 #!/bin/bash
 
+source "$HOME/.config/borders/theme_colors.sh"
+
 options=(
     style=round
     width=6.0
     hidpi=on
-    active_color=0xfff4dbd6
-    inactive_color=0xff939ab7
+    active_color=$ACTIVE_COLOR
+    inactive_color=$INACTIVE_COLOR
 )
 
 borders "${options[@]}"

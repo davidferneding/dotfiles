@@ -7,8 +7,10 @@
 
 (local wezterm (require :wezterm))
 
+(local theme (require :theme))
+
 (local config-style
-       {:color_scheme "Catppuccin Mocha"
+       {:color_scheme theme.color_scheme
         :colors {:visual_bell "#e78284"}
         :font (wezterm.font "Monaspace Neon")
         ; comment style
