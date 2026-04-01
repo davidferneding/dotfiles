@@ -5,4 +5,7 @@
                             :task (core/-main)}
          generate-examples {:doc "Regenerate example theme files for setup"
                             :requires ([core])
-                            :task (core/generate-examples!)}}}
+                            :task (core/generate-examples!)}
+         update-palette    {:doc "Update themes.edn from catppuccin/palette"
+                            :requires ([palette])
+                            :task (palette/update-themes!)}}}
