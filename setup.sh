@@ -21,6 +21,9 @@ brew install lf
 brew install java
 brew install borkdude/brew/babashka
 brew install gum
+brew install rust
+brew install powerlevel10k
+brew install thefuck
 
 ## Apps
 brew install --cask wezterm
