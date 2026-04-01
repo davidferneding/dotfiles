@@ -1,0 +1,17 @@
+{:paths ["src" "resources"]
+ :deps {io.github.rinx/sbar-bb {:git/sha "97aa02b85fa00dea557f135ad44e61551f43e8cf"}}
+ :tasks
+ {setup        {:doc  "Setup bar appearance, config and all items"
+                :task (exec 'items.setup/-main)}
+  setup:bar    {:doc  "Setup bar appearance and config"
+                :task (exec 'items.bar/-main)}
+  setup:spaces {:doc  "Setup spaces item"
+                :task (exec 'items.spaces/-main)}
+  setup:front-app {:doc  "Setup front-app item"
+                   :task (exec 'items.front-app/-main)}
+  setup:calendar  {:doc  "Setup calendar item"
+                   :task (exec 'items.calendar/-main)}
+  setup:battery   {:doc  "Setup battery item"
+                   :task (exec 'items.battery/-main)}
+  setup:notifications {:doc  "Setup notification items"
+                       :task (exec 'items.notification/-main)}}}

@@ -63,6 +63,5 @@ theme.edn
 tmux/theme.conf
 wezterm/theme.lua
 nvim/lua/current-theme.lua
-sketchybar/theme_colors.sh
-sketchybar/theme_colors.edn
+sketchybar/resources/theme_colors.edn
 borders/theme_colors.sh

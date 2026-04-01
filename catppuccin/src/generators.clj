@@ -13,8 +13,6 @@
   (spit path content)
   (println (str "  ✓ " path)))
 
-;; ─── File generators ─────────────────────────────────────────────────
-
 (defn gen-theme-edn [flavor]
   (pr-str {:flavor flavor}))
 
@@ -44,43 +42,13 @@
                ["  }" "}" ""])]
     (str/join "\n" lines)))
 
-(defn gen-sketchybar-sh [colors]
-  (let [mapping [["BLACK"       :crust]
-                 ["WHITE"       :text]
-                 ["RED"         :red]
-                 ["GREEN"       :green]
-                 ["BLUE"        :blue]
-                 ["YELLOW"      :yellow]
-                 ["ORANGE"      :peach]
-                 ["MAGENTA"     :mauve]
-                 ["GREY"        :overlay-1]
-                 ["TRANSPARENT" nil]
-                 ["BG0"         :base]
-                 ["BG1"         :surface-0]
-                 ["BG2"         :surface-1]]
-        battery [["BATTERY_1" :green]
-                 ["BATTERY_2" :yellow]
-                 ["BATTERY_3" :peach]
-                 ["BATTERY_4" :maroon]
-                 ["BATTERY_5" :red]]]
-    (str/join "\n"
-              (concat
-               (for [[var-name color-key] mapping]
-                 (if (nil? color-key)
-                   (str "export " var-name "=0x00000000")
-                   (str "export " var-name "=" (hex->0xff (get colors color-key)))))
-               [""]
-               (for [[var-name color-key] battery]
-                 (str "export " var-name "=" (hex->0xff (get colors color-key))))
-               [""]))))
-
 (defn gen-sketchybar-edn [colors]
   (let [latte-text "4c4f69"]
-    (pr-str {:bg         (read-string (hex->0xff (:base colors)))
-             :text-light (read-string (hex->0xff (:text colors)))
-             :text-dark  (read-string (hex->0xff latte-text))
-             :red        (read-string (hex->0xff (:red colors)))
-             :rosewater  (read-string (hex->0xff (:rosewater colors)))})))
+    (pr-str {:bg         (hex->0xff (:base colors))
+             :text-light (hex->0xff (:text colors))
+             :text-dark  (hex->0xff latte-text)
+             :red        (hex->0xff (:red colors))
+             :rosewater  (hex->0xff (:rosewater colors))})))
 
 (defn gen-borders-sh [colors]
   (str/join "\n"
