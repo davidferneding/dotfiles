@@ -5,9 +5,8 @@
 !.gitignore
 !README.md
 
-# and setup scripts
-!install-brew.sh
-!install-deps.sh
+# and setup script
+!setup.sh
 
 # and relevant dotfiles
 
