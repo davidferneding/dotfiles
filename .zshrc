@@ -6,7 +6,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -144,3 +143,27 @@ _bb_tasks() {
     _files # autocomplete filenames as well
 }
 compdef _bb_tasks bb
+
+# Enables bb tasks anywhere
+bb() {
+  typeset -A BB_CONFIGS
+  BB_CONFIGS=(
+    catppuccin "$HOME/.config/catppuccin/bb.edn"
+  )
+
+  if [[ "$1" =~ '^([a-zA-Z0-9_-]+):(.+)$' ]]; then
+    local key="${match[1]}"
+    local task="${match[2]}"
+    if [[ -n "${BB_CONFIGS[$key]}" ]]; then
+      /opt/homebrew/bin/bb --config "${BB_CONFIGS[$key]}" "$task" "${@:2}"
+      return
+    fi
+  fi
+
+  /opt/homebrew/bin/bb "$@"
+}
+
+# kubectl plugins with krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export XDG_CONFIG_HOME="$HOME/.config"
