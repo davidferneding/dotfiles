@@ -79,6 +79,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 
 # add brew bash completion
+[[ ! -f /home/linuxbrew/.linuxbrew/bin/brew ]] || eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 source $ZSH/oh-my-zsh.sh
@@ -108,7 +109,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -167,3 +168,5 @@ bb() {
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export XDG_CONFIG_HOME="$HOME/.config"
+
+source <(kubectl completion zsh)
