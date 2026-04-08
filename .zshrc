@@ -79,10 +79,29 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 
 # add brew bash completion
-[[ ! -f /home/linuxbrew/.linuxbrew/bin/brew ]] || eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+[[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+[[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+if type brew &>/dev/null; then
+  [[ -d $HOMEBREW_PREFIX/share/zsh-completions ]] && FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
+  [[ -d $HOMEBREW_PREFIX/share/zsh/site-functions ]] && FPATH=$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 source $ZSH/oh-my-zsh.sh
+
+if [[ -f $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+  source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
+
+  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+  [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[[ -s $HOMEBREW_PREFIX/opt/nvm/nvm.sh ]] && \. $HOMEBREW_PREFIX/opt/nvm/nvm.sh  # This loads nvm
+[[ -s $HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm ]] && \. $HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm  # This loads nvm bash_completion
+
 
 # User configuration
 
@@ -109,18 +128,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Enables zsh-completions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
 
 alias vi='nvim'
 alias vim='nvim'
@@ -128,10 +136,6 @@ alias filetree='tree'
 alias dirtree='tree -d'
 
 alias git-cleanup-merged='git fetch --prune && git branch --merged | egrep -v "master|develop" | xargs git branch -d'
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 eval $(thefuck --alias)
 
@@ -156,12 +160,12 @@ bb() {
     local key="${match[1]}"
     local task="${match[2]}"
     if [[ -n "${BB_CONFIGS[$key]}" ]]; then
-      /opt/homebrew/bin/bb --config "${BB_CONFIGS[$key]}" "$task" "${@:2}"
+      $HOMEBREW_PREFIX/bin/bb --config "${BB_CONFIGS[$key]}" "$task" "${@:2}"
       return
     fi
   fi
 
-  /opt/homebrew/bin/bb "$@"
+  $HOMEBREW_PREFIX/bin/bb "$@"
 }
 
 # kubectl plugins with krew
