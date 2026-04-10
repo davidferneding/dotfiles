@@ -14,14 +14,19 @@ fi
 # Dependencies
 echo "Installing dependencies..."
 
+## Languages
+brew install go
+brew install nvm
+brew install rust
+brew install java
+brew install clojure/tools/clojure
+
 ## CLI tools
 brew install tmux
 brew install neovim
 brew install lf
-brew install java
 brew install borkdude/brew/babashka
 brew install gum
-brew install rust
 brew install powerlevel10k
 brew install thefuck
 
