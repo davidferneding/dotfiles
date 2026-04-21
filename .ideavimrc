@@ -23,6 +23,13 @@ nmap <leader>dt <Action>(RiderUnitTestDebugContextAction)
 nmap <leader>cr <Action>(CollapseRegion)
 nmap <leader>er <Action>(ExpandRegion)
 
+nmap <leader>tw <Action>(ViewToolButtons)
+nmap <leader>tc <Action>(ActivateCommitToolWindow)
+nmap <leader>tt <Action>(ActivateUnitTestsToolWindow)
+nmap <leader>tn <Action>(ActivateNuGetToolWindow)
+nmap <leader>tg <Action>(ActivateVersionControlToolWindow)
+nmap <leader>tp <Action>(ActivateProjectToolWindow)
+
 """ PLUGINS
 Plug 'tpope/vim-commentary' " -> gcc
 Plug 'tpope/vim-surround' " -> ds/ys/cs
