@@ -4,7 +4,7 @@ source "$HOME/.config/borders/theme_colors.sh"
 
 options=(
     style=round
-    width=6.0
+    width=4.0
     hidpi=on
     active_color=$ACTIVE_COLOR
     inactive_color=$INACTIVE_COLOR
