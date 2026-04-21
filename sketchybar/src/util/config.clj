@@ -16,7 +16,7 @@
   (str "sketchybar-app-font:" weight ":" size))
 
 (defn label-font [& {:keys [weight size]
-                      :or {weight "Medium" size 15.0}}]
+                      :or {weight "Medium" size 16.0}}]
   (str "Monaspace Neon:" weight ":" size))
 
 (def item-defaults

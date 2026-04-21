@@ -4,20 +4,20 @@
             [util.config :as config]))
 
 (def ^:private font "SF Pro")
-(def ^:private paddings 3)
+(def ^:private paddings 4)
 
 (def ^:private bar-props
-  {:height        28
+  {:height        32
    :color         "0x00000000"
-   :border_width  2
+   :border_width  0
    :border_color  "0x00000000"
    :shadow        "off"
    :position      "top"
    :sticky        "on"
-   :padding_right 10
-   :padding_left  10
-   :y_offset      2
-   :notch_offset  5
+   :padding_right 8
+   :padding_left  8
+   :y_offset      1
+   :notch_offset  2
    :topmost       "window"})
 
 (def ^:private default-props
@@ -35,11 +35,11 @@
    :label.shadow.color   "0xff000000"
    :padding_right        paddings
    :padding_left         paddings
-   :background.height    28
-   :background.corner_radius 9
-   :background.border_width  2
-   :popup.background.border_width  2
-   :popup.background.corner_radius 9
+   :background.height    26
+   :background.corner_radius 8
+   :background.border_width  0
+   :popup.background.border_width  0
+   :popup.background.corner_radius 8
    :popup.background.border_color  (:text-light config/colors)
    :popup.background.color         (:bg config/colors)
    :popup.blur_radius              20
