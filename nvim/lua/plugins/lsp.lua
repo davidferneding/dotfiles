@@ -18,7 +18,6 @@ return {
                 "lua_ls",
                 "clojure_lsp",
                 "pylsp",
-                "ts_ls",
                 "fennel_language_server",
             }
         },
