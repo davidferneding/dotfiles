@@ -18,7 +18,7 @@ echo "Installing dependencies..."
 brew install go
 brew install nvm
 brew install rust
-brew install java
+brew install temurin
 brew install clojure/tools/clojure
 
 ## CLI tools
@@ -29,6 +29,8 @@ brew install borkdude/brew/babashka
 brew install gum
 brew install powerlevel10k
 brew install thefuck
+brew install fzf
+brew install tree-sitter tree-sitter-cli
 
 ## Apps
 brew install --cask wezterm
