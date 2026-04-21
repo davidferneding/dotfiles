@@ -1,4 +1,4 @@
-return {
+return { {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
     event = 'BufRead',
@@ -110,4 +110,145 @@ return {
             end,
         })
     end,
+},
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+        init = function()
+            -- Disable entire built-in ftplugin mappings to avoid conflicts.
+            -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+            vim.g.no_plugin_maps = true
+        end,
+        config = function()
+            require("nvim-treesitter-textobjects").setup {
+                textobjects = {
+                    select = {
+                        lookahead = true,
+                        lookbehind = true,
+                        selection_modes = {
+                            ['@function.outer'] = 'V',
+                            ['@class.outer'] = 'V',
+                            ['@parameter.outer'] = 'v',
+                            ['@section.outer'] = 'V',
+                            ['@section.inner'] = 'V',
+                        },
+                    },
+                },
+            }
+        end,
+        keys = {
+            {
+                "af",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select around function"
+            },
+            {
+                "if",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select inside function"
+            },
+            {
+                "ac",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@class.outer", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select around class"
+            },
+            {
+                "ic",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@class.inner", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select inside class"
+            },
+            {
+                "ai",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@conditional.outer", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select around conditional"
+            },
+            {
+                "ii",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@conditional.inner", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select inside conditional"
+            },
+            {
+                "al",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@loop.outer", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select around loop"
+            },
+            {
+                "il",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@loop.inner", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select inside loop"
+            },
+            {
+                "aa",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@parameter.outer", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select around parameter"
+            },
+            {
+                "ia",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@parameter.inner", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select inside parameter"
+            },
+            {
+                "aC",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@comment.outer", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select around comment"
+            },
+            {
+                "iC",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@comment.inner", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select inside comment"
+            },
+            {
+                "ah",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@section.outer", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select around heading section"
+            },
+            {
+                "ih",
+                function()
+                    require "nvim-treesitter-textobjects.select".select_textobject("@section.inner", "textobjects")
+                end,
+                mode = { "x", "o" },
+                desc = "Select inside heading section"
+            },
+        },
+    }
 }
