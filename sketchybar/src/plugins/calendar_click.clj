@@ -5,4 +5,4 @@
 (defn -main [& _args]
   (log/debug "calendar clicked, showing notification center")
   (sh "osascript" "-e"
-       "tell application \"System Events\" to click menu bar item 2 of menu bar 1 of application process \"ControlCenter\""))
+       "tell application \"System Events\" to click (first menu bar item of menu bar 1 of application process \"ControlCenter\" whose description is \"Clock\")"))
