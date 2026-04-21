@@ -31,6 +31,7 @@ brew install powerlevel10k
 brew install thefuck
 brew install fzf
 brew install tree-sitter tree-sitter-cli
+brew install kubectl
 
 ## Apps
 brew install --cask wezterm
