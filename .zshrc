@@ -72,6 +72,9 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 source <(kubectl completion zsh)
 
+## dotnet
+export PATH="$PATH:$HOME/.dotnet/tools"
+
 
 # Aliases
 ## Config
