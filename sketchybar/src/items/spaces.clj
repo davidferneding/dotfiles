@@ -6,13 +6,13 @@
             [util.config :as config]
             [util.helpers :as helpers]))
 
-(defn- extract-key [text]
-  (str/replace text #" \|.*" ""))
+(defn- assoc-ids [text]
+  (zipmap [:aerospace-monitor :system-monitor] (str/split text #" ")))
 
 (defn- get-monitors []
-  (map extract-key
+  (map assoc-ids
        (str/split (:out (shell {:out :string :err :string :continue true}
-                                  "aerospace list-monitors"))
+                                  "aerospace list-monitors --format \"%{monitor-id} %{monitor-appkit-nsscreen-screens-id}\""))
                      #"\n")))
 
 (defn- get-workspaces [monitor]
@@ -62,10 +62,12 @@
 
 (defn setup []
   (doseq [monitor (get-monitors)]
-    (doseq [workspace (get-workspaces monitor)]
-      (log/debug (str "setting up " workspace "/" monitor))
+    (doseq [aerospace-monitor (:aerospace-monitor monitor)
+            system-monitor (:system-monitor monitor)
+            workspace (get-workspaces aerospace-monitor)]
+      (log/debug (str "setting up " workspace "/" aerospace-monitor))
       (add-custom-events)
-      (add-space workspace monitor)
+      (add-space workspace system-monitor)
       (sketchybar/exec
        (sketchybar/set (space-key workspace)
                        {:label (build-icon-strip (get-apps workspace))})))))
