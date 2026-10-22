@@ -53,12 +53,13 @@ compdef _bb_tasks bb
 bb() {
   typeset -A BB_CONFIGS
   BB_CONFIGS=(
-    catppuccin "$HOME/.config/catppuccin/bb.edn",
+    catppuccin "$HOME/.config/catppuccin/bb.edn"
     notes "$HOME/Notes/bb.edn"
   )
   if [[ "$1" =~ '^([a-zA-Z0-9_-]+):(.+)$' ]]; then
     local key="${match[1]}"
     local task="${match[2]}"
+    echo "${BB_CONFIGS[$key]}"
     if [[ -n "${BB_CONFIGS[$key]}" ]]; then
       $HOMEBREW_PREFIX/bin/bb --config "${BB_CONFIGS[$key]}" "$task" "${@:2}"
       return
@@ -87,7 +88,7 @@ alias filetree='tree'
 alias dirtree='tree -d'
 
 ## Git
-alias git-cleanup-merged='git fetch --prune && git branch --merged | egrep -v "master|develop" | xargs git branch -d'
+alias git-cleanup-merged='git fetch --prune && git fetch --prune-tags && git branch --merged | egrep -v "main|master|develop" | xargs git branch -d'
 
 ## Tools
 eval $(thefuck --alias)
