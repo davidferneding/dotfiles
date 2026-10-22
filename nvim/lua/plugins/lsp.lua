@@ -19,6 +19,7 @@ return {
                 "clojure_lsp",
                 "pylsp",
                 "fennel_language_server",
+                "roslyn_ls",
             }
         },
         init = function()
