@@ -21,3 +21,6 @@
                              {:drawing "off"}))))
         (catch Exception ex
           (log/error ex (str "error while updating " (name item-name) " notification count")))))))
+
+
+(notif/get-badge-count "Microsoft Teams")

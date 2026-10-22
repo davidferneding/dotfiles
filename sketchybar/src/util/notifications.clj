@@ -13,11 +13,12 @@
   "Query the badge count for `display-name` (e.g. \"Slack\", \"Microsoft Outlook\").
    Returns an integer: the badge number, 1 for a non-numeric badge, or 0 when absent."
   [display-name]
-  (let [plain (:out (sh "lsappinfo info -only StatusLabel"
+  (let [plain (:out (sh "lsappinfo -all info -only StatusLabel"
                         (:out (sh (str "lsappinfo find LSDisplayName='" display-name "'")))))]
     (if (or (nil? plain) (= "" plain) (str/includes? plain "NULL"))
       0
-      (let [status (json/parse-string (str/replace (re-find #"\{.*" plain) "=" ":") true)]
+      (let [json (json/parse-string (str/replace (re-find #"\{.*" (str/replace plain #"\"LSASN.*?, " "")) "=" ":") true)
+            status (:StatusLabel json)]
         (cond
           (= (:label status) "") 0
           (number-string? (:label status)) (parse-long (:label status))
