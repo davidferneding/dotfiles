@@ -39,7 +39,7 @@ if [[ -f $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
 fi
 export NVM_DIR="$HOME/.nvm"
 [[ -s $HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm ]] && \. $HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm  # This loads nvm bash_completion
-[[ -s $HOMEBREW_PREFIX/opt/nvm/nvm.sh ]] && \. $HOMEBREW_PREFIX/opt/nvm/nvm.sh  # This loads nvm
+[[ -s $HOMEBREW_PREFIX/opt/nvm/nvm.sh ]] && \. $HOMEBREW_PREFIX/opt/nvm/nvm.sh && nvm use node # This loads nvm
 
 ## Babashka
 ### Autocomplete
