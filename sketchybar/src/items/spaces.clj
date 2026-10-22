@@ -48,8 +48,8 @@
                            :icon.font             (config/label-font :weight "Bold" :size 16.0)
                            :display               monitor
                            :label.font            (config/icon-font)
-                           :icon.highlight_color  (:text-dark config/colors)
-                           :label.highlight_color (:text-dark config/colors)
+                           :icon.highlight_color  (:teal config/colors)
+                           :label.highlight_color (:teal config/colors)
                            :label.padding_left    4
                            :script                (helpers/plugin-cmd 'plugins.space)}))
    (sketchybar/subscribe (space-key space) "mouse.clicked")

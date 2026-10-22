@@ -69,15 +69,13 @@
           (sketchybar/exec
            (sketchybar/set (space-key workspace)
                            {:label.highlight false
-                            :icon.highlight  false
-                            :background.color (:bg config/colors)})))
+                            :icon.highlight  false})))
         (doseq [workspace (get-visible-workspaces)]
           (log/debug (str "updating space " workspace ". Space is active"))
           (sketchybar/exec
            (sketchybar/set (space-key workspace)
                            {:label.highlight true
-                            :icon.highlight  true
-                            :background.color (:rosewater config/colors)})))
+                            :icon.highlight  true})))
         (catch Exception ex
           (log/error ex "error while updating highlights"))))))
 

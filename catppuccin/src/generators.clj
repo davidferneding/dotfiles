@@ -44,11 +44,11 @@
 
 (defn gen-sketchybar-edn [colors]
   (let [latte-text "4c4f69"]
-    (pr-str {:bg         (hex->0xff (:base colors))
+    (pr-str {:bg         (str "0xbb" (:base colors))
              :text-light (hex->0xff (:text colors))
              :text-dark  (hex->0xff latte-text)
              :red        (hex->0xff (:red colors))
-             :rosewater  (hex->0xff (:rosewater colors))})))
+             :teal       (hex->0xff (:teal colors))})))
 
 (defn gen-borders-sh [colors]
   (str/join "\n"

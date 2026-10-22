@@ -21,7 +21,7 @@
 
 (def item-defaults
   {:background.drawing "on"
-   :background.color   (:bg colors)
+   :background.color   "0x00000000"
    :blur_radius        0
 
    :padding_left       8
