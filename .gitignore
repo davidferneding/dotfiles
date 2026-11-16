@@ -8,6 +8,11 @@
 # and setup script
 !setup.sh
 
+# and nix config
+!nix
+!nix/**/*
+nix/local.nix
+
 # and theme utility
 !catppuccin
 !catppuccin/**/*

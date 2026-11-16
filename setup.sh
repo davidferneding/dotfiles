@@ -1,7 +1,32 @@
 #!/bin/bash
 set -e
 
+###
+# Run after installing nix.
+###
+
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Nix
+if [[ ! -f "$DOTFILES/nix/local.nix" ]]; then
+  echo "Creating nix/local.nix..."
+  case "$(uname -sm)" in
+    "Darwin arm64") NIX_SYSTEM="aarch64-darwin" ;;
+    "Darwin x86_64") NIX_SYSTEM="x86_64-darwin" ;;
+    "Linux aarch64") NIX_SYSTEM="aarch64-linux" ;;
+    "Linux x86_64") NIX_SYSTEM="x86_64-linux" ;;
+    *) echo "Unsupported platform: $(uname -sm)" >&2; exit 1 ;;
+  esac
+  cat > "$DOTFILES/nix/local.nix" <<EOF
+{
+  username = "$USER";
+  homeDirectory = "$HOME";
+  system = "$NIX_SYSTEM";
+}
+EOF
+fi
+echo "Applying Home Manager configuration..."
+nix run home-manager/master -- switch --flake "path:$DOTFILES/nix#default"
 
 # Homebrew
 if ! command -v brew &>/dev/null; then
@@ -14,12 +39,7 @@ fi
 # Dependencies
 echo "Installing dependencies..."
 
-## Languages
-brew install go
-brew install nvm
-brew install rust
-brew install temurin
-brew install clojure/tools/clojure
+"$HOME/.nix-profile/bin/rustup" default stable
 
 ## CLI tools
 brew install tmux

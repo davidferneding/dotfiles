@@ -37,9 +37,11 @@ if [[ -f $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
   source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
   [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 fi
-export NVM_DIR="$HOME/.nvm"
-[[ -s $HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm ]] && \. $HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm  # This loads nvm bash_completion
-[[ -s $HOMEBREW_PREFIX/opt/nvm/nvm.sh ]] && \. $HOMEBREW_PREFIX/opt/nvm/nvm.sh && nvm use node # This loads nvm
+
+## Nix
+[[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]] && source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+[[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]] && source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+[[ -d $HOME/.nix-profile/bin ]] && path=($HOME/.nix-profile/bin $path)
 
 ## Babashka
 ### Autocomplete
@@ -75,6 +77,9 @@ source <(kubectl completion zsh)
 
 ## dotnet
 export PATH="$PATH:$HOME/.dotnet/tools"
+
+## rust
+export PATH="$PATH:$HOME/.cargo/bin"
 
 
 # Aliases

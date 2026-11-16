@@ -1,0 +1,5 @@
+{
+  username = "david.ferneding";
+  homeDirectory = "/Users/david.ferneding";
+  system = "aarch64-darwin";
+}
