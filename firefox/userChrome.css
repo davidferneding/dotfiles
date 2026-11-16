@@ -1,26 +1,87 @@
-#tabbrowser-tabbox {
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 4px 6px 6px 0px !important;
+:root {
+  --tab-min-height: 30px !important;
+  --tab-height-with-margin-padding: var(--tab-min-height) !important;
+  --tab-margin-inline-inner: 3px !important;
 }
 
-#vertical-pinned-tabs-container {
-    max-height: none !important;
+#sidebar-button:not(:hover) > .toolbarbutton-icon,
+#sidebar-button:not(:hover) > .toolbarbutton-badge-stack {
+  background: transparent !important;
 }
 
-.titlebar-spacer {
-    width: 0px !important;
+#tabbrowser-tabs[orient="vertical"] {
+  row-gap: 0 !important;
 }
 
-#urlbar {
-    border-radius: 8px !important;
-    overflow: hidden !important;
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab {
+  padding-block: 0 !important;
+  min-height: 0 !important;
 }
 
+#tabbrowser-tabs[orient="vertical"] .tab-background {
+  margin-block: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  background: transparent !important;
+}
+
+#tabbrowser-tabs[orient="vertical"][expanded]
+  > #pinned-tabs-container
+  .tabbrowser-tab
+  > .tab-stack
+  > .tab-background {
+  width: 30px !important;
+  height: 30px !important;
+  margin-inline: auto !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[selected] > .tab-stack > .tab-background {
+  outline: 1px solid var(--tab-border-color-selected) !important;
+  outline-offset: -1px;
+}
+
+#userContext-icons,
+.tab-context-line {
+  display: none !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[usercontextid] .tab-icon-image {
+  border-radius: 50%;
+  background-color: color-mix(in srgb, var(--identity-tab-color) 20%, transparent) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--identity-tab-color) 20%, transparent) !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[pending] .tab-label {
+  opacity: var(--opacity-deemphasized-strong) !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[pending] .tab-icon-image {
+  opacity: var(--opacity-deemphasized-strong) !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab > .tab-stack > .tab-content[titlechanged]:not([selected]) {
+  background-image: none !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tab-close-button {
+  display: none !important;
+}
+
+#vertical-pinned-tabs-splitter {
+  margin-block: 4px 2px !important;
+}
+
+#vertical-tabs-newtab-button,
 #tabs-newtab-button {
-    display: none !important;
+  display: none !important;
 }
 
-.tools-and-extensions {
-    display: none !important;
+.buttons-wrapper,
+#sidebar-tools-and-extensions-splitter,
+#tabbrowser-tabs[orient="vertical"]::after {
+  display: none !important;
+}
+
+sidebar-main:not([expanded]) {
+  min-width: var(--tab-collapsed-width, 46px) !important;
 }
