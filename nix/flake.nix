@@ -11,13 +11,22 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      local = import ./local.nix;
+      mkHome = { username, homeDirectory, system }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [
+            ./home.nix
+            { home = { inherit username homeDirectory; }; }
+          ];
+        };
     in
     {
-      homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${local.system};
-        modules = [ ./home.nix ];
-        extraSpecialArgs = { inherit local; };
+      homeConfigurations = {
+        "david.ferneding" = mkHome {
+          username = "david.ferneding";
+          homeDirectory = "/Users/david.ferneding";
+          system = "aarch64-darwin";
+        };
       };
     };
 }

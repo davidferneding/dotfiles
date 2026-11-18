@@ -3,7 +3,9 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.nix-profile/share/oh-my-zsh"
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"
+[[ -d $ZSH_CACHE_DIR/completions ]] || mkdir -p "$ZSH_CACHE_DIR/completions"
 ZSH_THEME="robbyrussell"
 
 ## Editor
@@ -33,8 +35,8 @@ if type brew &>/dev/null; then
 fi
 ### Config
 source $ZSH/oh-my-zsh.sh
-if [[ -f $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
-  source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
+if [[ -f $HOME/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theme ]]; then
+  source $HOME/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
   [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 fi
 

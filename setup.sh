@@ -2,31 +2,14 @@
 set -e
 
 ###
-# Run after installing nix.
+# Run after installing nix and adding an entry for the current user.
 ###
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Nix
-if [[ ! -f "$DOTFILES/nix/local.nix" ]]; then
-  echo "Creating nix/local.nix..."
-  case "$(uname -sm)" in
-    "Darwin arm64") NIX_SYSTEM="aarch64-darwin" ;;
-    "Darwin x86_64") NIX_SYSTEM="x86_64-darwin" ;;
-    "Linux aarch64") NIX_SYSTEM="aarch64-linux" ;;
-    "Linux x86_64") NIX_SYSTEM="x86_64-linux" ;;
-    *) echo "Unsupported platform: $(uname -sm)" >&2; exit 1 ;;
-  esac
-  cat > "$DOTFILES/nix/local.nix" <<EOF
-{
-  username = "$USER";
-  homeDirectory = "$HOME";
-  system = "$NIX_SYSTEM";
-}
-EOF
-fi
 echo "Applying Home Manager configuration..."
-nix run home-manager/master -- switch --flake "path:$DOTFILES/nix#default"
+nix run home-manager/master -- switch --flake "$DOTFILES/nix"
 
 # Homebrew
 if ! command -v brew &>/dev/null; then
@@ -47,7 +30,6 @@ brew install neovim
 brew install lf
 brew install borkdude/brew/babashka
 brew install gum
-brew install powerlevel10k
 brew install thefuck
 brew install fzf
 brew install tree-sitter tree-sitter-cli
@@ -59,31 +41,6 @@ brew install --cask nikitabobko/tap/aerospace
 
 brew tap FelixKratz/formulae
 brew install sketchybar
-brew install borders
-
-## Fonts
-### monaspace (static, variable and nerdfonts from GitHub releases)
-echo "Installing Monaspace fonts..."
-MONASPACE_API=$(curl -fsSL "https://api.github.com/repos/githubnext/monaspace/releases/latest")
-MONASPACE_TMP=$(mktemp -d)
-
-for variant in static variable nerdfonts; do
-  URL=$(echo "$MONASPACE_API" | grep "browser_download_url" | grep "$variant" | grep -v "webfont" | sed 's/.*"browser_download_url": "\(.*\)".*/\1/')
-  curl -fsSL "$URL" -o "$MONASPACE_TMP/$variant.zip"
-  unzip -q "$MONASPACE_TMP/$variant.zip" -d "$MONASPACE_TMP/$variant"
-done
-
-find "$MONASPACE_TMP" \( -name "*.otf" -o -name "*.ttf" \) -exec cp {} "$HOME/Library/Fonts/" \;
-rm -rf "$MONASPACE_TMP"
-
-### sketchybar app font
-brew install --cask font-sketchybar-app-font
-
-# Shell
-if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-  echo "Installing Oh My Zsh..."
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
 
 # Symlinks
 echo "Creating links..."

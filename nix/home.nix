@@ -1,8 +1,6 @@
-{ pkgs, local, ... }:
+{ pkgs, ... }:
 
 {
-  home.username = local.username;
-  home.homeDirectory = local.homeDirectory;
   home.stateVersion = "26.05";
 
   programs.home-manager.enable = true;
@@ -14,6 +12,11 @@
     pkgs.rustup
     pkgs.temurin-bin
     pkgs.clojure
+    pkgs.oh-my-zsh
+    pkgs.zsh-powerlevel10k
+    pkgs.monaspace
+    pkgs.nerd-fonts.monaspace
+    pkgs.sketchybar-app-font
   ];
   home.sessionVariables = {
     DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
