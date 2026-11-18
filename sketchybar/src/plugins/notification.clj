@@ -1,7 +1,4 @@
 (ns plugins.notification
-  "Generic notification-badge plugin. Determines the app to query from the
-   sketchybar item NAME env var, which matches a key in the notification apps
-   registry."
   (:require [items.notification :as items]
             [sketchybar.core :as sketchybar]
             [taoensso.timbre :as log]

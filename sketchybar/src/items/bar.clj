@@ -1,5 +1,4 @@
 (ns items.bar
-  "Bar appearance and global defaults - replaces the bash bar/defaults block."
   (:require [sketchybar.core :as sketchybar]
             [util.config :as config]))
 

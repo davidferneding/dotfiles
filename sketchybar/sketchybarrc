@@ -1,6 +1,8 @@
 #!/bin/bash
 cd "$CONFIG_DIR"
 
+export PATH="$HOME/.nix-profile/bin:$PATH"
+
 bb run setup
 
 sketchybar --hotload on

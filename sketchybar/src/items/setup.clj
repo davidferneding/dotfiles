@@ -1,5 +1,4 @@
 (ns items.setup
-  "Orchestrates the full sketchybar setup: bar defaults + all items."
   (:require [items.bar :as bar]
             [items.spaces :as spaces]
             [items.front-app :as front-app]

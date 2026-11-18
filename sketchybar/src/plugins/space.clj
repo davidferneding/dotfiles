@@ -4,7 +4,6 @@
             [babashka.process :refer [shell]]
             [sketchybar.core :as sketchybar]
             [taoensso.timbre :as log]
-            [util.config :as config]
             [util.helpers :as helpers]))
 
 (defn- get-apps []

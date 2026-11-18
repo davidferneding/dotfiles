@@ -1,5 +1,4 @@
 (ns util.notifications
-  "Shared helper for querying macOS app badge counts via lsappinfo."
   (:require [babashka.process :refer [sh]]
             [cheshire.core :as json]
             [clojure.string :as str]))
@@ -15,7 +14,7 @@
   [display-name]
   (let [plain (:out (sh "lsappinfo -all info -only StatusLabel"
                         (:out (sh (str "lsappinfo find LSDisplayName='" display-name "'")))))]
-    (if (or (nil? plain) (= "" plain) (str/includes? plain "NULL"))
+    (if (or (nil? plain) (= "" plain) (str/includes? plain "NULL") (not (str/includes? plain "StatusLabel")))
       0
       (let [json (json/parse-string (str/replace (re-find #"\{.*" (str/replace plain #"\"LSASN.*?, " "")) "=" ":") true)
             status (:StatusLabel json)]

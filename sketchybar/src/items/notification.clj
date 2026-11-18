@@ -1,5 +1,4 @@
 (ns items.notification
-  "Generic notification-badge item. Parameterised by app display-name and icon."
   (:require [sketchybar.core :as sketchybar]
             [taoensso.timbre :as log]
             [util.config :as config]
