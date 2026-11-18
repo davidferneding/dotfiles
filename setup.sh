@@ -20,21 +20,10 @@ if ! command -v brew &>/dev/null; then
   [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Dependencies
-echo "Installing dependencies..."
-
-## Apps
 brew install --cask wezterm
 brew install --cask nikitabobko/tap/aerospace
-
 brew tap FelixKratz/formulae
 brew install sketchybar
-
-# Symlinks
-echo "Creating links..."
-ln -f "$DOTFILES/.zshrc"     "$HOME/.zshrc"
-ln -f "$DOTFILES/.tmux.conf" "$HOME/.tmux.conf"
-ln -f "$DOTFILES/.ideavimrc" "$HOME/.ideavimrc"
 
 # Seed theme
 echo "Copying default theme files..."

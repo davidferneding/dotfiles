@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
+let
+  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/${path}";
+in
 {
   home.stateVersion = "26.05";
 
@@ -31,6 +34,12 @@
     pkgs.nerd-fonts.monaspace
     pkgs.sketchybar-app-font
   ];
+  home.file = {
+    ".zshrc".source = link ".zshrc";
+    ".tmux.conf".source = link ".tmux.conf";
+    ".ideavimrc".source = link ".ideavimrc";
+  };
+
   home.sessionVariables = {
     DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
     JAVA_HOME = "${pkgs.temurin-bin.home}";
