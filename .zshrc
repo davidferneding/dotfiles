@@ -93,7 +93,16 @@ alias filetree='tree'
 alias dirtree='tree -d'
 
 ## Git
-alias git-cleanup-merged='git fetch --prune && git fetch --prune-tags && git branch --merged | egrep -v "main|master|develop" | xargs git branch -d'
+git-cleanup() {
+  git fetch --prune --prune-tags --force || return
+  git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads \
+    | awk '$2 == "[gone]" && $1 !~ /^(main|master|develop)$/ {print $1}' \
+    | xargs git branch -D
+}
+git-list-local() {
+  git for-each-ref --format='%(refname:short) %(upstream)' refs/heads \
+    | awk 'NF == 1 && $1 !~ /^(main|master|develop)$/ {print $1}'
+}
 
 ## Tools
 eval $(thefuck --alias)
