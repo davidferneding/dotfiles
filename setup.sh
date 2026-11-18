@@ -10,6 +10,7 @@ DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Nix
 echo "Applying Home Manager configuration..."
 nix run home-manager/master -- switch --flake "$DOTFILES/nix"
+"$HOME/.nix-profile/bin/rustup" default stable
 
 # Homebrew
 if ! command -v brew &>/dev/null; then
@@ -21,19 +22,6 @@ fi
 
 # Dependencies
 echo "Installing dependencies..."
-
-"$HOME/.nix-profile/bin/rustup" default stable
-
-## CLI tools
-brew install tmux
-brew install neovim
-brew install lf
-brew install borkdude/brew/babashka
-brew install gum
-brew install thefuck
-brew install fzf
-brew install tree-sitter tree-sitter-cli
-brew install kubectl
 
 ## Apps
 brew install --cask wezterm

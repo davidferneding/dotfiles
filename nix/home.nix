@@ -14,6 +14,15 @@
     pkgs.clojure
     pkgs.oh-my-zsh
     pkgs.zsh-powerlevel10k
+    pkgs.tmux
+    pkgs.neovim
+    pkgs.lf
+    pkgs.babashka
+    pkgs.gum
+    pkgs.fzf
+    pkgs.tree-sitter
+    pkgs.kubectl
+    pkgs.pay-respects
     pkgs.monaspace
     pkgs.nerd-fonts.monaspace
     pkgs.sketchybar-app-font

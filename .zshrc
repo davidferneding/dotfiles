@@ -65,11 +65,11 @@ bb() {
     local task="${match[2]}"
     echo "${BB_CONFIGS[$key]}"
     if [[ -n "${BB_CONFIGS[$key]}" ]]; then
-      $HOMEBREW_PREFIX/bin/bb --config "${BB_CONFIGS[$key]}" "$task" "${@:2}"
+      command bb --config "${BB_CONFIGS[$key]}" "$task" "${@:2}"
       return
     fi
   fi
-  $HOMEBREW_PREFIX/bin/bb "$@"
+  command bb "$@"
 }
 
 ## Kubectl
@@ -107,6 +107,6 @@ git-list-local() {
 }
 
 ## Tools
-eval $(thefuck --alias)
+eval "$(pay-respects zsh --alias)"
 alias loyctl='kubectl -n b2c-loyalty'
 compdef loyctl='kubectl'
