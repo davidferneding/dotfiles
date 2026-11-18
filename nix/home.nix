@@ -22,6 +22,10 @@
     pkgs.fzf
     pkgs.tree-sitter
     pkgs.kubectl
+    pkgs.kubernetes-helm
+    pkgs.gh
+    pkgs.glab
+    pkgs.ripgrep
     pkgs.pay-respects
     pkgs.monaspace
     pkgs.nerd-fonts.monaspace
